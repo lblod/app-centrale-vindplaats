@@ -24,13 +24,17 @@ Data can be imported using TTL files. Put the files in `./data/db/toLoad` and re
 ```
   # Stop the virtuoso container
   docker-compose -f docker-compose.yml -f docker-compose.dev.yml stop virtuoso
-  
+
   # Remove the virtuoso container
   docker-compose -f docker-compose.yml -f docker-compose.dev.yml rm virtuoso
-  
+
   # Create the virtuoso container again
   docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d virtuoso
 ```
+
+Recent data can be downloaded from:
+* [Mandatendatabank](https://mandaten.lokaalbestuur.vlaanderen.be/)
+* [Leidinggevendendatabank](https://leidinggevenden.lokaalbestuur.vlaanderen.be/)
 
 ## Reference
 ### Data access
