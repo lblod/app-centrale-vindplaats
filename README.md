@@ -1,4 +1,4 @@
-# mu-project
+# app-centrale-vindplaats
 
 Bootstrap a mu.semte.ch microservices environment in three easy steps.
 
