@@ -14,7 +14,7 @@
   docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 ```
 
-You're application is running and can be queried via http://localhost:80/sparql, but the database doesn't contain any data yet.
+You're application is running and can be queried via http://localhost:4000/sparql, but the database doesn't contain any data yet.
 
 ## How to
 

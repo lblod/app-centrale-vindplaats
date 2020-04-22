@@ -7,6 +7,8 @@ services:
       - "80:80"
   dispatcher:
     restart: "no"
+  frontend:
+    restart: "no"
   database:
     restart: "no"
   virtuoso:
