@@ -19,7 +19,7 @@ You're application is running and can be queried via http://localhost:4000/sparq
 ## How to
 
 ### Import data in the application
-Data can be imported using TTL files. Put the files in `./data/db/toLoad` and recreate the `virtuoso` container. For more info, have a look at the [Virtuoso image documentation](https://github.com/tenforce/docker-virtuoso#automatically).
+Data can be imported using TTL files. Put the files in `./data/db/toLoad`, remove the data already loaded flag and recreate the `virtuoso` container. For more info, have a look at the [Virtuoso image documentation](https://github.com/tenforce/docker-virtuoso#automatically).
 
 ```
   # Stop the virtuoso container
@@ -27,6 +27,9 @@ Data can be imported using TTL files. Put the files in `./data/db/toLoad` and re
 
   # Remove the virtuoso container
   docker-compose -f docker-compose.yml -f docker-compose.dev.yml rm virtuoso
+  
+  # Remove the data loaded flag
+  rm ./data/db/.data_loaded
 
   # Create the virtuoso container again
   docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d virtuoso
