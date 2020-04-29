@@ -15,3 +15,5 @@ services:
     restart: "no"
     ports:
       - "8890:8890"
+  uriinfo:
+    restart: "no"

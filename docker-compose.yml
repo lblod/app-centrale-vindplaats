@@ -54,3 +54,7 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  uriinfo:
+    image: redpencil/mu-uri-info-service
+    links:
+      - virtuoso:database

@@ -26,6 +26,10 @@ defmodule Dispatcher do
     forward conn, path, "http://frontend/assets/"
   end
 
+  match "/uri-info/*path", @any do
+    forward conn, path, "http://uriinfo/"
+  end
+
   match "/*_path", @html do
     # *_path allows a path to be supplied, but will not yield
     # an error that we don't use the path variable.
