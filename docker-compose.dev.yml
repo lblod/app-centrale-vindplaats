@@ -9,6 +9,8 @@ services:
     restart: "no"
   frontend:
     restart: "no"
+  datalblodinfo:
+    restart: "no"
   database:
     restart: "no"
   virtuoso:
