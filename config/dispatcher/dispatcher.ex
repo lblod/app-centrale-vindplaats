@@ -27,7 +27,7 @@ defmodule Dispatcher do
   end
 
   match "/uri-info/*path", @any do
-    forward conn, path, "http://uriinfo/"
+    forward conn, path, "http://uri-info/"
   end
 
   match "/*_path", @html do
