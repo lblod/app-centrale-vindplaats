@@ -9,7 +9,7 @@ services:
     restart: "no"
   frontend:
     restart: "no"
-  datalblodinfo:
+  metis:
     restart: "no"
   database:
     restart: "no"
@@ -17,5 +17,5 @@ services:
     restart: "no"
     ports:
       - "8890:8890"
-  uriinfo:
+  uri-info:
     restart: "no"
