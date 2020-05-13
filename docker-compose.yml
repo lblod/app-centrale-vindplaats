@@ -9,7 +9,7 @@ x-logging:
 
 services:
   metis:
-    image: lblod/frontend-data.lblod.info
+    image: lblod/frontend-data.lblod.info:0.2.2
     links:
       - identifier:backend
     environment:
@@ -65,5 +65,5 @@ services:
     restart: always
     logging: *default-logging
   uri-info:
-    image: redpencil/mu-uri-info-service
+    image: redpencil/mu-uri-info-service:0.1.0
 
