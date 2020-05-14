@@ -22,6 +22,10 @@ defmodule Dispatcher do
     send_resp( conn, 404, "" )
   end
 
+  match "/preflabel-discovery/api/v1/label/*path", @any do
+    forward conn, path, "http://preflabel.org/api/v1/label/*path"
+  end
+
   get "/assets/*path", @any do
     forward conn, path, "http://frontend/assets/"
   end
