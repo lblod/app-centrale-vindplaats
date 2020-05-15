@@ -1,20 +1,6 @@
 export default [
   {
     match: {
-      subject: { }
-    },
-    callback: {
-      url: "http://resource/.mu/delta",
-      method: "POST"
-    },
-    options: {
-      resourceFormat: "v0.0.1",
-      gracePeriod: 250,
-      ignoreFromSelf: true
-    }
-  },
-  {
-    match: {
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/adms#status'
