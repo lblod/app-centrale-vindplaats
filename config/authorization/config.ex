@@ -3,6 +3,12 @@ alias Acl.GraphSpec.Constraint.Resource, as: ResourceConstraint
 alias Acl.GraphSpec, as: GraphSpec
 alias Acl.GroupSpec, as: GroupSpec
 
+defmodule Delta.Config do
+  def targets do
+    [ "http://deltanotifier" ]
+  end
+end
+
 defmodule Acl.UserGroups.Config do
   def user_groups do
     [

@@ -82,7 +82,7 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  download-url-service:
+  download-url:
     image: lblod/download-url-service
     links:
       - database:database
