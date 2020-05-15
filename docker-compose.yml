@@ -96,3 +96,9 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  harvesting-initiation:
+    image: lblod/harvesting-initiation-service:latest
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
