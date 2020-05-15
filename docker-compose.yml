@@ -66,4 +66,33 @@ services:
     logging: *default-logging
   uri-info:
     image: redpencil/mu-uri-info-service:0.1.0
-
+  deltanotifier:
+    image: semtech/mu-delta-notifier:0.1.0
+    volumes:
+      - ./config/delta:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  file:
+    image: semtech/mu-file-service:3.1.0
+    volumes:
+      - ./data/files:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  download-url-service:
+    image: lblod/download-url-service
+    links:
+      - database:database
+    volumes:
+      - ./data/files:/share
+    environment:
+      CACHING_MAX_RETRIES: 300
+      CACHING_CRON_PATTERN: '0 */15 * * * *'
+      MAX_PENDING_TIME_IN_SECONDS: 7200
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
