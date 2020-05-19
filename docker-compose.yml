@@ -102,3 +102,11 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  harvesting-import:
+    image: lblod/harvesting-import-service:latest
+    volumes:
+      - ./data/files:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging

@@ -19,3 +19,7 @@ services:
       - "8890:8890"
   uri-info:
     restart: "no"
+  harvesting-initiation:
+    restart: "no"
+  harvesting-import:
+    restart: "no"
