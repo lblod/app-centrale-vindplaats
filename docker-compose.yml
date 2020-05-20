@@ -102,3 +102,7 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  harvest-collector:
+    image: lblod/harvest-collector-service
+    volumes:
+      - ./data/files:/share
