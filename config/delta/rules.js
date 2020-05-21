@@ -33,7 +33,7 @@ export default [
     },
     callback: {
       method: 'POST',
-      url: 'http://harvest-collector/harvest',
+      url: 'http://harvest-collector/delta',
     },
     options: {
       resourceFormat: 'v0.0.1',
