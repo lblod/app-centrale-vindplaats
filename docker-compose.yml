@@ -9,7 +9,7 @@ x-logging:
 
 services:
   metis:
-    image: lblod/frontend-data.lblod.info:0.2.2
+    image: lblod/frontend-data.lblod.info:0.2.3
     links:
       - identifier:backend
     environment:
