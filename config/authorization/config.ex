@@ -47,6 +47,3 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 end
-
-
-
