@@ -9,4 +9,3 @@
 docker-compose.override.yml
 .env
 /data/files/*
-/config/harvesting-initiation/initiator.json
