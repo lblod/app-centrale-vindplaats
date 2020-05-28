@@ -99,7 +99,7 @@ services:
   harvesting-initiation:
     image: lblod/harvesting-initiation-service:0.2.0
     volumes:
-      - ./config/harvesting:/config
+      - ./config/harvesting-initiation:/config
     labels:
       - "logging=true"
     restart: always
