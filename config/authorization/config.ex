@@ -12,7 +12,7 @@ defmodule Acl.UserGroups.Config do
         useage: [:read],
         access: %AlwaysAccessible{},
         graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/application",
+                    graph: "http://mu.semte.ch/graphs/public",
                     constraint: %ResourceConstraint{
                       resource_types: [
                         "http://data.vlaanderen.be/ns/mandaat#Mandataris",
@@ -41,7 +41,9 @@ defmodule Acl.UserGroups.Config do
                         "http://data.lblod.info/vocabularies/leidinggevenden/Functionaris",
                         "http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode",
                         "http://www.w3.org/2004/02/skos/core#Concept",
-                        "http://www.w3.org/2004/02/skos/core#ConceptScheme"
+                        "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+                        "http://xmlns.com/foaf/0.1/Document",
+                        "http://data.vlaanderen.be/ns/besluit#Zitting"
                       ]
                     } } ] }
     ]
