@@ -43,7 +43,10 @@ defmodule Acl.UserGroups.Config do
                         "http://www.w3.org/2004/02/skos/core#Concept",
                         "http://www.w3.org/2004/02/skos/core#ConceptScheme",
                         "http://xmlns.com/foaf/0.1/Document",
-                        "http://data.vlaanderen.be/ns/besluit#Zitting"
+                        "http://data.vlaanderen.be/ns/besluit#Zitting",
+                        "http://data.vlaanderen.be/ns/besluit#Agendapunt",
+                        "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+                        "http://data.vlaanderen.be/ns/besluit#Besluit"
                       ]
                     } } ] }
     ]
