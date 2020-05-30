@@ -66,6 +66,10 @@ services:
     logging: *default-logging
   uri-info:
     image: redpencil/mu-uri-info-service:0.1.0
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   deltanotifier:
     image: semtech/mu-delta-notifier:0.1.0
     volumes:
