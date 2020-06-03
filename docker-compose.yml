@@ -9,7 +9,7 @@ x-logging:
 
 services:
   metis:
-    image: lblod/frontend-data.lblod.info:0.2.2
+    image: lblod/frontend-data.lblod.info:0.2.3
     links:
       - identifier:backend
     environment:
@@ -56,7 +56,7 @@ services:
     image: tenforce/virtuoso:1.3.2-virtuoso7.2.2
     environment:
       SPARQL_UPDATE: "true"
-      DEFAULT_GRAPH: "http://mu.semte.ch/application"
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/public"
     volumes:
       - ./data/db:/data
       - ./config/virtuoso/virtuoso.ini:/data/virtuoso.ini
@@ -99,7 +99,7 @@ services:
   harvesting-initiation:
     image: lblod/harvesting-initiation-service:0.2.0
     volumes:
-      - ./config/harvesting:/config
+      - ./config/harvesting-initiation:/config
     labels:
       - "logging=true"
     restart: always
