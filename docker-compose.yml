@@ -82,13 +82,14 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  download-url:
+  harvesting-download-url:
     image: lblod/download-url-service
     links:
       - database:database
     volumes:
       - ./data/files:/share
     environment:
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/harvesting"
       CACHING_MAX_RETRIES: 300
       CACHING_CRON_PATTERN: '0 */15 * * * *'
       MAX_PENDING_TIME_IN_SECONDS: 7200
