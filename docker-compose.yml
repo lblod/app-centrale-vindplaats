@@ -98,7 +98,7 @@ services:
     restart: always
     logging: *default-logging
   harvesting-initiation:
-    image: lblod/harvesting-initiation-service:0.2.0
+    image: lblod/harvesting-initiation-service:0.2.1
     volumes:
       - ./config/harvesting-initiation:/config
     labels:
@@ -114,7 +114,7 @@ services:
     restart: always
     logging: *default-logging
   harvesting-import:
-    image: lblod/harvesting-import-service:0.2.5
+    image: lblod/harvesting-import-service:0.2.6
     volumes:
       - ./data/files:/share
     labels:
