@@ -12,7 +12,7 @@ export default [
     },
     callback: {
       method: 'POST',
-      url: 'http://download-url/process-remote-data-objects',
+      url: 'http://harvesting-download-url/process-remote-data-objects',
     },
     options: {
       resourceFormat: 'v0.0.1',

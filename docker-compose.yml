@@ -86,13 +86,14 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  download-url:
-    image: lblod/download-url-service
+  harvesting-download-url:
+    image: lblod/download-url-service:0.3.1
     links:
       - database:database
     volumes:
       - ./data/files:/share
     environment:
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/harvesting"
       CACHING_MAX_RETRIES: 300
       CACHING_CRON_PATTERN: '0 */15 * * * *'
       MAX_PENDING_TIME_IN_SECONDS: 7200
@@ -101,7 +102,7 @@ services:
     restart: always
     logging: *default-logging
   harvesting-initiation:
-    image: lblod/harvesting-initiation-service:0.2.0
+    image: lblod/harvesting-initiation-service:0.2.2
     volumes:
       - ./config/harvesting-initiation:/config
     labels:
@@ -109,7 +110,7 @@ services:
     restart: always
     logging: *default-logging
   harvest-collector:
-    image: lblod/harvest-collector-service:0.0.4
+    image: lblod/harvest-collector-service:0.0.6
     volumes:
       - ./data/files:/share
     labels:
@@ -117,7 +118,7 @@ services:
     restart: always
     logging: *default-logging
   harvesting-import:
-    image: lblod/harvesting-import-service:0.2.5
+    image: lblod/harvesting-import-service:0.2.6
     volumes:
       - ./data/files:/share
     labels:
