@@ -110,7 +110,7 @@ services:
     restart: always
     logging: *default-logging
   harvest-collector:
-    image: lblod/harvest-collector-service:0.0.6
+    image: lblod/harvest-collector-service:0.0.7
     volumes:
       - ./data/files:/share
     labels:
