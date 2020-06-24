@@ -19,15 +19,16 @@ services:
     labels:
       - "logging=true"
   identifier:
-    image: semtech/mu-identifier:1.8.0
+    image: semtech/mu-identifier:1.9.0
     environment:
       DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: "[{\"variables\":[],\"name\":\"public\"}]"
+      DEFAULT_ACCESS_CONTROL_ALLOW_ORIGIN_HEADER: "*"
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   dispatcher:
-    image: semtech/mu-dispatcher:2.0.0-beta.1
+    image: semtech/mu-dispatcher:2.0.0
     volumes:
       - ./config/dispatcher:/config
     labels:
