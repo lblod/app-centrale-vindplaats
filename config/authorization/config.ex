@@ -15,6 +15,9 @@ defmodule Acl.UserGroups.Config do
                     graph: "http://mu.semte.ch/graphs/public",
                     constraint: %ResourceConstraint{
                       resource_types: [
+                        "http://data.lblod.info/vocabularies/mobiliteit/MaatregelConcept",
+                        "http://data.lblod.info/vocabularies/mobiliteit/Maatregelconceptcombinatie",
+                        "https://data.vlaanderen.be/ns/mobiliteit#Verkeersbordconcept",
                         "http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat",
                         "http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing",
                         "http://data.vlaanderen.be/ns/mandaat#RechtsgrondBeeindiging",
