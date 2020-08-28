@@ -27,17 +27,21 @@ defmodule Dispatcher do
   end
 
   get "/assets/*path", @any do
-    forward conn, path, "http://frontend/assets/"
+    forward conn, path, "http://metis/assets/"
   end
 
   match "/uri-info/*path", @any do
     forward conn, path, "http://uri-info/"
   end
 
+  match "/sparql", @html do
+    forward conn, [], "http://frontend/index.html"
+  end
+
   match "/*_path", @html do
     # *_path allows a path to be supplied, but will not yield
     # an error that we don't use the path variable.
-    forward conn, [], "http://frontend/index.html"
+    forward conn, [], "http://metis/index.html"
   end
 
   match "/sparql", @any do
