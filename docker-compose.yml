@@ -13,7 +13,7 @@ services:
     links:
       - identifier:backend
     environment:
-      EMBER_BASE_URL: "http://data.lblod.info/"
+      EMBER_BASE_URL: "http://centrale-vindplaats.lblod.info/"
     restart: always
     logging: *default-logging
     labels:
