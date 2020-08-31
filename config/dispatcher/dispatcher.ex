@@ -44,6 +44,25 @@ defmodule Dispatcher do
     forward conn, [], "http://database:8890/sparql"
   end
 
+  ###############
+  # RESOURCES
+  ###############
+  get "/bestuurseenheden/*path", @json do
+    Proxy.forward conn, path, "http://cache/bestuurseenheden/"
+  end
+  get "/werkingsgebieden/*path", @json do
+    Proxy.forward conn, path, "http://cache/werkingsgebieden/"
+  end
+  get "/bestuurseenheid-classificatie-codes/*path", @json do
+    Proxy.forward conn, path, "http://cache/bestuurseenheid-classificatie-codes/"
+  end
+  get "/bestuursorganen/*path", @json do
+    Proxy.forward conn, path, "http://cache/bestuursorganen/"
+  end
+  get "/bestuursorgaan-classificatie-codes/*path", @json do
+    Proxy.forward conn, path, "http://cache/bestuursorgaan-classificatie-codes/"
+  end
+
   match "_", %{ last_call: true, accept: %{ json: true } } do
     send_resp( conn, 404, "{ \"error\": { \"code\": 404, \"message\": \"Route not found.  See config/dispatcher.ex\" } }" )
   end
