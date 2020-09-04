@@ -18,6 +18,13 @@ services:
     logging: *default-logging
     labels:
       - "logging=true"
+  resource-labels:
+    image: lblod/resource-label-service:0.0.3
+    restart: always
+    links:
+      - virtuoso:database
+    labels:
+      - "logging=true"
   identifier:
     image: semtech/mu-identifier:1.9.0
     environment:
