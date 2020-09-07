@@ -22,16 +22,20 @@ defmodule Dispatcher do
     send_resp( conn, 404, "" )
   end
 
+  match "/assets/*path", @any do
+    Proxy.forward conn, path, "http://frontend/assets/"
+  end
+
+  match "/*path", @html do
+    Proxy.forward conn, path, "http://frontend/"
+  end
+
   match "/preflabel-discovery/api/v1/label/*path", @any do
     forward conn, path, "http://preflabel.org/api/v1/label/*path"
   end
   
   match "/resource-labels/*path" do
     Proxy.forward conn, path, "http://resource-labels/"
-  end
-
-  get "/assets/*path", @any do
-    forward conn, path, "http://frontend/assets/"
   end
 
   match "/uri-info/*path", @any do

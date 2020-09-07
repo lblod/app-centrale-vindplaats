@@ -43,9 +43,9 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-centrale-vindplaats
-    volumes:
-      - ./config/frontend:/config
+    image: aatauil/frontend-centrale-vindplaats:0.0.2-fastboot
+    links:
+      - identifier:backend
     labels:
       - "logging=true"
     restart: always
