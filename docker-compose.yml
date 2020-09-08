@@ -43,7 +43,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: aatauil/frontend-centrale-vindplaats:0.0.2-fastboot
+    image: frontend-centrale-vindplaats:1.0.0-fastboot
     links:
       - identifier:backend
     labels:
