@@ -22,6 +22,10 @@ defmodule Dispatcher do
     send_resp( conn, 404, "" )
   end
 
+  match "/assets/*path", @any do
+    Proxy.forward conn, path, "http://frontend/assets/"
+  end
+
   match "/preflabel-discovery/api/v1/label/*path", @any do
     forward conn, path, "http://preflabel.org/api/v1/label/*path"
   end
@@ -30,22 +34,8 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource-labels/"
   end
 
-  get "/assets/*path", @any do
-    forward conn, path, "http://frontend/assets/"
-  end
-
   match "/uri-info/*path", @any do
     forward conn, path, "http://uri-info/"
-  end
-
-  match "/*_path", @html do
-    # *_path allows a path to be supplied, but will not yield
-    # an error that we don't use the path variable.
-    forward conn, [], "http://frontend/index.html"
-  end
-
-  match "/sparql", @any do
-    forward conn, [], "http://database:8890/sparql"
   end
 
   ###############
@@ -73,6 +63,20 @@ defmodule Dispatcher do
 
   match "_", %{ last_call: true, accept: %{ any: true } } do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
+  end
+
+  match "/*path", @html do
+    Proxy.forward conn, path, "http://frontend/"
+  end
+
+  match "/*_path", @html do
+    # *_path allows a path to be supplied, but will not yield
+    # an error that we don't use the path variable.
+    forward conn, [], "http://frontend/index.html"
+  end
+  
+  match "/sparql", @any do
+    forward conn, [], "http://database:8890/sparql"
   end
 
   last_match
