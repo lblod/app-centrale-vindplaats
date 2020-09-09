@@ -1,7 +1,7 @@
 
 # app-centrale-vindplaats
 
-  
+  <br>
 
 ## Table of content
 
@@ -17,9 +17,13 @@
 * [Debugging/logging](#debugginglogging)
 * [More information](#more-information)
 
+<br>
+
 ## Description
 
 This App is part of the program  <b> Lokale Besluiten als Gelinkt Open Data </b> (lblod). It provides user-friendly interface to lookup data using Sparql, accessing that data in both a human as well as a machine readable way.  Based on the mu-semtech microservice architecture for the backend en Emberjs for the frontend. 
+
+<br>
 
 ## List of Services
 	
@@ -45,7 +49,7 @@ This App is part of the program  <b> Lokale Besluiten als Gelinkt Open Data </b>
 
 
 
-
+<br>
 
 ## Setup
 
@@ -73,6 +77,7 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 
 Simply visit http://localhost:80 and you will redirected to the yasgui sparql interface. More info about the frontend in the [frontend section](#frontend) below.
   
+  <br>
 
 ## Importing data
 
@@ -85,6 +90,8 @@ By default there is already data you can use. In case you want to add/modify/rem
 
    *  [Leidinggevendendatabank](https://leidinggevenden.lokaalbestuur.vlaanderen.be/)
 
+<br>
+
 ## Frontend
 
 ### Technologies
@@ -92,8 +99,10 @@ By default there is already data you can use. In case you want to add/modify/rem
 The frontend is what the user actually interacts with. With the use of our addons you are presented with a sparql interface and when visiting different routes with the corresponding , rdf-friendly, data. 
 It is build on top of the [Ember.js](https://emberjs.com/) framework. And server side rendered by [Fastboot](#https://ember-fastboot.com/)
 
+
 ### Usage
 When you first visit the ```http://localhost:80``` you will be redirected to a sparql interface. This will already have performed a search query that presents you with data from the database. ( Only in case your migrations folder and therefor Triplestore is populated with data ). If you are running the app locally and you want to get more information about a subject then you will have to copy part of the url into your browsers searchbar. 
+
 
 ##### Example
  * The results of on the sparql route will probably be displayed like so:
@@ -111,7 +120,7 @@ When you first visit the ```http://localhost:80``` you will be redirected to a s
 
  If info exists about that subject then you should be met by a table with data about that uri, both direct and invers. The [resource-label](https://github.com/lblod/resource-label-service) service automatically looks for labels & description for each uri and displays them if they exists. You can now just simply click through each link that starts with ```http://data.lblod.info/``` to get more information of the clicked uri inside this frontend or click on any other link to get redirected outside it. 
 
-
+<br>
 
 ### Relevant Addons 
 #### Ember-metis
@@ -124,8 +133,12 @@ The [yasgui](https://github.com/nvdk/ember-cli-yasgui) addon that gives you a sp
 #### Ember-fastboot
 The ember-fastboot addon makes it possible to render the page in nodejs. The frontend is server by our [fastboot-server container](https://hub.docker.com/r/redpencil/fastboot-app-server).
 
+<br>
+
 ### Debugging/logging
 The mu-semtech stack also provides a [http-logger](https://github.com/redpencilio/app-http-logger) based on [Kibana](https://www.elastic.co/kibana). You can run this independently from app-centrale-vindplaats. All services inside the docker-compose file of the app-centrale-vindplaats that have the label logging ( the value after that does not really matter ) will be logged by the http-logger. More info on the http-loggers [readme](https://github.com/redpencilio/app-http-logger) file inside the repo 
+
+<br>
 
 ### More information
 If you have any questions about a particular service then you can simply visit that service's repo and read the readme file. These should mostly all be up to date and help a lot in understanding the service. All links are displayed above in de [Service list](#list-of-services)
