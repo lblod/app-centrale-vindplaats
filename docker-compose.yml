@@ -8,16 +8,6 @@ x-logging:
     max-file: "3"
 
 services:
-  metis:
-    image: lblod/frontend-data.lblod.info:0.2.3
-    links:
-      - identifier:backend
-    environment:
-      EMBER_BASE_URL: "http://data.lblod.info/"
-    restart: always
-    logging: *default-logging
-    labels:
-      - "logging=true"
   resource-labels:
     image: lblod/resource-label-service:0.0.3
     restart: always
