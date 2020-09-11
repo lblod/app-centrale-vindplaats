@@ -112,7 +112,7 @@ services:
     restart: always
     logging: *default-logging
   harvesting-initiation:
-    image: lblod/harvesting-initiation-service:0.2.2
+    image: lblod/harvesting-initiation-service:0.2.2-beta
     volumes:
       - ./config/harvesting-initiation:/config
     labels:
@@ -128,9 +128,17 @@ services:
     restart: always
     logging: *default-logging
   harvesting-import:
-    image: lblod/harvesting-import-service:0.2.6
+    image: lblod/harvesting-import-service:0.2.6-beta
     volumes:
       - ./data/files:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  harvesting-sameas:
+    image: lblod/import-with-sameas-service:0.0.2
+    volumes:
+      - ./data/exports:/exports
     labels:
       - "logging=true"
     restart: always
