@@ -14,6 +14,7 @@
  * [Frontend](#frontend)
    * [Technologies](#technologies) 
    *  [Usage](#usage)
+   *  [Environment](#environment)
 * [Debugging/logging](#debugginglogging)
 * [More information](#more-information)
 
@@ -119,6 +120,20 @@ When you first visit the ```http://localhost:80``` you will be redirected to a s
 
 
  If info exists about that subject then you should be met by a table with data about that uri, both direct and invers. The [resource-label](https://github.com/lblod/resource-label-service) service automatically looks for labels & description for each uri and displays them if they exists. You can now just simply click through each link that starts with ```http://data.lblod.info/``` to get more information of the clicked uri inside this frontend or click on any other link to get redirected outside it. 
+
+### Environment
+
+The frontend service accepts a base url, the default is <b> http://data.lblod.info/ </b>.
+An environment variable is <b> required </b>.
+
+
+ ``` 
+   frontend:
+    image: aatauil/frontend-centrale-vindplaats:1.1.0-fastboot
+    environment:
+      BASE_URL: "http://data.lblod.info/"
+ 
+ ```
 
 <br>
 
