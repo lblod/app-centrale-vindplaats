@@ -9,8 +9,6 @@ services:
     restart: "no"
   frontend:
     restart: "no"
-  metis:
-    restart: "no"
   database:
     restart: "no"
   virtuoso:

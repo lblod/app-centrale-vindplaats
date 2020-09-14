@@ -22,12 +22,16 @@ defmodule Dispatcher do
     send_resp( conn, 404, "" )
   end
 
+  match "/assets/*path", @any do
+    Proxy.forward conn, path, "http://frontend/assets/"
+  end
+
   match "/preflabel-discovery/api/v1/label/*path", @any do
     forward conn, path, "http://preflabel.org/api/v1/label/*path"
   end
-
-  get "/assets/*path", @any do
-    forward conn, path, "http://metis/assets/"
+  
+  match "/resource-labels/*path" do
+    Proxy.forward conn, path, "http://resource-labels/"
   end
 
   match "/uri-info/*path", @any do
@@ -37,15 +41,25 @@ defmodule Dispatcher do
   match "/sparql", @html do
     forward conn, [], "http://frontend/index.html"
   end
-
-  match "/*_path", @html do
-    # *_path allows a path to be supplied, but will not yield
-    # an error that we don't use the path variable.
-    forward conn, [], "http://metis/index.html"
+ 
+  ###############
+  # RESOURCES
+  ###############
+  get "/bestuurseenheden/*path", @json do
+    Proxy.forward conn, path, "http://cache/bestuurseenheden/"
   end
-
-  match "/sparql", @any do
-    forward conn, [], "http://database:8890/sparql"
+  
+  get "/werkingsgebieden/*path", @json do
+    Proxy.forward conn, path, "http://cache/werkingsgebieden/"
+  end
+  get "/bestuurseenheid-classificatie-codes/*path", @json do
+    Proxy.forward conn, path, "http://cache/bestuurseenheid-classificatie-codes/"
+  end
+  get "/bestuursorganen/*path", @json do
+    Proxy.forward conn, path, "http://cache/bestuursorganen/"
+  end
+  get "/bestuursorgaan-classificatie-codes/*path", @json do
+    Proxy.forward conn, path, "http://cache/bestuursorgaan-classificatie-codes/"
   end
 
   match "_", %{ last_call: true, accept: %{ json: true } } do
@@ -54,6 +68,20 @@ defmodule Dispatcher do
 
   match "_", %{ last_call: true, accept: %{ any: true } } do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
+  end
+
+  match "/*path", @html do
+    Proxy.forward conn, path, "http://frontend/"
+  end
+
+  match "/*_path", @html do
+    # *_path allows a path to be supplied, but will not yield
+    # an error that we don't use the path variable.
+    forward conn, [], "http://frontend/index.html"
+  end
+  
+  match "/sparql", @any do
+    forward conn, [], "http://database:8890/sparql"
   end
 
   last_match
