@@ -38,12 +38,17 @@ defmodule Dispatcher do
     forward conn, path, "http://uri-info/"
   end
 
+  match "/sparql", @html do
+    forward conn, [], "http://frontend/index.html"
+  end
+ 
   ###############
   # RESOURCES
   ###############
   get "/bestuurseenheden/*path", @json do
     Proxy.forward conn, path, "http://cache/bestuurseenheden/"
   end
+  
   get "/werkingsgebieden/*path", @json do
     Proxy.forward conn, path, "http://cache/werkingsgebieden/"
   end
