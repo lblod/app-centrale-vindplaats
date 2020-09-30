@@ -4,12 +4,11 @@ defmodule Dispatcher do
   define_accept_types [
     json: [ "application/json", "application/vnd.api+json" ],
     html: [ "text/html", "application/xhtml+html" ],
+    sparql: [ "application/sparql-results+json" ],
     any: [ "*/*" ]
   ]
 
-  @html %{ accept: %{ html: true } }
-  @json %{ accept: %{ json: true } }
-  @any %{ accept: %{ any: true } }
+  define_layers [ :static, :sparql, :resources, :api_services, :frontend_fallback, :not_found ]
 
   options "*path", _ do
     conn
@@ -18,71 +17,85 @@ defmodule Dispatcher do
     |> send_resp( 200, "{ \"message\": \"ok\" }" )
   end
 
-  get "/favicon.ico", @any do
+  ###############
+  # STATIC
+  ###############
+  match "/assets/*path", %{ layer: :static } do
+    forward conn, path, "http://frontend/assets/"
+  end
+
+  match "/index.html", %{ layer: :static } do
+    forward conn, [], "http://frontend/index.html"
+  end
+
+  match "/favicon.ico", %{ layer: :static } do
     send_resp( conn, 404, "" )
   end
 
-  match "/assets/*path", @any do
-    Proxy.forward conn, path, "http://frontend/assets/"
-  end
-
-  match "/preflabel-discovery/api/v1/label/*path", @any do
-    forward conn, path, "http://preflabel.org/api/v1/label/*path"
-  end
-  
-  match "/resource-labels/*path" do
-    Proxy.forward conn, path, "http://resource-labels/"
-  end
-
-  match "/uri-info/*path", @any do
-    forward conn, path, "http://uri-info/"
-  end
-
-  match "/sparql", @html do
-    forward conn, [], "http://frontend/index.html"
-  end
- 
   ###############
-  # RESOURCES
+  # SPARQL
   ###############
-  get "/bestuurseenheden/*path", @json do
-    Proxy.forward conn, path, "http://cache/bestuurseenheden/"
-  end
-  
-  get "/werkingsgebieden/*path", @json do
-    Proxy.forward conn, path, "http://cache/werkingsgebieden/"
-  end
-  get "/bestuurseenheid-classificatie-codes/*path", @json do
-    Proxy.forward conn, path, "http://cache/bestuurseenheid-classificatie-codes/"
-  end
-  get "/bestuursorganen/*path", @json do
-    Proxy.forward conn, path, "http://cache/bestuursorganen/"
-  end
-  get "/bestuursorgaan-classificatie-codes/*path", @json do
-    Proxy.forward conn, path, "http://cache/bestuursorgaan-classificatie-codes/"
+  match "/sparql", %{ layer: :sparql, accept: %{ html: true } } do
+    forward conn, [], "http://frontend/sparql"
   end
 
-  match "_", %{ last_call: true, accept: %{ json: true } } do
-    send_resp( conn, 404, "{ \"error\": { \"code\": 404, \"message\": \"Route not found.  See config/dispatcher.ex\" } }" )
-  end
-
-  match "_", %{ last_call: true, accept: %{ any: true } } do
-    send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
-  end
-
-  match "/*path", @html do
-    Proxy.forward conn, path, "http://frontend/"
-  end
-
-  match "/*_path", @html do
-    # *_path allows a path to be supplied, but will not yield
-    # an error that we don't use the path variable.
-    forward conn, [], "http://frontend/index.html"
-  end
-  
-  match "/sparql", @any do
+  match "/sparql", %{ layer: :sparql, accept: %{ sparql: true } } do
     forward conn, [], "http://database:8890/sparql"
   end
 
-  last_match
+  ###############
+  # API SERVICES
+  ###############
+  match "/resource-labels/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://resource-labels/"
+  end
+
+  match "/uri-info/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://uri-info/"
+  end
+
+  # TODO: is this called??
+  match "/preflabel-discovery/api/v1/label/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://preflabel.org/api/v1/label/*path"
+  end
+
+  #################
+  # FRONTEND PAGES
+  #################
+  match "/*path", %{ layer: :frontend_fallback, accept: %{ html: true } } do
+    # We forward path for fastboot
+    forward conn, path, "http://frontend/"
+  end
+
+  # match "/favicon.ico", @any do
+  #   send_resp( conn, 404, "" )
+  # end
+
+  ###############
+  # RESOURCES
+  ###############
+  get "/bestuurseenheden/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/bestuurseenheden/"
+  end
+
+  get "/werkingsgebieden/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/werkingsgebieden/"
+  end
+  get "/bestuurseenheid-classificatie-codes/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/bestuurseenheid-classificatie-codes/"
+  end
+  get "/bestuursorganen/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/bestuursorganen/"
+  end
+  get "/bestuursorgaan-classificatie-codes/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/bestuursorgaan-classificatie-codes/"
+  end
+
+  #################
+  # NOT FOUND
+  #################
+  match "/*_path", %{ layer: :not_found } do
+    send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
+  end
+
 end
