@@ -54,11 +54,6 @@ defmodule Dispatcher do
     forward conn, path, "http://uri-info/"
   end
 
-  # TODO: is this called??
-  match "/preflabel-discovery/api/v1/label/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://preflabel.org/api/v1/label/*path"
-  end
-
   #################
   # FRONTEND PAGES
   #################
