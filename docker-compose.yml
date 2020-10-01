@@ -11,6 +11,8 @@ services:
   resource-labels:
     image: lblod/resource-label-service:0.2.0
     restart: always
+    environment:
+      - DEFAULT_LANGUAGE: 'nil'
     links:
       - virtuoso:database
     labels:
