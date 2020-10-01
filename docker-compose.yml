@@ -9,7 +9,7 @@ x-logging:
 
 services:
   resource-labels:
-    image: lblod/resource-label-service:0.1.0
+    image: lblod/resource-label-service:0.2.0
     restart: always
     links:
       - virtuoso:database
