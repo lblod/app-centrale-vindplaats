@@ -156,6 +156,8 @@ services:
     logging: *default-logging
   harvesting-sameas:
     image: lblod/import-with-sameas-service:0.0.2
+    environment:
+      RENAME_DOMAIN: "http://data.lblod.info/id/"
     volumes:
       - ./data/exports:/exports
     labels:
