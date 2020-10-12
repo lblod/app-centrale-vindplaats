@@ -147,7 +147,7 @@ services:
     restart: always
     logging: *default-logging
   harvesting-import:
-    image: lblod/harvesting-import-service:0.2.6-beta
+    image: lblod/harvesting-import-service:0.3.2-beta
     volumes:
       - ./data/files:/share
     labels:
