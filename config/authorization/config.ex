@@ -9,7 +9,7 @@ defmodule Acl.UserGroups.Config do
       # // PUBLIC
       %GroupSpec{
         name: "public",
-        useage: [:read],
+        useage: [:write, :read_for_write, :read],
         access: %AlwaysAccessible{},
         graphs: [ %GraphSpec{
                     graph: "http://mu.semte.ch/graphs/public",
