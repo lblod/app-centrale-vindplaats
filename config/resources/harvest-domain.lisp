@@ -19,3 +19,12 @@
   :resource-base (s-url "http://data.lblod.info/id/harvesting-collection/")
   :features '(include-uri)
   :on-path "harvesting-collections")
+
+(define-resource remote-data-object ()
+  :class (s-prefix "nfo:RemoteDataObject")
+  :properties `((:source :string ,(s-prefix "nie:url"))
+                (:status :string ,(s-prefix "adms:status")))
+  :resource-base (s-url "http://data.lblod.info/id/remote-data-object/")
+  :features '(include-uri)
+  :on-path "remote-data-objects")
+
