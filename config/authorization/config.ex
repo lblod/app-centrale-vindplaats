@@ -64,7 +64,7 @@ defmodule Acl.UserGroups.Config do
                         "http://data.vlaanderen.be/ns/generiek#Versie",
                         "http://data.vlaanderen.be/ns/generiek#VersieVolgensGeldigeTijd",
                         "http://lblod.data.gift/vocabularies/harvesting/HarvestingTask",
-                        "http://lblod.data.gift/vocabularies/harvesting/harvestingCollection",
+                        "http://lblod.data.gift/vocabularies/harvesting/HarvestingCollection",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject"
                       ]
                     } } ] }
