@@ -9,7 +9,7 @@ defmodule Acl.UserGroups.Config do
       # // PUBLIC
       %GroupSpec{
         name: "public",
-        useage: [:write, :read_for_write, :read],
+        useage: [:read],
         access: %AlwaysAccessible{},
         graphs: [ %GraphSpec{
                     graph: "http://mu.semte.ch/graphs/public",
@@ -62,7 +62,19 @@ defmodule Acl.UserGroups.Config do
                         "http://publications.europa.eu/resource/distribution/eli/owl/owl/eli.owl/#LegalResource",
                         "http://publications.europa.eu/resource/distribution/eli/owl/owl/eli.owl/#LegalResourceSubdivision",
                         "http://data.vlaanderen.be/ns/generiek#Versie",
-                        "http://data.vlaanderen.be/ns/generiek#VersieVolgensGeldigeTijd",
+                        "http://data.vlaanderen.be/ns/generiek#VersieVolgensGeldigeTijd"
+                      ]
+                    } } ] },
+
+                  # // Harvesting
+      %GroupSpec{
+        name: "harvesting",
+        useage: [:write, :read_for_write, :read],
+        access: %AlwaysAccessible{},
+        graphs: [ %GraphSpec{
+                    graph: "http://mu.semte.ch/graphs/harvesting",
+                    constraint: %ResourceConstraint{
+                      resource_types: [
                         "http://lblod.data.gift/vocabularies/harvesting/HarvestingTask",
                         "http://lblod.data.gift/vocabularies/harvesting/HarvestingCollection",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject"
