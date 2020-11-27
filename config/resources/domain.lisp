@@ -10,4 +10,5 @@
 (defparameter *max-group-sorted-properties* nil)
 
 (read-domain-file "slave-besluit-domain.lisp")
-(read-domain-file "harvest-domain.lisp")
+(read-domain-file "master-harvest-domain.lisp")
+(read-domain-file "master-file-domain.lisp")
