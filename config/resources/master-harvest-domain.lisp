@@ -3,7 +3,7 @@
   :properties `((:status :url ,(s-prefix "adms:status"))
                 (:created :datetime ,(s-prefix "dct:created"))
                 (:modified :datetime ,(s-prefix "dct:modified"))
-                (:creator :string ,(s-prefix "dct:creator")))
+                (:creator :url ,(s-prefix "dct:creator")))
   :has-one `((harvesting-collection :via ,(s-prefix "hrvst:HarvestingCollection")
                         :as "harvesting-collection"))
   :resource-base (s-url "http://data.lblod.info/id/harvesting-task/")
@@ -19,11 +19,5 @@
   :features '(include-uri)
   :on-path "harvesting-collections")
 
-(define-resource remote-data-object ()
-  :class (s-prefix "nfo:RemoteDataObject")
-  :properties `((:source :url ,(s-prefix "nie:url"))
-                (:status :url ,(s-prefix "adms:status")))
-  :resource-base (s-url "http://data.lblod.info/id/remote-data-objects/")
-  :features '(include-uri)
-  :on-path "remote-data-objects")
+
 
