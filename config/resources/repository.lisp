@@ -59,6 +59,8 @@
 (add-prefix "hrvst" "http://lblod.data.gift/vocabularies/harvesting/")
 (add-prefix "ndo" "http://oscaf.sourceforge.net/ndo.html#")
 (add-prefix "rpioHttp" "http://redpencil.data.gift/vocabularies/http/")
+(add-prefix "http" "http://www.w3.org/2011/http#")
+(add-prefix "nuao" "http://www.semanticdesktop.org/ontologies/2010/01/25/nuao#")
 
 
 
