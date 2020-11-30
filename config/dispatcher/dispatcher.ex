@@ -85,7 +85,16 @@ defmodule Dispatcher do
   match "/harvesting-tasks/*path", %{ layer: :resources, accept: %{ json: true } } do
     Proxy.forward conn, path, "http://cache/harvesting-tasks/"
   end
-  
+
+  match "/download-event/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/download-event/"
+  end
+
+
+  match "/files/*path" do
+    Proxy.forward conn, path, "http://file/files/"
+  end
+
   get "/bestuurseenheden/*path", %{ layer: :resources, accept: %{ json: true } } do
     Proxy.forward conn, path, "http://cache/bestuurseenheden/"
   end
