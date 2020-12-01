@@ -62,7 +62,10 @@ defmodule Acl.UserGroups.Config do
                         "http://publications.europa.eu/resource/distribution/eli/owl/owl/eli.owl/#LegalResource",
                         "http://publications.europa.eu/resource/distribution/eli/owl/owl/eli.owl/#LegalResourceSubdivision",
                         "http://data.vlaanderen.be/ns/generiek#Versie",
-                        "http://data.vlaanderen.be/ns/generiek#VersieVolgensGeldigeTijd"
+                        "http://data.vlaanderen.be/ns/generiek#VersieVolgensGeldigeTijd",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
+                        "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource>"
                       ]
                     } } ] },
 
@@ -77,7 +80,11 @@ defmodule Acl.UserGroups.Config do
                       resource_types: [
                         "http://lblod.data.gift/vocabularies/harvesting/HarvestingTask",
                         "http://lblod.data.gift/vocabularies/harvesting/HarvestingCollection",
-                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject"
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+                        "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource>",
+                        "http://www.w3.org/2011/http#RequestHeader",
+                        "http://oscaf.sourceforge.net/ndo.html#"
                       ]
                     } } ] }
     ]
