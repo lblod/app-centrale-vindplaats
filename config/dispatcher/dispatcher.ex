@@ -90,9 +90,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/download-event/"
   end
 
-
   match "/files/*path" do
     Proxy.forward conn, path, "http://file/files/"
+  end
+
+  get "/files/:id/download" do
+    Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
   end
 
   get "/bestuurseenheden/*path", %{ layer: :resources, accept: %{ json: true } } do
