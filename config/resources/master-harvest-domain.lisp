@@ -12,7 +12,8 @@
 
 (define-resource harvesting-collection ()
   :class (s-prefix "hrvst:HarvestingCollection")
-  :properties `((:status :url ,(s-prefix "adms:status")))
+  :properties `((:status :url ,(s-prefix "adms:status"))
+                (:creator :url ,(s-prefix "dct:creator")))
   :has-one `((remote-data-object :via ,(s-prefix "dct:hasPart")
                         :as "has-part"))
   :resource-base (s-url "http://data.lblod.info/id/harvesting-collection/")
