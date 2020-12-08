@@ -2,6 +2,7 @@ alias Acl.Accessibility.Always, as: AlwaysAccessible
 alias Acl.GraphSpec.Constraint.Resource, as: ResourceConstraint
 alias Acl.GraphSpec, as: GraphSpec
 alias Acl.GroupSpec, as: GroupSpec
+alias Acl.GroupSpec.GraphCleanup, as: GraphCleanup
 
 defmodule Acl.UserGroups.Config do
   def user_groups do
@@ -80,9 +81,17 @@ defmodule Acl.UserGroups.Config do
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
                         "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource>",
-                        "http://oscaf.sourceforge.net/ndo.html#DownloadEvent"
+                        "http://oscaf.sourceforge.net/ndo.html#DownloadEvent",
                       ]
-                    } } ] }
+                    } } ] },
+
+      # // CLEANUP
+      #
+      %GraphCleanup{
+        originating_graph: "http://mu.semte.ch/application",
+        useage: [:write],
+        name: "clean"
+      }
     ]
   end
 end
