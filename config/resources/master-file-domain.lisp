@@ -19,27 +19,12 @@
                 (:request-header :url ,(s-prefix "rpioHttp:requestHeader"))
                 (:status :url ,(s-prefix "adms:status"))
                 (:creator :url ,(s-prefix "dct:creator")))
-  :has-one `((download-event :via ,(s-prefix "nuao:involves")
+  :has-one `((file :via ,(s-prefix "nie:dataSource")
+              :as "file")
+            (harvesting-collection :via ,(s-prefix "dct:hasPart")
               :inverse t
-              :as "download-event")
-            (file :via ,(s-prefix "nie:dataSource")
-              :inverse t
-              :as "file"))
+              :as "harvesting-collection"))
   :resource-base (s-url "http://data.lblod.info/id/remote-data-objects/")
   :features `(include-uri)
   :on-path "remote-data-objects")
-
-(define-resource download-event ()
-  :class (s-prefix "ndo:DownloadEvent")
-  :properties `((:status :url ,(s-prefix "adms:status"))
-                (:created :datetime ,(s-prefix "dct:created"))
-                (:modified :datetime ,(s-prefix "dct:modified")))
-  :has-many `((file :via ,(s-prefix "nuao:involves")
-                  :as "files"))
-  :has-one `((remote-data-object :via, (s-prefix "nuao:involves")
-                  :as "remote-data-object"))
-  :resource-base (s-url "http://data.lblod.info/id/download-event/")
-  :features `(include-uri)
-  :on-path "download-events")
-
 
