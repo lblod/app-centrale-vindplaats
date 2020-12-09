@@ -20,6 +20,7 @@
                 (:status :url ,(s-prefix "adms:status"))
                 (:creator :url ,(s-prefix "dct:creator")))
   :has-one `((file :via ,(s-prefix "nie:dataSource")
+              :inverse t
               :as "file")
             (harvesting-collection :via ,(s-prefix "dct:hasPart")
               :inverse t
