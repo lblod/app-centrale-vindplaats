@@ -34,16 +34,16 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  # frontend:
-  #   image: lblod/frontend-centrale-vindplaats:0.1.2.fastboot
-  #   environment:
-  #     EMBER_METIS_BASE_URL: "http://data.lblod.info/"
-  #   links:
-  #     - identifier:backend
-  #   labels:
-  #     - "logging=true"
-  #   restart: always
-  #   logging: *default-logging
+  frontend:
+    image: lblod/frontend-centrale-vindplaats:0.1.2.fastboot
+    environment:
+      EMBER_METIS_BASE_URL: "http://data.lblod.info/"
+    links:
+      - identifier:backend
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   database:
     image: semtech/mu-authorization:0.6.0-beta.5
     environment:
