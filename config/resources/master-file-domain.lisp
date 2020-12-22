@@ -28,4 +28,3 @@
   :resource-base (s-url "http://data.lblod.info/id/remote-data-objects/")
   :features `(include-uri)
   :on-path "remote-data-objects")
-

@@ -20,6 +20,3 @@
   :resource-base (s-url "http://data.lblod.info/id/harvesting-collection/")
   :features '(include-uri)
   :on-path "harvesting-collections")
-
-
-
