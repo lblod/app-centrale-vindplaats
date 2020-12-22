@@ -7,6 +7,9 @@
 (defparameter *include-count-in-paginated-responses* t
   "when non-nil, all paginated listings will contain the number
    of responses in the result object's meta.")
-(defparameter *max-group-sorted-properties* nil)
+(defparameter *max-group-sorted-properties* t)
+(defparameter sparql:*experimental-no-application-graph-for-sudo-select-queries* t)
 
 (read-domain-file "slave-besluit-domain.lisp")
+(read-domain-file "master-harvest-domain.lisp")
+(read-domain-file "master-file-domain.lisp")

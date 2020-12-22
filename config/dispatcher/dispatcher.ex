@@ -69,6 +69,35 @@ defmodule Dispatcher do
   ###############
   # RESOURCES
   ###############
+
+  post "/harvesting-initiate/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://harvesting-initiation/initiate-harvest"
+  end
+
+  match "/remote-data-objects/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/remote-data-objects/"
+  end
+
+  match "/harvesting-collections/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/harvesting-collections/"
+  end
+
+  match "/harvesting-tasks/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/harvesting-tasks/"
+  end
+
+  match "/download-event/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/download-event/"
+  end
+
+  match "/files/*path" do
+    Proxy.forward conn, path, "http://file/files/"
+  end
+
+  get "/files/:id/download" do
+    Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
+  end
+
   get "/bestuurseenheden/*path", %{ layer: :resources, accept: %{ json: true } } do
     Proxy.forward conn, path, "http://cache/bestuurseenheden/"
   end

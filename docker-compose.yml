@@ -20,7 +20,7 @@ services:
   identifier:
     image: semtech/mu-identifier:1.9.0
     environment:
-      DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: "[{\"variables\":[],\"name\":\"public\"}]"
+      DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: "[{\"variables\":[],\"name\":\"public\"}, {\"variables\":[],\"name\":\"harvesting\"}, {\"variables\":[],\"name\":\"clean\"}]"
       DEFAULT_ACCESS_CONTROL_ALLOW_ORIGIN_HEADER: "*"
     labels:
       - "logging=true"
@@ -109,6 +109,8 @@ services:
     logging: *default-logging
   file:
     image: semtech/mu-file-service:3.1.0
+    environment: 
+      MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/harvesting"
     volumes:
       - ./data/files:/share
     labels:
@@ -134,6 +136,8 @@ services:
     image: lblod/harvesting-initiation-service:0.2.2-beta
     volumes:
       - ./config/harvesting-initiation:/config
+    environment: 
+      INITIATE_HARVEST_CRON_PATTERN: '0 2 0 * * *'
     labels:
       - "logging=true"
     restart: always
@@ -148,6 +152,8 @@ services:
     logging: *default-logging
   harvesting-import:
     image: lblod/harvesting-import-service:0.3.2-beta
+    environment: 
+      TARGET_GRAPH: "http://mu.semte.ch/graphs/harvesting"
     volumes:
       - ./data/files:/share
     labels:
@@ -158,6 +164,7 @@ services:
     image: lblod/import-with-sameas-service:0.0.2
     environment:
       RENAME_DOMAIN: "http://data.lblod.info/id/"
+      TARGET_GRAPH: "http://mu.semte.ch/graphs/harvesting"
     volumes:
       - ./data/exports:/exports
     labels:

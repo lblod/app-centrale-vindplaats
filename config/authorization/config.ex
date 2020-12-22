@@ -2,6 +2,7 @@ alias Acl.Accessibility.Always, as: AlwaysAccessible
 alias Acl.GraphSpec.Constraint.Resource, as: ResourceConstraint
 alias Acl.GraphSpec, as: GraphSpec
 alias Acl.GroupSpec, as: GroupSpec
+alias Acl.GroupSpec.GraphCleanup, as: GraphCleanup
 
 defmodule Acl.UserGroups.Config do
   def user_groups do
@@ -62,9 +63,34 @@ defmodule Acl.UserGroups.Config do
                         "http://publications.europa.eu/resource/distribution/eli/owl/owl/eli.owl/#LegalResource",
                         "http://publications.europa.eu/resource/distribution/eli/owl/owl/eli.owl/#LegalResourceSubdivision",
                         "http://data.vlaanderen.be/ns/generiek#Versie",
-                        "http://data.vlaanderen.be/ns/generiek#VersieVolgensGeldigeTijd"
+                        "http://data.vlaanderen.be/ns/generiek#VersieVolgensGeldigeTijd",
                       ]
-                    } } ] }
+                    } } ] },
+
+                  # // Harvesting
+      %GroupSpec{
+        name: "harvesting",
+        useage: [:write, :read_for_write, :read],
+        access: %AlwaysAccessible{},
+        graphs: [ %GraphSpec{
+                    graph: "http://mu.semte.ch/graphs/harvesting",
+                    constraint: %ResourceConstraint{
+                      resource_types: [
+                        "http://lblod.data.gift/vocabularies/harvesting/HarvestingTask",
+                        "http://lblod.data.gift/vocabularies/harvesting/HarvestingCollection",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+                        "http://oscaf.sourceforge.net/ndo.html#DownloadEvent",
+                      ]
+                    } } ] },
+
+      # // CLEANUP
+      #
+      %GraphCleanup{
+        originating_graph: "http://mu.semte.ch/application",
+        useage: [:write],
+        name: "clean"
+      }
     ]
   end
 end
