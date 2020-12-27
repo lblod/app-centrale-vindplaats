@@ -61,6 +61,6 @@
 (add-prefix "rpioHttp" "http://redpencil.data.gift/vocabularies/http/")
 (add-prefix "http" "http://www.w3.org/2011/http#")
 (add-prefix "nuao" "http://www.semanticdesktop.org/ontologies/2010/01/25/nuao#")
-
-
-
+(add-prefix "lblodJob" "http://lblod.data.gift/vocabularies/lblodJob/")
+(add-prefix "oslc" "http://open-services.net/ns/core#")
+(add-prefix "cogs" "http://vocab.deri.ie/cogs#")

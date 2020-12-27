@@ -76,7 +76,8 @@ defmodule Acl.UserGroups.Config do
                     graph: "http://mu.semte.ch/graphs/harvesting",
                     constraint: %ResourceConstraint{
                       resource_types: [
-                        "http://lblod.data.gift/vocabularies/harvesting/HarvestingTask",
+                        "http://lblod.data.gift/vocabularies/lblodJob/Task",
+                        "http://lblod.data.gift/vocabularies/lblodJob/Job",
                         "http://lblod.data.gift/vocabularies/harvesting/HarvestingCollection",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
