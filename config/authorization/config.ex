@@ -77,7 +77,7 @@ defmodule Acl.UserGroups.Config do
                     constraint: %ResourceConstraint{
                       resource_types: [
                         "http://lblod.data.gift/vocabularies/lblodJob/Task",
-                        "http://lblod.data.gift/vocabularies/lblodJob/Job",
+                        "http://vocab.deri.ie/cogs#Job",
                         "http://lblod.data.gift/vocabularies/harvesting/HarvestingCollection",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",

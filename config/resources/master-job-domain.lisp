@@ -1,5 +1,5 @@
 (define-resource job ()
-  :class (s-prefix "lblodJob:Job")
+  :class (s-prefix "cogs:Job")
   :properties `((:created :datetime ,(s-prefix "dct:created"))
                 (:modified :datetime ,(s-prefix "dct:modified"))
                 (:creator :url ,(s-prefix "dct:creator")) ;;Later consider using proper relation in domain.lisp
