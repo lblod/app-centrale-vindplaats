@@ -64,3 +64,4 @@
 (add-prefix "lblodJob" "http://lblod.data.gift/vocabularies/lblodJob/")
 (add-prefix "oslc" "http://open-services.net/ns/core#")
 (add-prefix "cogs" "http://vocab.deri.ie/cogs#")
+(add-prefix "task" "http://redpencil.data.gift/vocabularies/tasks/")
