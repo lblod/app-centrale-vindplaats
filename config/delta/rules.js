@@ -84,7 +84,7 @@ export default [
       },
       object: {
         type: 'uri',
-        value: 'http://lblod.data.gift/harvesting-statuses/ready-for-sameas'
+        value: 'http://redpencil.data.gift/id/concept/JobStatus/scheduled'
       }
     },
     callback: {
