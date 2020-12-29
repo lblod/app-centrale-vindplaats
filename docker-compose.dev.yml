@@ -19,3 +19,5 @@ services:
     restart: "no"
   harvesting-import:
     restart: "no"
+  job-controller-service:
+    restart: "no"

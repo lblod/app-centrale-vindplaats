@@ -161,3 +161,9 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  job-controller-service:
+    image: lblod/job-controller-service:0.1.1
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
