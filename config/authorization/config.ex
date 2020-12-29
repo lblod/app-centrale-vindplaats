@@ -78,6 +78,7 @@ defmodule Acl.UserGroups.Config do
                       resource_types: [
                         "http://redpencil.data.gift/vocabularies/tasks/Task",
                         "http://vocab.deri.ie/cogs#Job",
+                        "http://open-services.net/ns/core#Error",
                         "http://lblod.data.gift/vocabularies/harvesting/HarvestingCollection",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
