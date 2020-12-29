@@ -109,7 +109,7 @@ services:
     logging: *default-logging
   file:
     image: semtech/mu-file-service:3.1.0
-    environment: 
+    environment:
       MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/harvesting"
     volumes:
       - ./data/files:/share
@@ -141,8 +141,8 @@ services:
     restart: always
     logging: *default-logging
   harvesting-import:
-    image: lblod/harvesting-import-service:0.3.2-beta
-    environment: 
+    image: lblod/harvesting-import-service:0.4.0-beta
+    environment:
       TARGET_GRAPH: "http://mu.semte.ch/graphs/harvesting"
     volumes:
       - ./data/files:/share
