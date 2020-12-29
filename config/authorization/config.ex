@@ -81,6 +81,7 @@ defmodule Acl.UserGroups.Config do
                         "http://lblod.data.gift/vocabularies/harvesting/HarvestingCollection",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer",
                         "http://oscaf.sourceforge.net/ndo.html#DownloadEvent",
                       ]
                     } } ] },

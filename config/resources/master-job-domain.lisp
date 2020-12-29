@@ -32,12 +32,9 @@
 
   :has-many `((task :via ,(s-prefix "cogs:dependsOn")
                     :as "parent-tasks")
-              ;; File and harvesting-collection may be considered nfo:DataContainer.
-              ;; Inheritance is not (yet officialy) a thing in mu-cl-resource, hence we walk down the inheritance tree so our current frontend
-              ;; can work with it. The type will eventually be changed to nfo:DataContainer
-              (file :via ,(s-prefix "task:resultsContainer")
+              (data-container :via ,(s-prefix "task:resultsContainer")
                     :as "results-containers")
-              (harvesting-collection :via ,(s-prefix "task:inputContainer")
+              (data-container :via ,(s-prefix "task:inputContainer")
                     :as "input-containers")
               )
 
@@ -51,3 +48,14 @@
   :resource-base (s-url "http://redpencil.data.gift/id/jobs/error/")
   :features '(include-uri)
   :on-path "job-errors")
+
+(define-resource data-container ()
+  :class (s-prefix "nfo:DataContainer")
+  :has-many `((file :via ,(s-prefix "task:hasFile") ;;subProperty of dct:hasPart because mu-resource does not like the same predicate linked to multiple types
+                    :as "files")
+              (harvesting-collection :via ,(s-prefix "task:hasHarvestingCollection")
+                    :as "harvesting-collections")
+              )
+  :resource-base (s-url "http://redpencil.data.gift/id/dataContainers/")
+  :features '(include-uri)
+  :on-path "data-containers")

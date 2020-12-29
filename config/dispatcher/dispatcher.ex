@@ -86,6 +86,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/tasks/"
   end
 
+  match "/data-containers/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/data-containers/"
+  end
+
   match "/job-errors/*path", %{ layer: :resources, accept: %{ json: true } } do
     Proxy.forward conn, path, "http://cache/job-errors/"
   end
