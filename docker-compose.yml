@@ -154,7 +154,7 @@ services:
     image: lblod/import-with-sameas-service:0.1.0
     environment:
       RENAME_DOMAIN: "http://data.lblod.info/id/"
-      TARGET_GRAPH: "http://mu.semte.ch/graphs/harvesting"
+      TARGET_GRAPH: "http://mu.semte.ch/graphs/public"
     volumes:
       - ./data/files:/share
     labels:
@@ -162,7 +162,7 @@ services:
     restart: always
     logging: *default-logging
   job-controller-service:
-    image: lblod/job-controller-service:0.1.1
+    image: lblod/job-controller-service:0.1.2
     labels:
       - "logging=true"
     restart: always
