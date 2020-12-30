@@ -109,7 +109,7 @@ services:
     logging: *default-logging
   file:
     image: semtech/mu-file-service:3.1.0
-    environment: 
+    environment:
       MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/harvesting"
     volumes:
       - ./data/files:/share
@@ -132,18 +132,8 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  harvesting-initiation:
-    image: lblod/harvesting-initiation-service:0.2.2-beta
-    volumes:
-      - ./config/harvesting-initiation:/config
-    environment: 
-      INITIATE_HARVEST_CRON_PATTERN: '0 2 0 * * *'
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
   harvest-collector:
-    image: lblod/harvest-collector-service:0.0.7
+    image: lblod/harvest-collector-service:0.1.4
     volumes:
       - ./data/files:/share
     labels:
@@ -151,8 +141,8 @@ services:
     restart: always
     logging: *default-logging
   harvesting-import:
-    image: lblod/harvesting-import-service:0.3.2-beta
-    environment: 
+    image: lblod/harvesting-import-service:0.4.0-beta
+    environment:
       TARGET_GRAPH: "http://mu.semte.ch/graphs/harvesting"
     volumes:
       - ./data/files:/share
@@ -161,12 +151,18 @@ services:
     restart: always
     logging: *default-logging
   harvesting-sameas:
-    image: lblod/import-with-sameas-service:0.0.2
+    image: lblod/import-with-sameas-service:0.1.2
     environment:
       RENAME_DOMAIN: "http://data.lblod.info/id/"
-      TARGET_GRAPH: "http://mu.semte.ch/graphs/harvesting"
+      TARGET_GRAPH: "http://mu.semte.ch/graphs/public"
     volumes:
-      - ./data/exports:/exports
+      - ./data/files:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  job-controller-service:
+    image: lblod/job-controller-service:0.1.2
     labels:
       - "logging=true"
     restart: always

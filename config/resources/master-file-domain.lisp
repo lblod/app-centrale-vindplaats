@@ -6,7 +6,11 @@
                 (:extension :string ,(s-prefix "dbpedia:fileExtension"))
                 (:created :datetime ,(s-prefix "nfo:fileCreated")))
   :has-one `((data-source :via ,(s-prefix "nie:dataSource")
-                   :as "data-source"))
+                          :as "data-source")
+             (data-container :via ,(s-prefix "task:hasFile")
+                             :inverse t
+                             :as "data-container")
+              )
   :resource-base (s-url "http://data.lblod.info/files/")
   :features `(include-uri)
   :on-path "files")
@@ -28,4 +32,3 @@
   :resource-base (s-url "http://data.lblod.info/id/remote-data-objects/")
   :features `(include-uri)
   :on-path "remote-data-objects")
-

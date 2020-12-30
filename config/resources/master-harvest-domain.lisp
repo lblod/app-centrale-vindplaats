@@ -1,25 +1,13 @@
-(define-resource harvesting-task ()
-  :class (s-prefix "hrvst:HarvestingTask")
-  :properties `((:status :url ,(s-prefix "adms:status"))
-                (:created :datetime ,(s-prefix "dct:created"))
-                (:modified :datetime ,(s-prefix "dct:modified"))
-                (:creator :url ,(s-prefix "dct:creator"))
-                (:graph :url ,(s-prefix "ext:graph")))
-  :has-one `((harvesting-collection :via ,(s-prefix "prov:generated")
-                        :as "harvesting-collection"))
-  :resource-base (s-url "http://data.lblod.info/id/harvesting-task/")
-  :features '(include-uri)
-  :on-path "harvesting-tasks")
-
 (define-resource harvesting-collection ()
   :class (s-prefix "hrvst:HarvestingCollection")
   :properties `((:status :url ,(s-prefix "adms:status"))
                 (:creator :url ,(s-prefix "dct:creator")))
   :has-many `((remote-data-object :via ,(s-prefix "dct:hasPart")
-                        :as "remote-data-objects"))
+                                  :as "remote-data-objects")
+              (data-container :via ,(s-prefix "task:hasHarvestingCollection")
+                              :inverse t
+                              :as "data-container")
+              )
   :resource-base (s-url "http://data.lblod.info/id/harvesting-collection/")
   :features '(include-uri)
   :on-path "harvesting-collections")
-
-
-
