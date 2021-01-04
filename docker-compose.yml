@@ -44,6 +44,14 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  frontend-harvesting-self-service:
+    image: lblod/frontend-harvesting-self-service:0.1.0
+    volumes:
+      - ./config/frontend:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   database:
     image: semtech/mu-authorization:0.6.0-beta.5
     environment:
