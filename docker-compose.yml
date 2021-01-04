@@ -47,7 +47,7 @@ services:
   frontend-harvesting-self-service:
     image: lblod/frontend-harvesting-self-service:0.1.0
     volumes:
-      - ./config/frontend:/config
+      - ./config/frontend-harvesting:/config
     labels:
       - "logging=true"
     restart: always
