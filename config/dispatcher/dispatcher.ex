@@ -8,7 +8,7 @@ defmodule Dispatcher do
     any: [ "*/*" ]
   ]
 
-  define_layers [ :static, :sparql, :resources, :api_services, :frontend_fallback, :not_found ]
+  define_layers [ :static, :sparql, :frontend_fallback, :resources, :api_services, :not_found ]
 
   options "*path", _ do
     conn
@@ -20,6 +20,21 @@ defmodule Dispatcher do
   ###############
   # STATIC
   ###############
+
+  # self-service
+  match "/index.html", %{ host: "*.harvesting-self-service.lblod.info", layer: :static } do
+    forward conn, [], "http://frontend-harvesting-self-service/index.html"
+  end
+
+  get "/assets/*path",  %{ host: "*.harvesting-self-service.lblod.info", layer: :static } do
+    forward conn, path, "http://frontend-harvesting-self-service/assets/"
+  end
+
+  get "/@appuniversum/*path", %{ host: "*.harvesting-self-service.lblod.info", layer: :static } do
+    forward conn, path, "http://frontend-harvesting-self-service/@appuniversum/"
+  end
+
+  # frontend
   match "/assets/*path", %{ layer: :static } do
     forward conn, path, "http://frontend/assets/"
   end
@@ -57,6 +72,13 @@ defmodule Dispatcher do
   #################
   # FRONTEND PAGES
   #################
+
+  # self-service
+  match "/*path", %{ host: "*.harvesting-self-service.lblod.info", layer: :frontend_fallback, accept: %{ html: true } } do
+    # we don't forward the path, because the app should take care of this in the browser.
+    forward conn, [], "http://frontend-harvesting-self-service/index.html"
+  end
+
   match "/*path", %{ layer: :frontend_fallback, accept: %{ html: true } } do
     # We forward path for fastboot
     forward conn, path, "http://frontend/"
