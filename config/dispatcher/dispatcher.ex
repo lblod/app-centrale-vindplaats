@@ -8,7 +8,7 @@ defmodule Dispatcher do
     any: [ "*/*" ]
   ]
 
-  define_layers [ :static, :sparql, :frontend_fallback, :resources, :api_services, :not_found ]
+  define_layers [ :static, :sparql, :api_services, :frontend_fallback, :resources, :not_found ]
 
   options "*path", _ do
     conn
