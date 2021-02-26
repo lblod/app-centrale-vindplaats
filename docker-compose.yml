@@ -45,7 +45,7 @@ services:
     restart: always
     logging: *default-logging
   frontend-harvesting-self-service:
-    image: lblod/frontend-harvesting-self-service:0.1.0
+    image: lblod/frontend-harvesting-self-service:0.2.0
     volumes:
       - ./config/frontend-harvesting:/config
     labels:
@@ -159,19 +159,19 @@ services:
     restart: always
     logging: *default-logging
   harvesting-sameas:
-    image: lblod/import-with-sameas-service:1.0.0
+    image: lblod/import-with-sameas-service:1.0.1
     environment:
       RENAME_DOMAIN: "http://data.lblod.info/id/"
       TARGET_GRAPH: "http://mu.semte.ch/graphs/public"
     volumes:
-      - ./config/same-as-service/:/app/config
+      - ./config/same-as-service:/config
       - ./data/files:/share
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   job-controller-service:
-    image: lblod/job-controller-service:0.1.2
+    image: lblod/job-controller-service:0.2.0
     labels:
       - "logging=true"
     restart: always
