@@ -126,7 +126,7 @@ services:
     restart: always
     logging: *default-logging
   harvesting-download-url:
-    image: lblod/download-url-service:0.3.1
+    image: lblod/download-url-service:0.4.1
     links:
       - database:database
     volumes:
