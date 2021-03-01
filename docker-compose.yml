@@ -133,7 +133,7 @@ services:
       - ./data/files:/share
     environment:
       DEFAULT_GRAPH: "http://mu.semte.ch/graphs/harvesting"
-      CACHING_MAX_RETRIES: 300
+      CACHING_MAX_RETRIES: 10
       CACHING_CRON_PATTERN: '0 */15 * * * *'
       MAX_PENDING_TIME_IN_SECONDS: 7200
     labels:
