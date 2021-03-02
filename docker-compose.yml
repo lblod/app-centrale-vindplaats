@@ -9,7 +9,7 @@ x-logging:
 
 services:
   resource-labels:
-    image: lblod/resource-label-service:0.2.0
+    image: lblod/resource-label-service:0.3.1
     restart: always
     environment:
       DEFAULT_LANGUAGE: 'nil'
@@ -35,7 +35,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-centrale-vindplaats:0.1.2.fastboot
+    image: lblod/frontend-centrale-vindplaats:0.2.0.fastboot
     environment:
       EMBER_METIS_BASE_URL: "http://data.lblod.info/"
     links:
@@ -102,7 +102,7 @@ services:
     restart: always
     logging: *default-logging
   uri-info:
-    image: redpencil/mu-uri-info-service:0.1.0
+    image: redpencil/mu-uri-info-service:0.2.1
     labels:
       - "logging=true"
     restart: always
@@ -133,7 +133,7 @@ services:
       - ./data/files:/share
     environment:
       DEFAULT_GRAPH: "http://mu.semte.ch/graphs/harvesting"
-      CACHING_MAX_RETRIES: 300
+      CACHING_MAX_RETRIES: 10
       CACHING_CRON_PATTERN: '0 */15 * * * *'
       MAX_PENDING_TIME_IN_SECONDS: 7200
     labels:
