@@ -101,6 +101,8 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+    ports:
+      - 8891:8890
   uri-info:
     image: redpencil/mu-uri-info-service:0.2.1
     labels:
@@ -115,6 +117,8 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+    environment:
+      DEBUG_DELTA_SEND: "true"
   file:
     image: semtech/mu-file-service:3.1.0
     environment:
@@ -158,6 +162,18 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  harvesting-validator:
+    image: lblod/harvesting-validator:0.0.2
+    environment:
+      TARGET_GRAPH: "http://mu.semte.ch/graphs/harvesting"
+    volumes:
+      - ./data/files:/share
+      - ./config/shacl:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+
   harvesting-sameas:
     image: lblod/import-with-sameas-service:1.0.2
     environment:
@@ -171,7 +187,7 @@ services:
     restart: always
     logging: *default-logging
   job-controller-service:
-    image: lblod/job-controller-service:0.2.0
+    image: lblod/job-controller-service:0.3.0
     labels:
       - "logging=true"
     restart: always
