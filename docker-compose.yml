@@ -101,8 +101,6 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-    ports:
-      - 8891:8890
   uri-info:
     image: redpencil/mu-uri-info-service:0.2.1
     labels:
@@ -117,8 +115,6 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-    environment:
-      DEBUG_DELTA_SEND: "true"
   file:
     image: semtech/mu-file-service:3.1.0
     environment:
