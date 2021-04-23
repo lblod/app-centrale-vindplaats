@@ -1,6 +1,8 @@
 version: '3.7'
 
 services:
+  resource-labels:
+    restart: "no"
   identifier:
     restart: "no"
     ports:
@@ -9,7 +11,15 @@ services:
     restart: "no"
   frontend:
     restart: "no"
+  frontend-harvesting-self-service:
+    restart: "no"
+  migrations:
+    restart: "no"
   database:
+    restart: "no"
+  cache:
+    restart: "no"
+  resource:
     restart: "no"
   virtuoso:
     restart: "no"
@@ -17,7 +27,19 @@ services:
       - "8890:8890"
   uri-info:
     restart: "no"
-  harvesting-initiation:
+  deltanotifier:
+    restart: "no"
+  file:
+    restart: "no"
+  harvesting-download-url:
+    environment:
+      CACHING_MAX_RETRIES: 5
+    restart: "no"
+  harvest-collector:
     restart: "no"
   harvesting-import:
+    restart: "no"
+  harvesting-sameas:
+    restart: "no"
+  job-controller-service:
     restart: "no"

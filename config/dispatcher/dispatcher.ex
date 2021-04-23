@@ -8,9 +8,9 @@ defmodule Dispatcher do
     any: [ "*/*" ]
   ]
 
-  define_layers [ :static, :sparql, :resources, :api_services, :frontend_fallback, :not_found ]
+  define_layers [ :static, :sparql, :api_services, :frontend_fallback, :resources, :not_found ]
 
-  options "*path", _ do
+  options "/*path", _ do
     conn
     |> Plug.Conn.put_resp_header( "access-control-allow-headers", "content-type,accept" )
     |> Plug.Conn.put_resp_header( "access-control-allow-methods", "*" )
@@ -20,6 +20,21 @@ defmodule Dispatcher do
   ###############
   # STATIC
   ###############
+
+  # self-service
+  match "/index.html", %{ host: "*.harvesting-self-service.lblod.info", layer: :static } do
+    forward conn, [], "http://frontend-harvesting-self-service/index.html"
+  end
+
+  get "/assets/*path",  %{ host: "*.harvesting-self-service.lblod.info", layer: :static } do
+    forward conn, path, "http://frontend-harvesting-self-service/assets/"
+  end
+
+  get "/@appuniversum/*path", %{ host: "*.harvesting-self-service.lblod.info", layer: :static } do
+    forward conn, path, "http://frontend-harvesting-self-service/@appuniversum/"
+  end
+
+  # frontend
   match "/assets/*path", %{ layer: :static } do
     forward conn, path, "http://frontend/assets/"
   end
@@ -57,6 +72,13 @@ defmodule Dispatcher do
   #################
   # FRONTEND PAGES
   #################
+
+  # self-service
+  match "/*path", %{ host: "*.harvesting-self-service.lblod.info", layer: :frontend_fallback, accept: %{ html: true } } do
+    # we don't forward the path, because the app should take care of this in the browser.
+    forward conn, [], "http://frontend-harvesting-self-service/index.html"
+  end
+
   match "/*path", %{ layer: :frontend_fallback, accept: %{ html: true } } do
     # We forward path for fastboot
     forward conn, path, "http://frontend/"
@@ -70,10 +92,6 @@ defmodule Dispatcher do
   # RESOURCES
   ###############
 
-  post "/harvesting-initiate/*path", %{ layer: :resources, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://harvesting-initiation/initiate-harvest"
-  end
-
   match "/remote-data-objects/*path", %{ layer: :resources, accept: %{ json: true } } do
     Proxy.forward conn, path, "http://cache/remote-data-objects/"
   end
@@ -82,20 +100,28 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/harvesting-collections/"
   end
 
-  match "/harvesting-tasks/*path", %{ layer: :resources, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/harvesting-tasks/"
+  match "/jobs/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/jobs/"
   end
 
-  match "/download-event/*path", %{ layer: :resources, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/download-event/"
+  match "/tasks/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/tasks/"
   end
 
-  match "/files/*path" do
-    Proxy.forward conn, path, "http://file/files/"
+  match "/data-containers/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/data-containers/"
+  end
+
+  match "/job-errors/*path", %{ layer: :resources, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/job-errors/"
   end
 
   get "/files/:id/download" do
     Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
+  end
+
+  match "/files/*path" do
+    Proxy.forward conn, path, "http://cache/files/"
   end
 
   get "/bestuurseenheden/*path", %{ layer: :resources, accept: %{ json: true } } do

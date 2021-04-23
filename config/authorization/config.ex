@@ -76,10 +76,13 @@ defmodule Acl.UserGroups.Config do
                     graph: "http://mu.semte.ch/graphs/harvesting",
                     constraint: %ResourceConstraint{
                       resource_types: [
-                        "http://lblod.data.gift/vocabularies/harvesting/HarvestingTask",
+                        "http://redpencil.data.gift/vocabularies/tasks/Task",
+                        "http://vocab.deri.ie/cogs#Job",
+                        "http://open-services.net/ns/core#Error",
                         "http://lblod.data.gift/vocabularies/harvesting/HarvestingCollection",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer",
                         "http://oscaf.sourceforge.net/ndo.html#DownloadEvent",
                       ]
                     } } ] },

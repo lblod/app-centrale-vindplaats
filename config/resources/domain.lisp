@@ -13,3 +13,4 @@
 (read-domain-file "slave-besluit-domain.lisp")
 (read-domain-file "master-harvest-domain.lisp")
 (read-domain-file "master-file-domain.lisp")
+(read-domain-file "master-job-domain.lisp")
