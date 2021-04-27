@@ -21,19 +21,6 @@ defmodule Dispatcher do
   # STATIC
   ###############
 
-  # self-service
-  match "/index.html", %{ host: "*.harvesting-self-service.lblod.info", layer: :static } do
-    forward conn, [], "http://frontend-harvesting-self-service/index.html"
-  end
-
-  get "/assets/*path",  %{ host: "*.harvesting-self-service.lblod.info", layer: :static } do
-    forward conn, path, "http://frontend-harvesting-self-service/assets/"
-  end
-
-  get "/@appuniversum/*path", %{ host: "*.harvesting-self-service.lblod.info", layer: :static } do
-    forward conn, path, "http://frontend-harvesting-self-service/@appuniversum/"
-  end
-
   # frontend
   match "/assets/*path", %{ layer: :static } do
     forward conn, path, "http://frontend/assets/"
@@ -73,57 +60,14 @@ defmodule Dispatcher do
   # FRONTEND PAGES
   #################
 
-  # self-service
-  match "/*path", %{ host: "*.harvesting-self-service.lblod.info", layer: :frontend_fallback, accept: %{ html: true } } do
-    # we don't forward the path, because the app should take care of this in the browser.
-    forward conn, [], "http://frontend-harvesting-self-service/index.html"
-  end
-
   match "/*path", %{ layer: :frontend_fallback, accept: %{ html: true } } do
     # We forward path for fastboot
     forward conn, path, "http://frontend/"
   end
 
-  # match "/favicon.ico", @any do
-  #   send_resp( conn, 404, "" )
-  # end
-
   ###############
   # RESOURCES
   ###############
-
-  match "/remote-data-objects/*path", %{ layer: :resources, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/remote-data-objects/"
-  end
-
-  match "/harvesting-collections/*path", %{ layer: :resources, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/harvesting-collections/"
-  end
-
-  match "/jobs/*path", %{ layer: :resources, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/jobs/"
-  end
-
-  match "/tasks/*path", %{ layer: :resources, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/tasks/"
-  end
-
-  match "/data-containers/*path", %{ layer: :resources, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/data-containers/"
-  end
-
-  match "/job-errors/*path", %{ layer: :resources, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/job-errors/"
-  end
-
-  get "/files/:id/download" do
-    Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
-  end
-
-  match "/files/*path" do
-    Proxy.forward conn, path, "http://cache/files/"
-  end
-
   get "/bestuurseenheden/*path", %{ layer: :resources, accept: %{ json: true } } do
     Proxy.forward conn, path, "http://cache/bestuurseenheden/"
   end

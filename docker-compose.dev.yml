@@ -6,12 +6,10 @@ services:
   identifier:
     restart: "no"
     ports:
-      - "80:80"
+      - "8080:80"
   dispatcher:
     restart: "no"
   frontend:
-    restart: "no"
-  frontend-harvesting-self-service:
     restart: "no"
   migrations:
     restart: "no"
@@ -25,21 +23,5 @@ services:
     restart: "no"
     ports:
       - "8890:8890"
-  uri-info:
-    restart: "no"
   deltanotifier:
-    restart: "no"
-  file:
-    restart: "no"
-  harvesting-download-url:
-    environment:
-      CACHING_MAX_RETRIES: 5
-    restart: "no"
-  harvest-collector:
-    restart: "no"
-  harvesting-import:
-    restart: "no"
-  harvesting-sameas:
-    restart: "no"
-  job-controller-service:
     restart: "no"
