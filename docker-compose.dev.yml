@@ -3,6 +3,8 @@ version: '3.7'
 services:
   resource-labels:
     restart: "no"
+  uri-info:
+    restart: "no"
   identifier:
     restart: "no"
     ports:
