@@ -114,4 +114,4 @@ services:
     logging: *default-logging
 networks:
   app-centrale-vindplaats:
-    external: true
+    name: centrale_vindplaats
