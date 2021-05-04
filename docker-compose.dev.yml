@@ -8,7 +8,7 @@ services:
   identifier:
     restart: "no"
     ports:
-      - "8080:80"
+      - "80:80"
   dispatcher:
     restart: "no"
   frontend:
