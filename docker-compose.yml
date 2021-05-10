@@ -112,6 +112,3 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-networks:
-  app-centrale-vindplaats:
-    name: centrale_vindplaats
