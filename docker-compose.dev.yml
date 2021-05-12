@@ -43,3 +43,7 @@ services:
     restart: "no"
   job-controller-service:
     restart: "no"
+  import-leidinggevenden:
+    restart: "no"
+  import-mandaten:
+    restart: "no"

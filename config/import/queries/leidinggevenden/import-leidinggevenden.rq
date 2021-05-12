@@ -1,0 +1,58 @@
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?s ?p ?o .
+    }
+} WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?s a ?type ; ?p ?o .
+        FILTER (?type IN (
+            <http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode>,
+            <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris>,
+            <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>,
+            <http://www.w3.org/ns/locn#Address>,
+            <http://schema.org/ContactPoint>,
+            <http://www.w3.org/ns/prov#Location>
+            ))
+    }
+}
+;
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?s ?p ?o .
+    }
+} WHERE {
+    GRAPH <http://mu.semte.ch/graphs/temp-ingest-graph> {
+        ?s a ?type ; ?p ?o .
+        FILTER (?type IN (
+            <http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode>,
+            <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris>,
+            <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>,
+            <http://www.w3.org/ns/locn#Address>,
+            <http://schema.org/ContactPoint>,
+            <http://www.w3.org/ns/prov#Location>
+            ))
+    }
+}
+;
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?s ?p ?old .
+    }
+} INSERT{
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?s ?p ?new .
+    }
+} WHERE {
+    GRAPH <http://mu.semte.ch/graphs/temp-ingest-graph> {
+        ?s a ?type ; ?p ?new .
+        FILTER (?type IN (
+            <http://mu.semte.ch/vocabularies/ext/BestuursfunctieCode>,
+            <http://www.w3.org/ns/person#Person>
+            ))
+    }
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      ?s ?p ?old .
+    }
+}
+;
+CLEAR GRAPH <http://mu.semte.ch/graphs/temp-ingest-graph>
