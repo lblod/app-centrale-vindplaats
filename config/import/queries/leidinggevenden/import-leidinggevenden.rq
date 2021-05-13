@@ -21,7 +21,7 @@ INSERT {
         ?s ?p ?o .
     }
 } WHERE {
-    GRAPH <http://mu.semte.ch/graphs/temp-ingest-graph> {
+    GRAPH <http://mu.semte.ch/graphs/temp-ingest-graph-leidinggevenden> {
         ?s a ?type ; ?p ?o .
         FILTER (?type IN (
             <http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode>,
@@ -43,7 +43,7 @@ DELETE {
         ?s ?p ?new .
     }
 } WHERE {
-    GRAPH <http://mu.semte.ch/graphs/temp-ingest-graph> {
+    GRAPH <http://mu.semte.ch/graphs/temp-ingest-graph-leidinggevenden> {
         ?s a ?type ; ?p ?new .
         FILTER (?type IN (
             <http://mu.semte.ch/vocabularies/ext/BestuursfunctieCode>,
@@ -55,4 +55,4 @@ DELETE {
     }
 }
 ;
-CLEAR GRAPH <http://mu.semte.ch/graphs/temp-ingest-graph>
+CLEAR GRAPH <http://mu.semte.ch/graphs/temp-ingest-graph-leidinggevenden>

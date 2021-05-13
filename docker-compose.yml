@@ -115,7 +115,7 @@ services:
       - ./config/import/queries/leidinggevenden:/data/queries
     environment:
       CRON_PATTERN: "0 0 * * *"
-      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/temp-ingest-graph"
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/temp-ingest-graph-leidinggevenden"
     labels:
       - "logging=true"
     restart: always
@@ -128,7 +128,7 @@ services:
       - ./config/import/queries/mandaten:/data/queries
     environment:
       CRON_PATTERN: "0 0 * * *"
-      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/temp-ingest-graph"
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/temp-ingest-graph-mandaten"
     labels:
       - "logging=true"
     restart: always
