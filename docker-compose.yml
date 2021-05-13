@@ -127,7 +127,7 @@ services:
     volumes:
       - ./config/import/queries/mandaten:/data/queries
     environment:
-      CRON_PATTERN: "0 0 * * *"
+      CRON_PATTERN: "0 23 * * *"
       DEFAULT_GRAPH: "http://mu.semte.ch/graphs/temp-ingest-graph-mandaten"
     labels:
       - "logging=true"
