@@ -169,7 +169,6 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-
   harvesting-sameas:
     image: lblod/import-with-sameas-service:1.0.2
     environment:
@@ -184,6 +183,32 @@ services:
     logging: *default-logging
   job-controller-service:
     image: lblod/job-controller-service:0.3.0
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  import-leidinggevenden:
+    image: lblod/mandaten-import-service:0.4.3
+    links:
+      - virtuoso:database
+    volumes:
+      - ./config/import/queries/leidinggevenden:/data/queries
+    environment:
+      CRON_PATTERN: "0 0 * * *"
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/temp-ingest-graph"
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  import-mandaten:
+    image: lblod/mandaten-import-service:0.4.3
+    links:
+      - virtuoso:database
+    volumes:
+      - ./config/import/queries/mandaten:/data/queries
+    environment:
+      CRON_PATTERN: "0 0 * * *"
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/temp-ingest-graph"
     labels:
       - "logging=true"
     restart: always
