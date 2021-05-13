@@ -192,7 +192,6 @@ services:
     links:
       - virtuoso:database
     volumes:
-      - /data/app-leidinggevenden-databank/data/exports:/data/imports
       - ./config/import/queries/leidinggevenden:/data/queries
     environment:
       CRON_PATTERN: "0 0 * * *"
@@ -206,7 +205,6 @@ services:
     links:
       - virtuoso:database
     volumes:
-      - /data/app-mandaten-databank/data/exports:/data/imports
       - ./config/import/queries/mandaten:/data/queries
     environment:
       CRON_PATTERN: "0 0 * * *"
