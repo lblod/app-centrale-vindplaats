@@ -27,3 +27,9 @@ services:
       - "8890:8890"
   deltanotifier:
     restart: "no"
+  deliver-email-service:
+    restart: "no"
+  delta-report-generator:
+    restart: "no"
+  besluiten-consumer:
+    restart: "no"
