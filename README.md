@@ -123,7 +123,7 @@ To proceed:
     }
     ORDER BY DESC(?created)
    ```
-5. `drc restart resource cache` is still needed after the intial sync.
+5. `drc restart resource cache` is still needed after the intiial sync.
 
 ### Additional notes:
 #### Endpoints to choose for ingestion.
