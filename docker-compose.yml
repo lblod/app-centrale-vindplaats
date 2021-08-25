@@ -151,6 +151,25 @@ services:
       OUTBOX: "http://data.lblod.info/id/mail-folders/2"
     volumes:
       - ./config/delta-consumer/report-generator:/config
+  mandatendatabank-consumer:
+      image: lblod/delta-consumer-single-graph-maintainer:0.3.4
+      environment:
+        SYNC_BASE_URL: 'https://loket.lblod.info' # replace with link to Loket API
+        SERVICE_NAME: 'mandaten-consumer'
+        SYNC_FILES_PATH: '/sync/mandaten/files'
+        SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/MandatenCacheGraphDump"
+        INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/mandaten"
+        JOB_CREATOR_URI: "http://data.lblod.info/services/id/mandaten-consumer"
+        DISABLE_INITIAL_SYNC: 'true'
+        BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: 'true'
+        KEEP_DELTA_FILES: 'true'
+        DELTA_FILE_FOLDER: '/consumer-files'
+      volumes:
+        - ./data/files/consumer-files/mandaten:/consumer-files/
+      restart: always
+      labels:
+        - "logging=true"
+      logging: *default-logging
   besluiten-consumer:
     image: lblod/delta-consumer-single-graph-maintainer:0.4.1
     environment:
