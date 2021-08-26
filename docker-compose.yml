@@ -154,12 +154,12 @@ services:
   mandatendatabank-consumer:
       image: lblod/delta-consumer-single-graph-maintainer:0.4.1
       environment:
-        SYNC_BASE_URL: 'https://loket.lblod.info' # replace with link to Loket API
-        SERVICE_NAME: 'mandaten-consumer'
-        SYNC_FILES_PATH: '/sync/mandaten/files'
-        SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/MandatenCacheGraphDump"
-        INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/mandaten"
-        JOB_CREATOR_URI: "http://data.lblod.info/services/id/mandaten-consumer"
+        SYNC_BASE_URL: 'https://loket.lblod.info/'
+        SERVICE_NAME: 'mandatendatabank-consumer'
+        SYNC_FILES_PATH: '/sync/mandatarissen/files'
+        SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/MandatarissenCacheGraphDump"
+        INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/mandatarissen"
+        JOB_CREATOR_URI: "http://data.lblod.info/services/id/mandatendatabank-consumer"
         DISABLE_INITIAL_SYNC: 'true'
         BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: 'true'
         KEEP_DELTA_FILES: 'true'
