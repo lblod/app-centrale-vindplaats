@@ -82,17 +82,16 @@ Simply visit http://localhost:80 and you will redirected to the yasgui sparql in
 ## Ingesting data
 The app comes with no data, because it depends on external datasources.
 
-  *  [Mandatendatabank](https://mandaten.lokaalbestuur.vlaanderen.be/)
-  *  [Leidinggevendendatabank](https://leidinggevenden.lokaalbestuur.vlaanderen.be/)
-  *  [lblod-harvester](https://lblod-harvester.lokaalbestuur.vlaanderen.be/) (FUTURE)
+  *  [Mandatendatabank (sourced by loket)](https://loket.lokaalbestuur.vlaanderen.be/)
+  *  [Leidinggevendendatabank (sourced by loket)](https://loket.lokaalbestuur.vlaanderen.be/)
+  *  [lblod-harvester](https://lblod-harvester.lokaalbestuur.vlaanderen.be/)
 
-Ingesting happes for Mandatendatabank and Leidingevendendatabank, manually. (Should dissapear soon)
-For besluiten (data from lblod-harvester), you can follow the following procedure.
+You can follow the following procedure, for all data sources.
 
 The ingestion should be a one time operation per deployment, and is currenlty semi-automatic for various reasons (mainly related to performance)
-The ingestion is disabled by default.
+The ingestion is disabled by default. It is recommended, for performance, to start only one initial ingest at a time.
 
-To proceed:
+To proceed (similar for mandaten and leidinggevende):
 1. make sure the app is up and running. And the migrations have run.
 2. In docker-compose.override.yml (preferably) override the following parameters for mandatendatabank-consumer
 ```
@@ -117,7 +116,7 @@ To proceed:
    SELECT ?s ?status ?created WHERE {
      ?s a <http://vocab.deri.ie/cogs#Job> ;
        adms:status ?status ;
-       task:operation <http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/mandatarissen> ;
+       task:operation <http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/besluiten> ;
        dct:created ?created ;
        dct:creator <http://data.lblod.info/services/id/mandatendatabank-consumer> .
     }
