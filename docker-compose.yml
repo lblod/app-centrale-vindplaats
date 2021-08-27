@@ -154,7 +154,7 @@ services:
   mandatendatabank-consumer:
       image: lblod/delta-consumer-single-graph-maintainer:0.4.1
       environment:
-        SYNC_BASE_URL: 'https://dev.loket.lblod.info/'
+        SYNC_BASE_URL: 'https://loket.lblod.info/'
         SERVICE_NAME: 'mandatendatabank-consumer'
         SYNC_FILES_PATH: '/sync/mandatarissen/files'
         SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/MandatarissenCacheGraphDump"
@@ -173,7 +173,7 @@ services:
   leidinggevenden-consumer:
     image: lblod/delta-consumer-single-graph-maintainer:0.4.1
     environment:
-      SYNC_BASE_URL: 'https://dev.loket.lblod.info' # replace with link to Loket API
+      SYNC_BASE_URL: 'https://loket.lblod.info' # replace with link to Loket API
       SERVICE_NAME: 'leidinggevenden-consumer'
       SYNC_FILES_PATH: '/sync/leidinggevenden/files'
       SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/LeidinggevendenCacheGraphDump"
