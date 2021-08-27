@@ -31,5 +31,9 @@ services:
     restart: "no"
   delta-report-generator:
     restart: "no"
+  mandatendatabank-consumer:
+    restart: "no"
+  leidinggevenden-consumer:
+    restart: "no"
   besluiten-consumer:
     restart: "no"
