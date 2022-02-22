@@ -16,6 +16,8 @@ defmodule Acl.UserGroups.Config do
                     graph: "http://mu.semte.ch/graphs/public",
                     constraint: %ResourceConstraint{
                       resource_types: [
+                        "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
+                        "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
                         "http://data.lblod.info/vocabularies/mobiliteit/MaatregelConcept",
                         "http://data.lblod.info/vocabularies/mobiliteit/Maatregelconceptcombinatie",
                         "https://data.vlaanderen.be/ns/mobiliteit#Verkeersbordconcept",
