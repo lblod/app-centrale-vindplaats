@@ -1,4 +1,6 @@
 # Changelog
+## 0.3.0 (2022-02-22)
+- First (static) version of Erediensten
 
 ## 0.2.0 (2021-09-07)
 
