@@ -1,0 +1,80 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?bestuur
+      a ?type;
+      mu:uuid
+        ?id;
+      skos:prefLabel
+        ?prefLabel.
+      ?bestuur
+        adms:identifier
+          ?identifier.
+      ?identifier
+          mu:uuid
+              ?i_uuid;
+          skos:notation
+              ?notation;
+          generiek:gestructureerdeIdentificator
+              ?structuredId.
+      ?structuredId
+        ?p_sid ?o_sid.
+      ?bestuur
+          org:hasPrimarySite ?site.
+          ?site ?sp ?so.
+              ?so ?ap	?ao.
+    ?bestuursOrgaan
+      besluit:bestuurt ?bestuur;
+      ?bop ?boo.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    VALUES ?type {
+     <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>
+     <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>
+    }
+    ?bestuur
+      a ?type;
+      mu:uuid
+        ?id;
+      skos:prefLabel
+        ?prefLabel.
+
+    OPTIONAL {
+      ?bestuur
+        adms:identifier
+          ?identifier.
+      ?identifier
+          mu:uuid
+              ?i_uuid;
+          skos:notation
+              ?notation;
+          generiek:gestructureerdeIdentificator
+              ?structuredId.
+      ?structuredId
+        ?p_sid ?o_sid.
+    }
+
+    OPTIONAL {
+      ?bestuur
+          org:hasPrimarySite ?site.
+
+      OPTIONAL {
+          ?site ?sp ?so.
+          OPTIONAL {
+              ?so ?ap	?ao.
+          }
+      }
+    }
+    ?bestuursOrgaan
+      besluit:bestuurt ?bestuur;
+      ?bop ?boo.
+  }
+}
