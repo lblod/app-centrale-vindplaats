@@ -208,3 +208,23 @@ services:
     labels:
       - "logging=true"
     logging: *default-logging
+  organisatie-portaal-public-consumer:
+    image: lblod/delta-consumer:0.0.6
+    environment:
+      DCR_SERVICE_NAME: 'organisatie-portaal-public-consumer'
+      DCR_SYNC_BASE_URL: 'https://organisaties.abb.lblod.info/'
+      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/PublicCacheGraphDump"
+      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/organisatiePortaalPublic"
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/deltaSync/organisatiePortaalPublic"
+      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/organisatie-portaal-public-consumer"
+      INGEST_GRAPH: "http://mu.semte.ch/graphs/public"
+      DCR_SYNC_FILES_PATH: '/sync/organisatie-portaal-public/files'
+      DCR_DISABLE_INITIAL_SYNC: 'true'
+      DCR_BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: 'true'
+      DCR_KEEP_DELTA_FILES: 'true'
+      DCR_DELTA_FILE_FOLDER: '/consumer-files'
+    volumes:
+      - ./data/files/consumer-files/organisatie-portaal-public:/consumer-files/
+    restart: always
+    labels:
+      - "logging=true"

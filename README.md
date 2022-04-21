@@ -206,3 +206,20 @@ The mu-semtech stack also provides a [http-logger](https://github.com/redpencili
 
 ### More information
 If you have any questions about a particular service then you can simply visit that service's repo and read the readme file. These should mostly all be up to date and help a lot in understanding the service. All links are displayed above in de [Service list](#list-of-services)
+
+### Sync public data from Organisatie Portaal
+
+Set up a sync to load public info on EredienstBesturen to Centrale Vindplaats with the [delta-consumer](https://github.com/lblod/delta-consumer).
+
+An example `docker-compose.override.yml` configuration. See [delta-consumer](https://github.com/lblod/delta-consumer) for more info.
+
+```
+version: '3.7'
+
+services:
+  organisatie-portaal-public-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: 'http://my-organization-portal-instance.net'
+      DCR_DISABLE_INITIAL_SYNC: 'false'
+      BATCH_SIZE: 1000
+```
