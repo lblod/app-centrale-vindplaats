@@ -1,4 +1,8 @@
 # Changelog
+
+## 0.4.0 (2022-06-29)
+- Add data from OP
+
 ## 0.3.2 (2022-02-25)
 - Fix broken migration
 
