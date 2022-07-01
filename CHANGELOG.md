@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.1 (2022-07-01)
+- Rerun migrations to add labels to organen
+
 ## 0.4.0 (2022-06-29)
 - Add data from OP
 
