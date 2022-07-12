@@ -1,5 +1,6 @@
 # Changelog
-
+## 0.5.0 (2022-07-12)
+- Added rule:NotificationRule data
 ## 0.4.1 (2022-07-01)
 - Rerun migrations to add labels to organen
 
