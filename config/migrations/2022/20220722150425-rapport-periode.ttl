@@ -1,0 +1,16 @@
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos:	<http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:	<http://www.w3.org/2001/XMLSchema#> .
+
+<http://lblod.data.gift/concepts/19ae2617-6ffd-4c3d-8c41-4afd618ddfdf>
+	rdf:type	<http://data.europa.eu/m8g/PeriodOfTime> , skos:Concept , <http://lblod.data.gift/vocabularies/submissions/ReportingPeriod> ;
+	<http://mu.semte.ch/vocabularies/core/uuid>	"19ae2617-6ffd-4c3d-8c41-4afd618ddfdf" ;
+	skos:prefLabel	"2020-2025"@nl ;
+	<http://data.europa.eu/m8g/endTime>	"2025-12-31T22:59:59Z"^^xsd:dateTime ;
+	<http://data.europa.eu/m8g/startTime>	"2019-12-31T22:59:59Z"^^xsd:dateTime ;
+	skos:topConceptOf	<http://lblod.data.gift/concept-schemes/4e719768-d43b-4ca1-ab92-b463e15721f5> ;
+	skos:inScheme	<http://lblod.data.gift/concept-schemes/4e719768-d43b-4ca1-ab92-b463e15721f5> .
+<http://lblod.data.gift/concept-schemes/4e719768-d43b-4ca1-ab92-b463e15721f5>
+	rdf:type	skos:ConceptScheme ;
+	<http://mu.semte.ch/vocabularies/core/uuid>	"4e719768-d43b-4ca1-ab92-b463e15721f5" ;
+	skos:prefLabel	"Rapportperiode meerjarenplan erediensten"@nl , "Reporting period long term plan worship services"@en .
