@@ -1,4 +1,7 @@
 # Changelog
+## 0.6.0 (2022-07-25)
+- Added updated rule:NotificationRule data
+- Added codelists for erediensten
 ## 0.5.0 (2022-07-12)
 - Added rule:NotificationRule data
 ## 0.4.1 (2022-07-01)
