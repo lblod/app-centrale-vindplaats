@@ -1,4 +1,9 @@
 # Changelog
+## 0.7.0 (2022-09-02)
+- bump dispatcher
+- bump fronted
+  - Fixed METIS_BASE_URL not resolving in non-fastboot mode
+  - pinnend fastboot base image
 ## 0.6.0 (2022-07-25)
 - Added updated rule:NotificationRule data
 - Added codelists for erediensten
