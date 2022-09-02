@@ -35,7 +35,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-centrale-vindplaats:0.2.0.fastboot
+    image: lblod/frontend-centrale-vindplaats:0.2.1-fastboot
     environment:
       EMBER_METIS_BASE_URL: "http://data.lblod.info/"
     links:
