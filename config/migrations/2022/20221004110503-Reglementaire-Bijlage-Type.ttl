@@ -1,0 +1,9 @@
+@prefix dossier: <https://data.vlaanderen.be/ns/dossier#> .
+@prefix gn: <http://data.lblod.info/vocabularies/gelinktnotuleren/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+gn:ReglementaireBijlage a owl:Class ;
+                           rdfs:label "Regulatory Statement"@en,
+                                      "Reglementaire Bijlage"@nl ;
+                           rdfs:subClassOf dossier:Stuk .
