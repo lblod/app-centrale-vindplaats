@@ -1,4 +1,7 @@
 # Changelog
+## 0.8.0 (2022-10-21)
+- added LEKP codelists
+- added extra old decision types
 ## 0.7.0 (2022-09-02)
 - bump dispatcher
 - bump fronted
