@@ -1,0 +1,46 @@
+@prefix dossier: <https://data.vlaanderen.be/ns/dossier#> .
+@prefix gn: <http://data.lblod.info/vocabularies/gelinktnotuleren/> .
+@prefix lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>.
+
+
+<http://data.lblod.info/vocabularies/gelinktnotuleren> a owl:Ontology ;
+  mu:uuid "14b7606a-46fd-48d3-8bee-b411f2bfba57";
+  rdfs:label "Gelinkt notuleren"@nl;
+  dcterms:issued "2022-10-25"^^xsd:date;
+  vann:preferredNamespacePrefix "gn" ;
+  vann:usageNote "bijkomende termen gebruikt in applicaties gerelateerd aan het LBLOD en gelinkt notuleren"@nl.
+
+gn:ReglementaireBijlage a owl:Class, rdfs:Class ;
+  mu:uuid "fbeea69a-4c2b-4d47-a065-baeccefd6907";
+  rdfs:label "Regulatory Statement"@en,
+             "Reglementaire Bijlage"@nl ;
+  rdfs:isDefinedBy <http://data.lblod.info/vocabularies/gelinktnotuleren>;
+  rdfs:subClassOf dossier:Stuk .
+
+gn:ReglementaireBijlageTemplate a owl:Class, rdfs:Class;
+  mu:uuid "f6a7d682-3b08-4a30-bbb8-5c7078e87720";
+  rdfs:label "Reglementaire bijlage template"@nl,
+             "Regulatory statement template"@en;
+  rdfs:comment "Template om als basis te gebruiken voor een reglementaire bijlage"@nl;
+  vann:usageNote "Deze templates kunnen opgehaald worden uit het register"@nl;
+  rdfs:isDefinedBy <http://data.lblod.info/vocabularies/gelinktnotuleren>.
+
+
+gn:ReglementaireBijlageTemplateVersie a owl:Class, rdfs:Class;
+  mu:uuid "a71126f8-d070-417d-b316-0216fc296f41";
+  rdfs:label "Reglementaire bijlage template versie"@nl,
+             "Regulatory statement template version"@en;
+  rdfs:comment "A specific version of a gn:ReglementaireBijlage"@en,
+               "Specifieke, tijdsgebonden versie van een gn:ReglementaireBijlage"@nl;
+  rdfs:subClassOf nfo:FileDataObject;
+  rdfs:isDefinedBy <http://data.lblod.info/vocabularies/gelinktnotuleren>.
