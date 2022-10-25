@@ -1,4 +1,7 @@
 # Changelog
+## 0.9.0 (2022-10-25)
+- added leidinggevenden vocabulary
+
 ## 0.8.0 (2022-10-21)
 - added LEKP codelists
 - added extra old decision types
