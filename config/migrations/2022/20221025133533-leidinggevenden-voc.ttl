@@ -1,0 +1,41 @@
+@prefix lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+
+<http://data.lblod.info/vocabularies/leidinggevenden> a owl:Ontology ;
+  rdfs:label "Leidinggevenden databank"@nl;
+  dcterms:issued "2020-03-27"^^xsd:date;
+  vann:preferredNamespacePrefix "lblodlg" ;
+  mu:uuid "4e2d4f86-0fc0-4858-ad97-f171de27c1d0";
+  rdfs:seeAlso <https://lblod.github.io/pages-vendors/#/docs/leidinggevenden>;
+  vann:usageNote "dit is een uitbreiding van het OSLO model mandatendatabank"@nl.
+
+lblodlg:heeftBestuursfunctie a owl:ObjectProperty, rdfs:Property;
+  mu:uuid "5279c357-f5d7-448b-b455-4167cdde7477";
+  rdfs:label "heeft bestuurs functie"@nl;
+  rdfs:comment "Een bestuursfunctie binnen het orgaan."@nl;
+  rdfs:range lblodlg:Bestuursfunctie;
+  rdfs:domain besluit:Bestuursorgaan;
+  rdfs:isDefinedBy <http://data.lblod.info/vocabularies/leidinggevenden>.
+
+lblodlg:Bestuursfunctie a owl:Class, rdfs:Class;
+  mu:uuid "3b93baab-7460-4249-8926-a99f11db6cfc";
+  rdfs:label "Bestuursfunctie"@nl;
+  rdfs:comment "De bevoegdheid om gedurende een bepaalde periode een bestuursorgaan te vormen of er deel van uit te maken. Specialisatie van Mandaat."@nl;
+  rdfs:subClassOf mandaat:Mandaat;
+  rdfs:isDefinedBy <http://data.lblod.info/vocabularies/leidinggevenden>.
+
+lblodlg:Functionaris a owl:Class, rdfs:Class;
+  mu:uuid "7bdd10ac-3280-4c0f-bd2f-f18057bc44e8";
+  rdfs:label "Functionaris"@nl;
+  rdfs:comment "Een persoon in zijn rol als houder van een bestuursfunctie. Specialisatie van Mandataris."@nl;
+  rdfs:subClassOf mandaat:Mandataris;
+  rdfs:isDefinedBy <http://data.lblod.info/vocabularies/leidinggevenden>.
+
