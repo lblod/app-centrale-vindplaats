@@ -1,4 +1,7 @@
 # Changelog
+## 0.10.0 (2022-11-03)
+- added up to data EB data
+- added missing types Reglementaire bijlage
 ## 0.9.0 (2022-10-25)
 - added leidinggevenden vocabulary
 
