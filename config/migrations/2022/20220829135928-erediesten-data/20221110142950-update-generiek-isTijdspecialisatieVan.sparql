@@ -1,0 +1,34 @@
+PREFIX ma: <http://www.w3.org/ns/ma-ont#>
+PREFIX gen: <http://purl.org/gen/0.1#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX erediensten: <http://data.lblod.info/vocabularies/erediensten/>
+
+DELETE {
+  GRAPH ?g {
+    ?bestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?bestuursorgaanInTijd generiek:isTijdspecialisatieVan ?bestuursorgaan.
+    ?bestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+  }
+}
+WHERE {
+  VALUES ?eenheidType {
+      erediensten:BestuurVanDeEredienst
+      erediensten:CentraalBestuurVanDeEredienst
+  }
+  ?bestuurseenheid a ?eenheidType.
+  ?bestuursorgaan besluit:bestuurt ?bestuurseenheid.
+
+  GRAPH ?g {
+    ?bestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+  }
+}
