@@ -1,0 +1,60 @@
+# While updating the most recent delta sync task of each type, we ensure a smooth transition to the new consumer.
+# Only doing it on the most recent task because the query is too heavy otherwise
+
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX task: <http://redpencil.data.gift/vocabularies/tasks/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX oslc: <http://open-services.net/ns/core#>
+PREFIX cogs: <http://vocab.deri.ie/cogs#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
+PREFIX dbpedia: <http://dbpedia.org/resource/>
+
+INSERT {
+  GRAPH ?g {
+    ?job a <http://vocab.deri.ie/cogs#Job> ;
+      mu:uuid ?uuidJob ;
+      adms:status <http://redpencil.data.gift/id/concept/JobStatus/success> ;
+      dct:created ?created ;
+      dct:modified ?created ;
+      task:operation ?operation ;
+      dct:creator ?creator .
+
+    ?task a task:Task ;
+      task:index "0" ;
+      dct:modified ?created ;
+      dct:isPartOf ?job ;
+      adms:status <http://redpencil.data.gift/id/concept/JobStatus/success> ;
+      task:operation <http://redpencil.data.gift/id/jobs/concept/TaskOperation/deltas/consumer/deltaSyncing> ;
+      task:resultsContainer ?resultsContainer.
+
+    ?resultsContainer a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer>;
+      mu:uuid ?uuidResultsContainer ;
+      dct:subject <http://redpencil.data.gift/id/concept/DeltaSync/DeltafileInfo>;
+      ext:hasDeltafileTimestamp ?deltaTimestamp.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?task a ext:SyncTask ;
+      mu:uuid ?uuid ;
+      adms:status <http://lblod.data.gift/sync-task-statuses/success> ;
+      dct:created ?created ;
+      dct:creator ?creator ;
+      ext:deltaUntil ?deltaTimestamp .
+  }
+
+  VALUES (?creator ?operation) {
+    (<http://data.lblod.info/services/id/leidinggevenden-consumer> <http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/leidinggevendenSyncing>)
+  }
+
+  BIND(MD5(CONCAT(?task, "job")) as ?uuidJob)
+  BIND(MD5(CONCAT(?task, "resultsContainer")) as ?uuidResultsContainer)
+  BIND(IRI(CONCAT("http://redpencil.data.gift/id/job/", ?uuidJob)) AS ?job)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/dataContainers/", ?uuidResultsContainer)) AS ?resultsContainer)
+}
+ORDER BY DESC(?created)
+LIMIT 1
