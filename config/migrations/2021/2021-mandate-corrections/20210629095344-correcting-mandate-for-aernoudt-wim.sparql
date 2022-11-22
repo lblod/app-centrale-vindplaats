@@ -1,3 +1,10 @@
+# sprintf issue workaround
+INSERT {
+  GRAPH <http://dummy/data/graph/c649713c-89b7-4697-8bea-e626791bceb8> {
+    <http://data.lblod.info/id/mandatarissen/5C13826798360D000900030A> skos:prefLabel "Dummy triple, sprinf workaround" .
+  }
+}
+;
 # Archive related mandatarissen - part 1
 DELETE {
   GRAPH ?g {
@@ -26,5 +33,16 @@ DELETE {
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/graveyard/mandatarissen> {
     <http://data.lblod.info/id/mandatarissen/5C13826798360D000900030A> a ?type1 .
+  }
+}
+;
+# sprintf issue workaround
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/mandatarissen/5C13826798360D000900030A> skos:prefLabel "Dummy triple, sprinf workaround" .
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/mandatarissen/5C13826798360D000900030A> skos:prefLabel "Dummy triple, sprinf workaround" .
   }
 }
