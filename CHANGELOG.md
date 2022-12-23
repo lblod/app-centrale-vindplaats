@@ -1,4 +1,8 @@
 # Changelog
+## 0.12.0 (2022-11-10)
+- added missing data EB
+## 0.11.0 (2022-11-08)
+- update data set:` ?bestuursorgaanInTijd generiek:isTijdspecialisatieVan ?bestuursorgaan`
 ## 0.10.0 (2022-11-03)
 - added up to data EB data
 - added missing types Reglementaire bijlage
