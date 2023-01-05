@@ -1,4 +1,9 @@
 # Changelog
+## 0.13.0 (2023-01-03)
+- remove mandaat: bestuurslid van bestuur van eredienst
+- update consumers
+- betrokken besturen
+- update meldingsrules + decision types
 ## 0.12.0 (2022-11-10)
 - added missing data EB
 ## 0.11.0 (2022-11-08)
