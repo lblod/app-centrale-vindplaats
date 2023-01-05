@@ -1,4 +1,6 @@
 # Changelog
+## 0.13.1 (2023-01-03)
+- bugfix migrations
 ## 0.13.0 (2023-01-03)
 - remove mandaat: bestuurslid van bestuur van eredienst
 - update consumers
