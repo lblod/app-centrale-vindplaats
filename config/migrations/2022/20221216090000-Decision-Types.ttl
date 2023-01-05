@@ -1254,7 +1254,7 @@ lblodRule:1df30ddc-8e4c-4966-837d-a317e418e5b7
 lblodRule:44c563f6-c817-43e5-8369-1e0c202dd047
     a rule:NotificationRule ;
     core:uuid "44c563f6-c817-43e5-8369-1e0c202dd047" ;
-    sch:validFrom "2022-11-4T01:00:00"^^xsd:dateTime ;
+    sch:validFrom "2022-11-04T01:00:00"^^xsd:dateTime ;
     #sch:validThrough "2022-12-01T01:00:00"^^xsd:dateTime ;
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ;
     besluit:obligationToReport "false"^^xsd:boolean .
