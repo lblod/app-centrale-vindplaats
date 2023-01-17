@@ -1,4 +1,6 @@
 # Changelog
+## 0.13.2 (2023-01-17)
+- bug in accident ingesting triples from QA
 ## 0.13.1 (2023-01-03)
 - bugfix migrations
 ## 0.13.0 (2023-01-03)
