@@ -1,0 +1,77 @@
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o
+  }
+}
+WHERE {
+  VALUES ?s{
+  <http://data.lblod.info/id/adressen/61249FBFCE76520009000010>
+  <http://data.lblod.info/id/adressen/5EA0436917A6990008000004>
+  <http://data.lblod.info/id/adressen/611D1311CE76520009000016>
+  <http://data.lblod.info/id/adressen/612F4D78CE7652000900007A>
+  <http://data.lblod.info/id/adressen/60085737291D6E0008000020>
+  <http://data.lblod.info/id/adressen/5EA0432A17A6990008000002>
+  <http://data.lblod.info/id/adressen/6022A7A542326A0008000238>
+  <http://data.lblod.info/id/contact-punten/63B5B4949A4D36999FE0C8B5>
+  <http://data.lblod.info/id/adressen/6073FD5BC20E70000900004D>
+  <http://data.lblod.info/id/adressen/6059F8923698AD00080000CD>
+  <http://data.lblod.info/id/adressen/611D1293CE76520009000010>
+  <http://data.lblod.info/id/adressen/62323473E5A7E50009000061>
+  <http://data.lblod.info/id/adressen/611D1248CE7652000900000D>
+  <http://data.lblod.info/id/adressen/60097716291D6E000800002D>
+  <http://data.lblod.info/id/adressen/62BDA372F0FB8E000800001B>
+  <http://data.lblod.info/id/adressen/61249F59CE7652000900000A>
+  <http://data.lblod.info/id/adressen/607ED0F9C20E700009000077>
+  <http://data.lblod.info/id/adressen/6113D610709F520009000055>
+  <http://data.lblod.info/id/adressen/6059F8CF3698AD00080000D0>
+  <http://data.lblod.info/id/adressen/612F4D94CE7652000900007C>
+  <http://data.lblod.info/id/adressen/612F4DE3CE76520009000080>
+  <http://data.lblod.info/id/adressen/5E7B56FF17A699000800012D>
+  <http://data.lblod.info/id/adressen/62A85E32CAE915000900008B>
+  <http://data.lblod.info/id/personen/62BDA309F0FB8E0008000012>
+  <http://data.lblod.info/id/adressen/5E7B5BA217A6990008000130>
+  <http://data.lblod.info/id/adressen/605AFEE43698AD00080000DC>
+  <http://data.lblod.info/id/adressen/611BD1FBCE76520009000003>
+  <http://data.lblod.info/id/adressen/6124A201CE7652000900001C>
+  <http://data.lblod.info/id/adressen/5D430C353EA68C0008000003>
+  <http://data.lblod.info/id/mandatarissen/63B6F4B1FC8ADED667AD4F1B>
+  <http://data.lblod.info/id/adressen/6124A0D5CE7652000900001A>
+  <http://data.lblod.info/id/adressen/5E7B53A517A699000800012A>
+  <http://data.lblod.info/id/adressen/607ED0A3C20E700009000071>
+  <http://data.lblod.info/id/adressen/5E7B52E417A6990008000126>
+  <http://data.lblod.info/id/adressen/611D12D1CE76520009000013>
+  <http://data.lblod.info/id/adressen/600EC3D8291D6E000800000F>
+  <http://data.lblod.info/id/adressen/62BDA232F0FB8E0008000009>
+  <http://data.lblod.info/id/adressen/6059F7543698AD00080000C5>
+  <http://data.lblod.info/id/adressen/607ED0DBC20E700009000075>
+  <http://data.lblod.info/id/adressen/606D972BC20E70000900001C>
+  <http://data.lblod.info/id/adressen/60409EC73698AD000800000F>
+  <http://data.lblod.info/id/adressen/62BDA31CF0FB8E0008000015>
+  <http://data.lblod.info/id/adressen/612F4DC0CE7652000900007E>
+  <http://data.lblod.info/id/personen/63B6F480FC8ADED667AD4F1A>
+  <http://data.lblod.info/id/adressen/63B5B4959A4D36999FE0C8B6>
+  <http://data.lblod.info/id/adressen/6059F84F3698AD00080000CB>
+  <http://data.lblod.info/id/adressen/607ED0C2C20E700009000073>
+  <http://data.lblod.info/id/adressen/63297F12E0339D8A67A5F244>
+  <http://data.lblod.info/id/adressen/60097791291D6E000800002F>
+  }
+  GRAPH ?g {
+    ?s ?p ?o.
+  }
+}
+;
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o.
+  }
+}
+WHERE {
+  VALUES ?s {
+    <http://data.lblod.info/id/personen/62BDA309F0FB8E0008000012>
+    <http://data.lblod.info/id/personen/63B6F480FC8ADED667AD4F1A>
+  }
+  GRAPH ?g {
+    ?s ?p ?o.
+  }
+}
