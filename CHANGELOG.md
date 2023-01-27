@@ -1,4 +1,6 @@
 # Changelog
+## 0.13.3 (2023-01-17)
+- Correct wrong RO for 6 bestuurseenheden (Bisdom Antwerpen > Aartsbisdom Mechelen-Brussel)
 ## 0.13.2 (2023-01-17)
 - bug in accident ingesting triples from QA
 ## 0.13.1 (2023-01-03)
