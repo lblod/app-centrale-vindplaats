@@ -1,4 +1,7 @@
 # Changelog
+## 0.14.0 (2023-04-06)
+ - Added waarnemende Imam
+ - Updated publication rules
 ## 0.13.3 (2023-01-17)
 - Correct wrong RO for 6 bestuurseenheden (Bisdom Antwerpen > Aartsbisdom Mechelen-Brussel)
 ## 0.13.2 (2023-01-17)
