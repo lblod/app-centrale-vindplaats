@@ -41,145 +41,17 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36372fad-0358-499c-a4e3-f412d2eae213>.
 }.
 
-
-
-# DL and OP both use persoon:gebruikteVoornaam but with different semantics (!)
-# Hence the mapping is in two steps.
-# The first step maps the DL persoon:gebruikteVoornaam to the OP counterpart
-# and drops the DL persoon:gebruikteVoornaam statements with e:becomes
-# A second reasoning will map DL foaf:name to OP persoon:gebruikteVoornaam
-# Doing both at once would lead all DL foaf:names to incorrectly become foaf:givennames
-# in OP
-
-# First name
-#  foaf:givenName => persoon:gebruikteVoornaam
-# Alternatieve voornaam
-# persoon:gebruikteVoornaam => foaf:name
-
-# {
-#   {
-#     ?s foaf:givenName ?o
-#   } e:becomes {
-#     ?s persoon_loket:gebruikteVoornaam ?o
-#   }
-# } => {
-#   ?s persoon_loket:gebruikteVoornaam ?o
-# }.
-
-# {
-#   {
-#     ?s persoon:gebruikteVoornaam ?o
-#   } e:becomes {
-#     ?s foaf:name ?o
-#   }
-# } => {
-#   ?s foaf:name ?o
-# }.
-
-
+# adds backwards compatible besluit:classificatie
 {
-  ?s mandaat:start ?startDate.
-  # use backward arrow rule defined below
-  ?startDateTime :dateTimeFromDate ?startDate.
-  {
-    ?s mandaat:start ?startDate
-  } e:becomes {
-    ?s mandaat:start ?startDateTime
-  }.
-} => {
-  ?s mandaat:start ?startDateTime
-}.
-
-# ex:s <http://data.vlaanderen.be/ns/mandaat#einde> "2019-02-01T10:32:52+00:00"^^xsd:dateTime.
-{
-  ?s mandaat:einde ?eindeDate.
-  # use backward arrow rule defined below
-  ?eindeDateTime :dateTimeFromDate ?eindeDate.
-  {
-    ?s mandaat:einde ?eindeDate
-  } e:becomes {
-    ?s mandaat:einde ?eindeDateTime
-  }.
-} => {
-  ?s mandaat:einde ?eindeDateTime
-}.
-
-
-{
-  ?s mandaat:bindingStart ?bindingStartDateTime.
-  # use backward arrow rule defined below
-  ?bindingStartDateTime :dateFromDateTime ?bindingStartDate.
-  {
-    ?s mandaat:bindingStart ?bindingStartDateTime
-  } e:becomes {
-    ?s mandaat:bindingStart ?bindingStartDate
-  }.
-} => {
-  ?s mandaat:bindingStart ?bindingStartDate.
-}.
-
-{
-  ?s mandaat:bindingEinde ?bindingEindeDateTime.
-  # use backward arrow rule defined below
-  ?bindingEindeDateTime :dateFromDateTime ?bindingEindeDate.
-  {
-    ?s mandaat:bindingEinde ?bindingEindeDateTime
-  } e:becomes {
-    ?s mandaat:bindingEinde ?bindingEindeDate
-  }.
-} => {
-  ?s mandaat:bindingEinde ?bindingEindeDate.
-}.
-
-# Backward arrow rule is like a function call.
-# Removes time info in the returned date
-# The user in DL selects a date via the UI.
-# These dates are persisted as midnight dateTimes in UTC.
-# Meaning that 1st of July is stored as
-# "2022-06-30T22:00:00Z"^^xsd:dateTime
-# and 1 December
-# "2022-11-30T23:00:00Z"^^xsd:dateTime
-# So, the following rule adds 2 hours to the datetime, and then takes the date part of the UTC date time
-# to come to the date that the DL user selected (in CE(S)T)
-{
-   ?dateTime :dateFromDateTime ?date
-} <= {
-  (?dateTimeLiteral xsd:dateTime) log:dtlit ?dateTime.
-  (?dateTime "PT2H"^^xsd:dayTimeDuration) func:add-dayTimeDuration-to-dateTime ?localDateTime.
-  (?localDateTimeLiteral xsd:dateTime) log:dtlit ?localDateTime.
-  (?localDateTimeLiteral 0 11) func:substring ?dateLiteral.
-  (?dateLiteral xsd:date) log:dtlit ?date.
-}.
-
-{
-   ?dateTime :dateTimeFromDate ?date
-} <= {
-  (?dateLiteral xsd:date) log:dtlit ?date.
-  (?dateLiteral "T00:00:00Z") string:concatenation ?dateTimeLiteral.
-  (?dateTimeLiteral xsd:dateTime) log:dtlit ?dateTime.
-}.
-
-
-
-# ex:orgA besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>.
-{
-  {
-    ?s org:classification ?o
-  } e:becomes {
-    ?s besluit:classificatie ?o
-  }
+  ?s org:classification ?o
 } => {
   ?s besluit:classificatie ?o
 }.
 
 
-# Tijdspecialisatie
+# adds backwards compatible Tijdspecialisatie
 {
-  {
-    ?s generiek:isTijdspecialisatieVan ?o.
-  } e:becomes {
-    ?s mandaat:isTijdspecialisatieVan ?o.
-  }
+  ?s generiek:isTijdspecialisatieVan ?o.
 } => {
   ?s mandaat:isTijdspecialisatieVan ?o.
 }.
