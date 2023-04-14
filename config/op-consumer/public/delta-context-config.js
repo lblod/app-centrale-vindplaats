@@ -183,9 +183,67 @@ const contextConfig = {
               skos:prefLabel ?bestuurseenheidLabel.
           }
         }`
+    },
+    {
+      trigger: {
+        predicateValue: "mandaat:bindingStart"
+      },
+      queryTemplate: (subject) => `
+        ${PREFIXES}
+        CONSTRUCT {
+          ?bot
+            mandaat:isTijdspecialisatieVan ?bo;
+            ?p ?o.
+          ?bo besluit:bestuurt ?bestuurseenheid.
+          ?bestuurseenheid a ?type.
+        } WHERE {
+          GRAPH <http://mu.semte.ch/graphs/landing-zone/op-public> {
+            VALUES ?bot { ${subject} }
+            ?bot
+              generiek:isTijdspecialisatieVan ?bo;
+              ?p ?o.
+            ?bo besluit:bestuurt ?bestuurseenheid.
+
+            VALUES ?type {
+              <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>
+              <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan>
+              <https://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>
+            }
+            ?bestuurseenheid a ?type.
+          }
+        }`
+    },
+    {
+      trigger: {
+        predicateValue: "mandaat:bindingEinde"
+      },
+      queryTemplate: (subject) => `
+        ${PREFIXES}
+        CONSTRUCT {
+          ?bot
+            mandaat:isTijdspecialisatieVan ?bo;
+            ?p ?o.
+          ?bo besluit:bestuurt ?bestuurseenheid.
+          ?bestuurseenheid a ?type.
+        } WHERE {
+          GRAPH <http://mu.semte.ch/graphs/landing-zone/op-public> {
+            VALUES ?bot { ${subject} }
+            ?bot
+              generiek:isTijdspecialisatieVan ?bo;
+              ?p ?o.
+            ?bo besluit:bestuurt ?bestuurseenheid.
+
+            VALUES ?type {
+              <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>
+              <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan>
+              <https://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>
+            }
+            ?bestuurseenheid a ?type.
+          }
+        }`
     }
   ]
-}
+};
 
 module.exports = {
   contextConfig,
