@@ -22,6 +22,23 @@ PREFIX string: <http://www.w3.org/2000/10/swap/string#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 #################################################################
+#   ADMS identifier etc
+#################################################################
+{
+  ?s a <http://www.w3.org/ns/adms#Identifier>;
+    ?p ?o.
+} => {
+  ?s ?p ?o.
+}.
+
+{
+  ?s a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+    ?p ?o.
+} => {
+  ?s ?p ?o.
+}.
+
+#################################################################
 #   Worship services general:
 #################################################################
 
@@ -54,7 +71,6 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 #################################################################
 #    Bestuur van de eredienst
 #################################################################
-
 {
   ?s
     a
@@ -68,8 +84,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 }.
 
 {
-  ?s
-    a ere:BestuurVanDeEredienst;
+  ?s a ere:BestuurVanDeEredienst;
     mu:uuid ?uuid.
 } => {
   ?s
@@ -77,8 +92,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 }.
 
 {
-  ?s
-    a ere:BestuurVanDeEredienst;
+  ?s a ere:BestuurVanDeEredienst;
     skos:prefLabel ?label.
 } => {
   ?s
@@ -86,40 +100,32 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 }.
 
 {
-  ?s
-    besluit:classificatie
-      ?classificatie;
-    a ere:BestuurVanDeEredienst.
+  ?s a ere:BestuurVanDeEredienst;
+    <http://www.w3.org/ns/org#classification> ?o.
 } => {
-  ?s
-    besluit:classificatie
-      ?classificatie.
+  ?s <http://www.w3.org/ns/org#classification> ?o.
 }.
-
-# {
-#   ?s
-#     ext:kbonummer ?o
-# } => {
-#   ?s
-#     ext:kbonummer ?o.
-# }.
 
 {
-  ?s
-    dcterms:identifier ?o
+  ?s a ere:BestuurVanDeEredienst;
+    <http://www.w3.org/ns/adms#identifier> ?o.
 } => {
-  ?s
-    dcterms:identifier ?o.
+  ?s <http://www.w3.org/ns/adms#identifier> ?o.
 }.
 
-# {
-#   ?s
-#     ext:inProvincie ?o;
-#     a ere:BestuurVanDeEredienst.
-# } => {
-#   ?s
-#     ext:inProvincie ?o.
-# }.
+{
+  ?s a ere:BestuurVanDeEredienst;
+    besluit:classificatie ?classificatie.
+} => {
+?s besluit:classificatie ?classificatie.
+}.
+
+{
+  ?s a ere:BestuurVanDeEredienst;
+    <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+} => {
+  ?s <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+}.
 
 
 #################################################################
@@ -166,42 +172,32 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 }.
 
 {
-  ?s
-    besluit:classificatie
-      ?classificatie;
-    a ere:RepresentatiefOrgaan.
+  ?s a ere:RepresentatiefOrgaan;
+    <http://www.w3.org/ns/org#classification> ?o.
 } => {
-  ?s
-    besluit:classificatie
-      ?classificatie.
+  ?s <http://www.w3.org/ns/org#classification> ?o.
 }.
-
-# {
-#   ?s
-#     ext:kbonummer ?o;
-#     a ere:RepresentatiefOrgaan.
-# } => {
-#   ?s
-#     ext:kbonummer ?o.
-# }.
 
 {
-  ?s
-    dcterms:identifier ?o;
-    a ere:RepresentatiefOrgaan.
+  ?s a ere:RepresentatiefOrgaan;
+    <http://www.w3.org/ns/adms#identifier> ?o.
 } => {
-  ?s
-    dcterms:identifier ?o.
+  ?s <http://www.w3.org/ns/adms#identifier> ?o.
 }.
 
-# {
-#   ?s
-#     ext:inProvincie ?o;
-#     a ere:RepresentatiefOrgaan.
-# } => {
-#   ?s
-#     ext:inProvincie ?o.
-# }.
+{
+  ?s a ere:RepresentatiefOrgaan;
+    besluit:classificatie ?classificatie.
+} => {
+?s besluit:classificatie ?classificatie.
+}.
+
+{
+  ?s a ere:RepresentatiefOrgaan;
+    <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+} => {
+  ?s <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+}.
 
 
 #################################################################
@@ -248,42 +244,32 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 }.
 
 {
-  ?s
-    besluit:classificatie
-      ?classificatie;
-    a ere:CentraalBestuurVanDeEredienst.
+  ?s a ere:CentraalBestuurVanDeEredienst;
+    <http://www.w3.org/ns/org#classification> ?o.
 } => {
-  ?s
-    besluit:classificatie
-      ?classificatie.
+  ?s <http://www.w3.org/ns/org#classification> ?o.
 }.
-
-# {
-#   ?s
-#     ext:kbonummer ?o;
-#     a ere:CentraalBestuurVanDeEredienst.
-# } => {
-#   ?s
-#     ext:kbonummer ?o.
-# }.
 
 {
-  ?s
-    dcterms:identifier ?o;
-    a ere:CentraalBestuurVanDeEredienst.
+  ?s a ere:CentraalBestuurVanDeEredienst;
+    <http://www.w3.org/ns/adms#identifier> ?o.
 } => {
-  ?s
-    dcterms:identifier ?o.
+  ?s <http://www.w3.org/ns/adms#identifier> ?o.
 }.
 
-# {
-#   ?s
-#     ext:inProvincie ?o;
-#     a ere:CentraalBestuurVanDeEredienst.
-# } => {
-#   ?s
-#     ext:inProvincie ?o.
-# }.
+{
+  ?s a ere:CentraalBestuurVanDeEredienst;
+    besluit:classificatie ?classificatie.
+} => {
+?s besluit:classificatie ?classificatie.
+}.
+
+{
+  ?s a ere:CentraalBestuurVanDeEredienst;
+    <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+} => {
+  ?s <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+}.
 
 
 #################################################################
@@ -407,6 +393,13 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 }.
 
 {
+  ?s a besluit:Bestuursorgaan;
+    <http://www.w3.org/ns/org#classification> ?o.
+} => {
+  ?s <http://www.w3.org/ns/org#classification> ?o.
+}.
+
+{
   ?s
     a besluit:Bestuursorgaan;
     skos:prefLabel ?label.
@@ -417,24 +410,6 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 #################################################################
 #  Bestuursorgaan IN time
 #################################################################
-
-#  already queried in the bestuursorgaan not in time
-# {
-#   ?s
-    # besluit:Bestuursorgaan.
-# } => {
-#   ?s
-    # besluit:Bestuursorgaan.
-# }.
-
-# {
-#   ?s
-    # besluit:Bestuursorgaan;
-#    mu:uuid ?uuid.
-# } => {
-#   ?s mu:uuid ?uuid.
-# }.
-
 {
   ?s org:hasPost ?o;
     a besluit:Bestuursorgaan.
@@ -450,18 +425,82 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 }.
 
 {
-  ?s mandaat:bindingStart ?o;
+  ?s <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?o;
     a besluit:Bestuursorgaan.
+} => {
+  ?s <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?o.
+}.
+
+# Filtering only the Bestuursorgaan IN time matching eredienst admin units
+# There is complication with normal admin units, hence the filter (date vs datetime)
+# Please ping @cecemel if you have a more compact way of writing these rules
+
+{
+  ?s a besluit:Bestuursorgaan;
+    mandaat:bindingStart ?o;
+    mandaat:isTijdspecialisatieVan ?bo.
+
+  ?bo besluit:bestuurt ?bestuurseenheid.
+  ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>.
 } => {
   ?s mandaat:bindingStart ?o.
 }.
 
 {
-  ?s mandaat:bindingEinde ?o;
-    a besluit:Bestuursorgaan.
+  ?s a besluit:Bestuursorgaan;
+    mandaat:bindingStart ?o;
+    mandaat:isTijdspecialisatieVan ?bo.
+
+  ?bo besluit:bestuurt ?bestuurseenheid.
+  ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan>.
+} => {
+  ?s mandaat:bindingStart ?o.
+}.
+
+{
+  ?s a besluit:Bestuursorgaan;
+    mandaat:bindingStart ?o;
+    mandaat:isTijdspecialisatieVan ?bo.
+
+  ?bo besluit:bestuurt ?bestuurseenheid.
+  ?bestuurseenheid a <https://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>.
+} => {
+  ?s mandaat:bindingStart ?o.
+}.
+
+{
+  ?s a besluit:Bestuursorgaan;
+    mandaat:bindingEinde ?o;
+    mandaat:isTijdspecialisatieVan ?bo.
+
+  ?bo besluit:bestuurt ?bestuurseenheid.
+  ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>.
 } => {
   ?s mandaat:bindingEinde ?o.
 }.
+
+{
+  ?s a besluit:Bestuursorgaan;
+    mandaat:bindingEinde ?o;
+    mandaat:isTijdspecialisatieVan ?bo.
+
+  ?bo besluit:bestuurt ?bestuurseenheid.
+  ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan>.
+} => {
+  ?s mandaat:bindingEinde ?o.
+}.
+
+{
+  ?s a besluit:Bestuursorgaan;
+    mandaat:bindingEinde ?o;
+    mandaat:isTijdspecialisatieVan ?bo.
+
+  ?bo besluit:bestuurt ?bestuurseenheid.
+  ?bestuurseenheid a <https://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>.
+} => {
+  ?s mandaat:bindingEinde ?o.
+}.
+
 
 #################################################################
 # Mandaat
@@ -491,24 +530,28 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 }.
 
 #################################################################
-#  Bestuurseenheid
+#  Vestiging etc
 #################################################################
-
 {
-  ?s
-    ere:betrokkenBestuur ?o;
-    a besluit:Bestuurseenheid.
-
+  ?site a <http://www.w3.org/ns/org#Site>;
+    ?siteP ?siteO.
 } => {
-  ?s ere:betrokkenBestuur ?o.
+  ?site a <http://www.w3.org/ns/org#Site>;
+    ?siteP ?siteO.
 }.
 
-
 {
-  ?s
-    a besluit:Bestuurseenheid;
-    mu:uuid ?uuid.
+  ?address a <http://www.w3.org/ns/locn#Address>;
+    ?addressP ?addressO.
 } => {
-  ?s mu:uuid ?uuid.
+  ?address a <http://www.w3.org/ns/locn#Address>;
+    ?addressP ?addressO.
 }.
 
+{
+  ?vestigingType a <http://lblod.data.gift/vocabularies/organisatie/TypeVestiging>;
+    ?vestigingTypeP ?vestigingTypeO.
+} => {
+  ?vestigingType a <http://lblod.data.gift/vocabularies/organisatie/TypeVestiging>;
+    ?vestigingTypeP ?vestigingTypeO.
+}.
