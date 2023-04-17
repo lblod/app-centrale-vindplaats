@@ -85,6 +85,10 @@ The app comes with no data, because it depends on external datasources.
   *  [Mandatendatabank (sourced by loket)](https://loket.lokaalbestuur.vlaanderen.be/)
   *  [Leidinggevendendatabank (sourced by loket)](https://loket.lokaalbestuur.vlaanderen.be/)
   *  [lblod-harvester](https://lblod-harvester.lokaalbestuur.vlaanderen.be/)
+  *  [Organisations portal](https://organisaties.abb.vlaanderen.be)
+    * Note:
+      - this app also has a development and qa environment available.
+      - it only syncs worship administrative units
 
 You can follow the following procedure, for all data sources.
 
@@ -98,8 +102,8 @@ To proceed (similar for mandaten and leidinggevenden):
 # (...)
   besluiten-consumer:
     environment:
-      SYNC_BASE_URL: 'https://dev.harvesting-self-service.lblod.info/' # The endpoint of your choice (see later what to choose)
-      DISABLE_INITIAL_SYNC: 'false'
+      DCR_SYNC_BASE_URL: 'https://dev.harvesting-self-service.lblod.info/' # The endpoint of your choice (see later what to choose)
+      DCR_DISABLE_INITIAL_SYNC: 'false'
       BATCH_SIZE: 100 # if virtuoso is in prod mode, you can safely beef this up to 500/1000
 ```
 3. `docker-compose up -d besluiten-consumer` should start the ingestion.

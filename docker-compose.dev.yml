@@ -37,3 +37,7 @@ services:
     restart: "no"
   besluiten-consumer:
     restart: "no"
+  reasoner:
+    restart: "no"
+  op-public-consumer:
+    restart: "no"
