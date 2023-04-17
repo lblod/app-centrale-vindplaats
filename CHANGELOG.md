@@ -1,4 +1,6 @@
 # Changelog
+## 0.15.0 (2023-04-17)
+ - added OP consumer
 ## 0.14.0 (2023-04-06)
  - Added waarnemende Imam
  - Updated publication rules
