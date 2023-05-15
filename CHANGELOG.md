@@ -1,4 +1,9 @@
 # Changelog
+## Unreleased
+### Erediensten
+  - flush, rerun op sync migrations to fix typeBetrokkenheid
+### Deploy instructions
+  - re-sync erediensten from OP
 ## 0.16.1 (2023-05-04)
  - updated wrong organen labels
 ## 0.16.0 (2023-04-24)
