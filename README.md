@@ -89,6 +89,7 @@ The app comes with no data, because it depends on external datasources.
     * Note:
       - this app also has a development and qa environment available.
       - it only syncs worship administrative units
+### Steps
 
 You can follow the following procedure, for all data sources.
 
@@ -127,6 +128,49 @@ To proceed (similar for mandaten and leidinggevenden):
     ORDER BY DESC(?created)
    ```
 5. `drc restart resource cache` is still needed after the intiial sync.
+
+#### OP consumer
+
+- The next steps assume `.env` file has been set, cf. supra.
+- Ensure the following configuration is defined in the `docker-compose.override.yml`
+  ```
+  op-public-consumer:
+      environment:
+        DCR_SYNC_BASE_URL: "https://organisaties.abb.vlaanderen.be"
+        DCR_DISABLE_INITIAL_SYNC: "true"
+        DCR_DISABLE_DELTA_INGEST: "true"
+  update-bestuurseenheid-mock-login:
+      entrypoint: ["echo", "Service-disabled to not confuse the service"]
+  ```
+- `docker-compose up -d`
+- Ensure all migrations have run and the stack is started and running properly.
+- Extra step in case of a resync, run:
+  ```
+  docker-compose exec op-public-consumer curl -X POST http://localhost/flush
+  docker-compose logs -f --tail=200 op-public-consumer`
+  ```
+    - This should end with `Flush successful`.
+- Update `docker-compose.override.yml` with
+    ```
+    op-public-consumer:
+      environment:
+        DCR_SYNC_BASE_URL: "https://organisaties.abb.vlaanderen.be"
+        DCR_DISABLE_INITIAL_SYNC: "false" # -> this changed
+        DCR_DISABLE_DELTA_INGEST: "false" # -> this changed
+    update-bestuurseenheid-mock-login:
+      entrypoint: ["echo", "Service-disabled to not confuse the service"]
+  ```
+- `docker-compose up -d`
+- This might take a while if `docker-compose logs op-public-consumer | grep success`
+      Returns: `Initial sync http://redpencil.data.gift/id/job/URI has been successfully run`; you should be good.
+      (Your computer will also stop making noise)
+- In `docker-compose.override.yml`, remove the disabled service
+  ```
+   update-bestuurseenheid-mock-login:
+     entrypoint: ["echo", "Service-disabled to not confuse the service"]
+  ```
+  The mock-logins will be created when a cron job kicks in. You can control the moment it triggers by playing with the `CRON_PATTERN` variable.
+  See the `README.md` of the related service for more options.
 
 ### Additional notes:
 #### Endpoints to choose for ingestion.
