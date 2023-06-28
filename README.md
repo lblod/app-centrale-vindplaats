@@ -118,15 +118,15 @@ To proceed (similar for mandaten and leidinggevenden):
    PREFIX cogs: <http://vocab.deri.ie/cogs#>
 
    SELECT ?s ?status ?created WHERE {
-     ?s a <http://vocab.deri.ie/cogs#Job> ;
+     ?s a cogs:Job ;
        adms:status ?status ;
        task:operation <http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/besluiten> ;
        dct:created ?created ;
-       dct:creator <http://data.lblod.info/services/id/mandatendatabank-consumer> .
+       dct:creator <http://data.lblod.info/services/id/besluiten-consumer> .
     }
     ORDER BY DESC(?created)
    ```
-5. `drc restart resource cache` is still needed after the intiial sync.
+5. `drc restart resource cache` is still needed after the initial sync.
 
 ### Additional notes:
 #### Endpoints to choose for ingestion.
