@@ -5,7 +5,11 @@
  - bump consumers
  - remove obsolete services
 ### Erediensten
-  - flush, rerun op sync migrations to fix typeBetrokkenheid
+  - flush, rerun op sync migrations to fix typeBetrokkenheid. (see `README.md`)
+  - once done:
+  ```
+  drc up -d --remove-orphans
+  ```
 ### Deploy instructions
   - re-sync erediensten from OP
 ## 0.16.1 (2023-05-04)
