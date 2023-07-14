@@ -126,7 +126,7 @@ services:
     volumes:
       - ./config/delta-consumer/report-generator:/config
   mandatendatabank-consumer:
-      image: lblod/delta-consumer:0.0.12
+      image: lblod/delta-consumer:0.0.19
       environment:
         DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
         DCR_SERVICE_NAME: "mandatendatabank-consumer"
@@ -147,7 +147,7 @@ services:
         - "logging=true"
       logging: *default-logging
   leidinggevenden-consumer:
-    image: lblod/delta-consumer:0.0.12
+    image: lblod/delta-consumer:0.0.19
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
       DCR_SERVICE_NAME: "leidinggevenden-consumer"
@@ -167,7 +167,7 @@ services:
     labels:
       - "logging=true"
   besluiten-consumer:
-    image: lblod/delta-consumer:0.0.12
+    image: lblod/delta-consumer:0.0.19
     environment:
       DCR_SYNC_BASE_URL: "https://dev.harvesting-self-service.lblod.info/"
       DCR_SERVICE_NAME: "besluiten-consumer"
