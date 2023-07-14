@@ -1,5 +1,9 @@
 # Changelog
 ## Unreleased
+### General
+ - documentation
+ - bump consumers
+ - remove obsolete services
 ### Erediensten
   - flush, rerun op sync migrations to fix typeBetrokkenheid
 ### Deploy instructions
