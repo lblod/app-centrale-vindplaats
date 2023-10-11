@@ -2142,6 +2142,15 @@ BesluitType:d463b6d1-c207-4c1a-8c08-f2c7dd1fa53b
     skos:inScheme conceptscheme:BesluitType ;
     skos:topConceptOf conceptscheme:BesluitType .
 
+BesluitType:df483116-be05-4a2b-a68a-baf355c9bd81
+    a skos:Concept ;
+    core:uuid "df483116-be05-4a2b-a68a-baf355c9bd81" ;
+    besluit:notificationRule lblodRule:17a96e58-4670-4fdc-9cc3-e4250919a3b5;
+    skos:definition "Definitieve beslissing tot fusie: de gemeenten keuren het gezamenlijke fusievoorstel goed als ze op basis van de resultaten van het voorbereidend onderzoek effectief tot een fusie willen overgaan." ;
+    skos:prefLabel "Gezamenlijk voorstel tot fusie" ;
+    skos:inScheme conceptscheme:BesluitType ;
+    skos:topConceptOf conceptscheme:BesluitType .
+
 # UPDATE 2022-10
 
 lblodRule:fd76c6e6-43eb-4c4f-a11d-fa3fd689b971
@@ -2288,3 +2297,10 @@ lblodRule:210ebee2-a6d1-44f9-aafe-b36e635a1f6e
     sch:validThrough "2019-01-01T01:00:00"^^xsd:dateTime ;
     besluit:decidableBy BestuurseenheidClassificatieCode:66ec74fd-8cfc-4e16-99c6-350b35012e86 ;
     besluit:obligationToReport "true"^^xsd:boolean . 
+
+ lblodRule:17a96e58-4670-4fdc-9cc3-e4250919a3b5
+	a rule:NotificationRule ;
+	core:uuid "17a96e58-4670-4fdc-9cc3-e4250919a3b5" ;
+    sch:validThrough "2019-01-01T01:00:00"^^xsd:dateTime ;
+    besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ;
+    besluit:obligationToReport "false"^^xsd:boolean .
