@@ -2303,4 +2303,4 @@ lblodRule:210ebee2-a6d1-44f9-aafe-b36e635a1f6e
 	core:uuid "17a96e58-4670-4fdc-9cc3-e4250919a3b5" ;
     sch:validThrough "2019-01-01T01:00:00"^^xsd:dateTime ;
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ;
-    besluit:obligationToReport "false"^^xsd:boolean .
+    besluit:obligationToReport "true"^^xsd:boolean .
