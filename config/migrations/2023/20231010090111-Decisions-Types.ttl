@@ -1533,7 +1533,7 @@ lblodRule:1f21f0df-4956-4665-9889-f2f1ea1824be
     #sch:validThrough "2022-12-01T01:00:00"^^xsd:dateTime ;
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000000 ,
                         BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ;
-    besluit:obligationToReport "false"^^xsd:boolean .
+    besluit:obligationToReport "true"^^xsd:boolean .
 
 lblodRule:0195bbba-1eac-4055-919d-8c1c21ded10d
     a rule:NotificationRule ;
@@ -1682,7 +1682,7 @@ lblodRule:3484e758-44c4-49d3-a0ca-82734156fd7a
     #sch:validThrough "2022-12-01T01:00:00"^^xsd:dateTime ;
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000000 ,
                         BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ;
-    besluit:obligationToReport "false"^^xsd:boolean .
+    besluit:obligationToReport "true"^^xsd:boolean .
 
 lblodRule:937ff493-2e7d-45d9-a23f-aa84454cd2a1
     a rule:NotificationRule ;
@@ -1799,6 +1799,7 @@ lblodRule:2540a331-67f6-47d2-9a12-ea191b315be5
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000000 ,
                         BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ,
                         BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000002 ,
+                        BestuurseenheidClassificatieCode:36a82ba0-7ff1-4697-a9dd-2e94df73b721 ,
                         BestuurseenheidClassificatieCode:80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d ,
                         BestuurseenheidClassificatieCode:cc4e2d67-603b-4784-9b61-e50bac1ec089 ,
                         BestuurseenheidClassificatieCode:cd93f147-3ece-4308-acab-5c5ada3ec63d ,
@@ -1810,8 +1811,7 @@ lblodRule:7fde1283-f580-4452-a5c4-f2234990d6e9
     core:uuid "7fde1283-f580-4452-a5c4-f2234990d6e9" ;
     sch:validFrom "2022-05-01T01:00:00"^^xsd:dateTime ;
     #sch:validThrough "2022-12-01T01:00:00"^^xsd:dateTime ;
-    besluit:decidableBy BestuurseenheidClassificatieCode:36a82ba0-7ff1-4697-a9dd-2e94df73b721 ,
-                        BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000003 ;
+    besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000003 ;
     besluit:obligationToReport "false"^^xsd:boolean .
 
 lblodRule:b3a161a0-3188-457d-8234-c29a01e33829
