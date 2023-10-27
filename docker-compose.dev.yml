@@ -35,8 +35,6 @@ services:
     restart: "no"
   leidinggevenden-consumer:
     restart: "no"
-  besluiten-consumer:
-    restart: "no"
   reasoner:
     restart: "no"
   op-public-consumer:

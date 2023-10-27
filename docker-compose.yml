@@ -166,27 +166,6 @@ services:
     restart: always
     labels:
       - "logging=true"
-  besluiten-consumer:
-    image: lblod/delta-consumer:0.0.19
-    environment:
-      DCR_SYNC_BASE_URL: "https://dev.harvesting-self-service.lblod.info/"
-      DCR_SERVICE_NAME: "besluiten-consumer"
-      DCR_SYNC_FILES_PATH: "/sync/besluiten/files"
-      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/lblod-harvester/BesluitenCacheGraphDump"
-      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/besluiten"
-      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/besluitenSyncing"
-      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/besluiten-consumer"
-      DCR_KEEP_DELTA_FILES: "true"
-      DCR_DELTA_FILE_FOLDER: "/consumer-files"
-      DCR_DISABLE_INITIAL_SYNC: "true" # toggle this in override, leave 'true' in default docker-compose.yml
-      BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: 'true'
-      BATCH_SIZE: 1000
-    volumes:
-      - ./data/files/consumer-files/besluiten:/consumer-files/
-    restart: always
-    labels:
-      - "logging=true"
-    logging: *default-logging
   ################################################################################
   # OP PUBLIC CONSUMER
   ################################################################################
