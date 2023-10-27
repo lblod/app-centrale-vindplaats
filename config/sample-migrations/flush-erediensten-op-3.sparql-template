@@ -1,0 +1,37 @@
+# remaining
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s ?p ?o.
+  }
+}
+WHERE {
+  VALUES ?type {
+    <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>
+    <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan>
+    <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>
+    <http://data.lblod.info/vocabularies/erediensten/BetrokkenLokaleBesturen>
+    <http://data.lblod.info/vocabularies/erediensten/PositieBedienaar>
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a ?type;
+      ?p ?o.
+  }
+}
+
+;
+
+# betrokken lokaal bestuur
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> ?o.
+  }
+}
+WHERE {
+  VALUES ?type {
+    <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a ?type;
+      <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> ?o.
+  }
+}
