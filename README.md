@@ -9,11 +9,11 @@
 * [List of services](#list-of-services)
 * [Setup](#setup)
 * [Importing Data](#importing-data)
-   *  [Data sources](#data-sources)
+   * [Data sources](#data-sources)
  * [Frontend](#frontend)
    * [Technologies](#technologies)
-   *  [Usage](#usage)
-   *  [Environment](#environment)
+   * [Usage](#usage)
+   * [Environment](#environment)
 * [Debugging/logging](#debugginglogging)
 * [More information](#more-information)
 
@@ -21,7 +21,7 @@
 
 ## Description
 
-This App is part of the program  <b> Lokale Besluiten als Gelinkt Open Data </b> (lblod). It provides user-friendly interface to lookup data using Sparql, accessing that data in both a human as well as a machine readable way.  Based on the mu-semtech microservice architecture for the backend en Emberjs for the frontend.
+This App is part of the program  <b> Lokale Besluiten als Gelinkt Open Data </b> (lblod). It provides user-friendly interface to lookup data using Sparql, accessing that data in both a human as well as a machine readable way.  Based on the mu-semtech microservice architecture for the backend and Emberjs for the frontend.
 
 <br>
 
@@ -108,7 +108,7 @@ To proceed (similar for mandaten and leidinggevenden):
       BATCH_SIZE: 100 # if virtuoso is in prod mode, you can safely beef this up to 500/1000
 ```
 3. `docker-compose up -d besluiten-consumer` should start the ingestion.
-  This might take a while if yoh ingest production data.
+  This might take a while if you ingest production data.
 4. Check the logs, at some point this message should show up
   `Initial sync was success, proceeding in Normal operation mode: ingest deltas`
    or execute in the database:
@@ -119,15 +119,15 @@ To proceed (similar for mandaten and leidinggevenden):
    PREFIX cogs: <http://vocab.deri.ie/cogs#>
 
    SELECT ?s ?status ?created WHERE {
-     ?s a <http://vocab.deri.ie/cogs#Job> ;
+     ?s a cogs:Job ;
        adms:status ?status ;
        task:operation <http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/besluiten> ;
        dct:created ?created ;
-       dct:creator <http://data.lblod.info/services/id/mandatendatabank-consumer> .
+       dct:creator <http://data.lblod.info/services/id/besluiten-consumer> .
     }
     ORDER BY DESC(?created)
    ```
-5. `drc restart resource cache` is still needed after the intiial sync.
+5. `drc restart resource cache` is still needed after the initial sync.
 
 #### OP consumer
 
@@ -175,7 +175,7 @@ To proceed (similar for mandaten and leidinggevenden):
 ### Additional notes:
 #### Endpoints to choose for ingestion.
 On abstract level, all applications which produce deltas provided `delta-producer-*` services set, and talk about the AP-model defined in [mandatendatabank](http://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank) or [besluit publicatie](https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/)
-In practice, it is going to be loket and harvester apps, and their dev and QA variations.
+In practice, it is going to be loket and harvester apps, and their `dev` and `qa` variations.
 #### Performance
 - The default virtuoso settings might be too weak if you need to ingest the production data. Hence, there is better config, you can take over in your `docker-compose.override.yml`
 ```
@@ -194,29 +194,24 @@ Should have credentials provided, see [deliver-email-service](https://github.com
 
 ### Technologies
 
-The frontend is what the user actually interacts with. With the use of our addons you are presented with a sparql interface and when visiting different routes with the corresponding , rdf-friendly, data.
+The frontend is what the user actually interacts with. With the use of our addons you are presented with a sparql interface and when visiting different routes with the corresponding rdf-friendly data.
 It is build on top of the [Ember.js](https://emberjs.com/) framework. And server side rendered by [Fastboot](#https://ember-fastboot.com/)
 
-
 ### Usage
-When you first visit the ```http://localhost:80``` you will be redirected to a sparql interface. This will already have performed a search query that presents you with data from the database. ( Only in case your migrations folder and therefor Triplestore is populated with data ). If you are running the app locally and you want to get more information about a subject then you will have to copy part of the url into your browsers searchbar.
-
+When you first visit the ```http://localhost:80``` you will be redirected to a sparql interface. This will already have performed a search query that presents you with data from the database (only in case your migrations folder and therefor Triplestore is populated with data). If you are running the app locally and you want to get more information about a subject then you will have to copy part of the url into your browsers searchbar.
 
 ##### Example
  * The results of on the sparql route will probably be displayed like so:
    ```Subject-uri | predicate-uri | object-uri```
-
  * Let's take an arbitrary subject-uri as an example
 ```<http://data.lblod.info/id/bestuursorganen/293a6433b88c65f11071c86fff60459cfa80c6623984e9da9757a6e4c648c079>```
-
- * Trim of the the protocol, subdomain and domain name so you only have the path left
+ * Trim of the protocol, subdomain and domain name so you only have the path left
     ```/id/bestuursorganen/293a6433b88c65f11071c86fff60459cfa80c6623984e9da9757a6e4c648c079>```
-
  *  Inside your searchbar, prepend that path by ``` http://localhost:80``` and hit enter
      ```http://localhost:80/id/bestuursorganen/293a6433b88c65f11071c86fff60459cfa80c6623984e9da9757a6e4c648c079>```
 
 
- If info exists about that subject then you should be met by a table with data about that uri, both direct and invers. The [resource-label](https://github.com/lblod/resource-label-service) service automatically looks for labels & description for each uri and displays them if they exists. You can now just simply click through each link that starts with ```http://data.lblod.info/``` to get more information of the clicked uri inside this frontend or click on any other link to get redirected outside it.
+If info exists about that subject then you should be met by a table with data about that uri, both direct and invers. The [resource-label](https://github.com/lblod/resource-label-service) service automatically looks for labels & description for each uri and displays them if they exist. You can now just simply click through each link that starts with ```http://data.lblod.info/``` to get more information of the clicked uri inside this frontend or click on any other link to get redirected outside it.
 
 ### Environment
 
