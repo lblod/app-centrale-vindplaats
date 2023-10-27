@@ -126,7 +126,7 @@ services:
     volumes:
       - ./config/delta-consumer/report-generator:/config
   mandatendatabank-consumer:
-      image: lblod/delta-consumer:0.0.19
+      image: lblod/delta-consumer:0.0.21
       environment:
         DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
         DCR_SERVICE_NAME: "mandatendatabank-consumer"
