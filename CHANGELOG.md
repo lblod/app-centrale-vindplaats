@@ -1,4 +1,7 @@
 # Changelog
+## 0.17.3 (2023-11-09)
+- bump consumers
+- fix endpoint
 ## 0.17.2 (2023-11-09)
 - fix endpoint in intial sync
 ## 0.17.1 (2023-10-30)
