@@ -1,4 +1,6 @@
 # Changelog
+## 0.17.2 (2023-11-09)
+- fix endpoint in intial sync
 ## 0.17.1 (2023-10-30)
 - fix migration
 ## 0.17.0 (2023-10-30)
