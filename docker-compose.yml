@@ -82,7 +82,7 @@ services:
       - "logging=true"
     logging: *default-logging
   virtuoso:
-    image: tenforce/virtuoso:1.3.2-virtuoso7.2.2
+    image: redpencil/virtuoso:1.2.0-rc.1
     environment:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/graphs/public"
@@ -126,7 +126,7 @@ services:
     volumes:
       - ./config/delta-consumer/report-generator:/config
   mandatendatabank-consumer:
-      image: lblod/delta-consumer:0.0.19
+      image: lblod/delta-consumer:0.0.23
       environment:
         DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
         DCR_SERVICE_NAME: "mandatendatabank-consumer"
@@ -147,7 +147,7 @@ services:
         - "logging=true"
       logging: *default-logging
   leidinggevenden-consumer:
-    image: lblod/delta-consumer:0.0.19
+    image: lblod/delta-consumer:0.0.23
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
       DCR_SERVICE_NAME: "leidinggevenden-consumer"
@@ -166,27 +166,6 @@ services:
     restart: always
     labels:
       - "logging=true"
-  besluiten-consumer:
-    image: lblod/delta-consumer:0.0.19
-    environment:
-      DCR_SYNC_BASE_URL: "https://dev.harvesting-self-service.lblod.info/"
-      DCR_SERVICE_NAME: "besluiten-consumer"
-      DCR_SYNC_FILES_PATH: "/sync/besluiten/files"
-      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/lblod-harvester/BesluitenCacheGraphDump"
-      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/besluiten"
-      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/besluitenSyncing"
-      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/besluiten-consumer"
-      DCR_KEEP_DELTA_FILES: "true"
-      DCR_DELTA_FILE_FOLDER: "/consumer-files"
-      DCR_DISABLE_INITIAL_SYNC: "true" # toggle this in override, leave 'true' in default docker-compose.yml
-      BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: 'true'
-      BATCH_SIZE: 1000
-    volumes:
-      - ./data/files/consumer-files/besluiten:/consumer-files/
-    restart: always
-    labels:
-      - "logging=true"
-    logging: *default-logging
   ################################################################################
   # OP PUBLIC CONSUMER
   ################################################################################
@@ -199,7 +178,7 @@ services:
       - "logging=true"
     logging: *default-logging
   op-public-consumer:
-    image: lblod/delta-consumer:0.0.19
+    image: lblod/delta-consumer:0.0.23
     environment:
       DCR_SERVICE_NAME: "op-public-consumer"
       DCR_SYNC_BASE_URL: "https://organisaties.abb.lblod.info" # replace with link to OP API
@@ -214,7 +193,7 @@ services:
       FILE_SYNC_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
       KEEP_DELTA_FILES: "true"
       DCR_ENABLE_DELTA_CONTEXT: "true"
-      DCR_LANDING_ZONE_DATABASE: "virtuoso"
+      DCR_LANDING_ZONE_DATABASE_ENDPOINT: "http://virtuoso:8890/sparql"
       DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/op-public"
     volumes:
       - ./config/op-consumer/public:/config/triples-dispatching/custom-dispatching

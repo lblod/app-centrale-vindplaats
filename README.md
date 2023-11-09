@@ -79,55 +79,149 @@ Simply visit http://localhost:80 and you will redirected to the yasgui sparql in
 
   <br>
 
-## Ingesting data
-The app comes with no data, because it depends on external datasources.
+### Sync data external data consumers
+The procedure below describes how to set up the sync for `op-public-consumer`.
+The procedures should be the similar for `leidinggevenden-consumer` and `mandatendatabank-consumer`. If there are variations in the steps for these consumers, it will be noted.
 
-  *  [Mandatendatabank (sourced by loket)](https://loket.lokaalbestuur.vlaanderen.be/)
-  *  [Leidinggevendendatabank (sourced by loket)](https://loket.lokaalbestuur.vlaanderen.be/)
-  *  [lblod-harvester](https://lblod-harvester.lokaalbestuur.vlaanderen.be/)
-  *  [Organisations portal](https://organisaties.abb.vlaanderen.be)
-    * Note:
-      - this app also has a development and qa environment available.
-      - it only syncs worship administrative units
-### Steps
+The synchronization of external data sources is a structured process divided into three key stages. The first stage, known as 'initial sync', requires manual interventions primarily due to performance considerations. Following this, there's a post-processing stage, where depending on the delta-consumer stream, it may be necessary to initiate certain background processes to ensure system consistency. The final stage involves transitioning the system to the 'normal operation' mode, wherein all functions are designed to be executed automatically.
 
-You can follow the following procedure, for all data sources.
+##### 1. Initial sync
+##### From scratch
+Setting up the sync should happen work with the following steps:
 
-The ingestion should be a one time operation per deployment, and is currenlty semi-automatic for various reasons (mainly related to performance)
-The ingestion is disabled by default. It is recommended, for performance, to start only one initial ingest at a time.
+- ensure docker-compose.override.yml has AT LEAST the following information
 
-To proceed (similar for mandaten and leidinggevenden):
-1. make sure the app is up and running. And the migrations have run.
-2. In docker-compose.override.yml (preferably) override the following parameters for mandatendatabank-consumer
-```
-# (...)
-  besluiten-consumer:
+```yml
+version: '3.7'
+
+services:
+#(...) there might be other services
+
+  op-public-consumer:
     environment:
-      DCR_SYNC_BASE_URL: 'https://dev.harvesting-self-service.lblod.info/' # The endpoint of your choice (see later what to choose)
-      DCR_DISABLE_INITIAL_SYNC: 'false'
-      BATCH_SIZE: 100 # if virtuoso is in prod mode, you can safely beef this up to 500/1000
+      DCR_SYNC_BASE_URL: "https://organisaties.abb.vlaanderen.be/" # you choose endpoint here
+      DCR_DISABLE_DELTA_INGEST: "true"
+      DCR_DISABLE_INITIAL_SYNC: "true"
+# (...) there might be other information
 ```
-3. `docker-compose up -d besluiten-consumer` should start the ingestion.
-  This might take a while if you ingest production data.
-4. Check the logs, at some point this message should show up
-  `Initial sync was success, proceeding in Normal operation mode: ingest deltas`
-   or execute in the database:
-   ```
-   PREFIX adms: <http://www.w3.org/ns/adms#>
-   PREFIX task: <http://redpencil.data.gift/vocabularies/tasks/>
-   PREFIX dct: <http://purl.org/dc/terms/>
-   PREFIX cogs: <http://vocab.deri.ie/cogs#>
 
-   SELECT ?s ?status ?created WHERE {
-     ?s a cogs:Job ;
-       adms:status ?status ;
-       task:operation <http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/besluiten> ;
-       dct:created ?created ;
-       dct:creator <http://data.lblod.info/services/id/besluiten-consumer> .
-    }
-    ORDER BY DESC(?created)
-   ```
-5. `drc restart resource cache` is still needed after the initial sync.
+- start the stack. `drc up -d`. Ensure the migrations have run and finished `drc logs -f --tail=100 migrations`
+- Now the sync can be started. Ensure you update the `docker-compose.override.yml` to
+
+```yml
+version: '3.7'
+
+services:
+#(...) there might be other services
+
+  op-public-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://organisaties.abb.vlaanderen.be/" # you choose endpoint here
+      DCR_DISABLE_DELTA_INGEST: "false" # <------ THIS CHANGED
+      DCR_DISABLE_INITIAL_SYNC: "false" # <------ THIS CHANGED
+# (...) there might be other information
+```
+
+- start the sync `drc up -d op-public-consumer`.
+  Data should be ingesting.
+  Check the logs `drc logs -f --tail=200 op-public-consumer`
+
+##### In case of a re-sync
+In some cases, you may need to reset the data due to unforeseen issues. The simplest method is to entirely flush the triplestore and start afresh. However, this can be time-consuming, and if the app possesses an internal state that can't be recreated from external sources, a more granular approach would be necessary. We will outline this approach here. Currently, it involves a series of manual steps, but we hope to enhance the level of automation in the future.
+
+###### op-public-consumer
+
+- step 1: ensure the app is running and all migrations ran.
+- step 2: ensure the besluiten-consumer stopped syncing, `docker-compose.override.yml` should AT LEAST contain the following information
+```yml
+version: '3.7'
+
+services:
+#(...) there might be other services
+
+  op-public-consumer:
+    environment:
+      DCR_DISABLE_DELTA_INGEST: "true"
+      DCR_DISABLE_INITIAL_SYNC: "true"
+     # (...) there might be other information e.g. about the endpoint
+
+# (...) there might be other information
+```
+- step 3: `docker-compose up -d op-public-consumer` to re-create the container.
+- step 4: We need to flush the ingested data. Sample migrations have been provided.
+    - In this case 3 migrations files because less load.
+```
+cp ./config/sample-migrations/flush-erediensten-op-[1-3].sparql-template ./config/migrations/local/[TIMESTAMP]-flush-erediensten-op-[1-3].sparql
+docker-compose restart migrations
+```
+- step 5: Once migrations a success, further `op-public-consumer` data needs to be flushed too.
+```
+docker-compose exec op-public-consumer curl -X POST http://localhost/flush
+docker-compose logs -f --tail=200 op-public-consumer
+```
+  - This should end with `Flush successful`.
+- step 6: Proceed to consuming data from scratch again, ensure `docker-compose.override.yml` should AT LEAST contain the following information
+```yml
+version: '3.7'
+
+services:
+#(...) there might be other services
+
+  op-public-consumer:
+    environment:
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+     # (...) there might be other information e.g. about the endpoint
+
+# (...) there might be other information
+```
+- step 8: Run `docker-compose up -d`
+- step 9: This might take a while if `docker-compose logs op-public-consumer |grep success Returns: Initial sync http://redpencil.data.gift/id/job/URI has been successfully run`; you should be good. (Your computer will also stop making noise)
+
+###### op-public-consumer vs mandatendatabank-consumer
+As of the time of writing, there is some overlap between the two data producers due to practical reasons. This issue will be resolved eventually. For the time being, if re-synchronization is required, it's advisable to re-sync both consumers.
+The procedure is identical to the one for op-public-consumer, but with a bit of an extra synchronsation hassle.
+For both consumers you will need to first run steps 1 up to and including step 5. Once these steps completed for both consumers, you can proceed and start ingesting the data again.
+
+#### 2. post-processing
+For all delta-streams, you'll have to run `docker-compose restart resources cache`.
+#### 3. switch to 'normal operation' mode
+Essentially, we want to force the data to go through mu-auth again, which is responsible for maintaining the cached data in sync. So ensure in `docker-compose.override.yml` the following.
+```yml
+version: '3.7'
+
+services:
+#(...) there might be other services
+
+  op-public-consumer:
+    environment:
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: 'false'
+     # (...) there might be other information e.g. about the endpoint
+
+# (...) there might be other information
+```
+Again, a the time of writing, the same configuration is valid for the other consumers.
+After updating `docker-compose.override.yml`, don't forget `docker-compose up -d`
+#### What endpoints can be used?
+##### mandatendatabank-consumer
+
+- Production data: https://loket.lokaalbestuur.vlaanderen.be/
+- QA data: https://loket.lblod.info/
+- DEV data: https://dev.loket.lblod.info/
+
+##### op-public-consumer
+
+- Production data: https://organisaties.abb.vlaanderen.be/
+- QA data: https://organisaties.abb.lblod.info/
+- DEV data: https://dev.organisaties.abb.lblod.info/
+
+##### leidinggevenden-consumer
+
+- Production data: https://loket.lokaalbestuur.vlaanderen.be/
+- QA data: https://loket.lblod.info/
+- DEV data: https://dev.loket.lblod.info/
 
 #### OP consumer
 
@@ -173,9 +267,6 @@ To proceed (similar for mandaten and leidinggevenden):
   See the `README.md` of the related service for more options.
 
 ### Additional notes:
-#### Endpoints to choose for ingestion.
-On abstract level, all applications which produce deltas provided `delta-producer-*` services set, and talk about the AP-model defined in [mandatendatabank](http://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank) or [besluit publicatie](https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/)
-In practice, it is going to be loket and harvester apps, and their `dev` and `qa` variations.
 #### Performance
 - The default virtuoso settings might be too weak if you need to ingest the production data. Hence, there is better config, you can take over in your `docker-compose.override.yml`
 ```

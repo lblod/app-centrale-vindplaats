@@ -1,0 +1,43 @@
+# bestuursorganen in tijd
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s ?p ?o.
+  }
+}
+WHERE {
+  VALUES ?typeOfInterest {
+    <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>
+    <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan>
+    <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+      ?p ?o;
+      <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ?orgaan.
+    ?orgaan a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+      <http://data.vlaanderen.be/ns/besluit#bestuurt> ?eenheid.
+    ?eenheid a ?typeOfInterest.
+  }
+}
+
+;
+
+# bestuursorganen
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s ?p ?o.
+  }
+}
+WHERE {
+  VALUES ?typeOfInterest {
+    <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>
+    <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan>
+    <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+      ?p ?o;
+      <http://data.vlaanderen.be/ns/besluit#bestuurt> ?eenheid.
+    ?eenheid a ?typeOfInterest.
+  }
+}
