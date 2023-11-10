@@ -1,4 +1,6 @@
 # Changelog
+## 0.17.6 (2023-11-10)
+- fixed broken label
 ## 0.17.5 (2023-11-10)
 - fixed conflicting obligation to report
 ## 0.17.4 (2023-11-10)
