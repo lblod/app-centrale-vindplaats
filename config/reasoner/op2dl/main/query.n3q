@@ -463,7 +463,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     mandaat:isTijdspecialisatieVan ?bo.
 
   ?bo besluit:bestuurt ?bestuurseenheid.
-  ?bestuurseenheid a <https://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>.
+  ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>.
 } => {
   ?s mandaat:bindingStart ?o.
 }.
@@ -496,7 +496,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     mandaat:isTijdspecialisatieVan ?bo.
 
   ?bo besluit:bestuurt ?bestuurseenheid.
-  ?bestuurseenheid a <https://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>.
+  ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>.
 } => {
   ?s mandaat:bindingEinde ?o.
 }.
