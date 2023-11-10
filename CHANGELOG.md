@@ -1,4 +1,6 @@
 # Changelog
+## 0.17.5 (2023-11-10)
+- fixed conflicting obligation to report
 ## 0.17.4 (2023-11-10)
 - fix reasoner rule
 ## 0.17.3 (2023-11-09)
