@@ -1,0 +1,16 @@
+PREFIX xsd:                              <http://www.w3.org/2001/XMLSchema#>
+PREFIX besluit:                          <http://lblod.data.gift/vocabularies/besluit/>
+PREFIX lblodRule:                        <http://data.lblod.info/id/notification-rule/>
+
+DELETE {
+    GRAPH ?g {
+        lblodRule:3484e758-44c4-49d3-a0ca-82734156fd7a besluit:obligationToReport "0"^^xsd:boolean .
+    }
+} 
+WHERE {
+    GRAPH ?g {
+        lblodRule:3484e758-44c4-49d3-a0ca-82734156fd7a besluit:obligationToReport "0"^^xsd:boolean .
+    }
+}
+
+;
