@@ -1,0 +1,36 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <http://schema.org/>
+PREFIX besluit: <http://lblod.data.gift/vocabularies/besluit/>
+
+DELETE {
+    GRAPH ?g {
+        ?rule schema:validFrom ?invalidFromDateTime .
+        ?rule schema:validThrough ?invalidDateTime .
+    }
+}
+
+INSERT {
+    GRAPH ?g {
+        ?rule schema:validFrom "2023-10-31T01:00:00"^^xsd:dateTime .
+    }
+}
+
+WHERE {
+    GRAPH ?g {
+        VALUES ?decisions {
+            <https://data.vlaanderen.be/id/concept/BesluitDocumentType/18833df2-8c9e-4edd-87fd-b5c252337349> # Budgetten(wijzigingen) - Indiening bij representatief orgaan
+            <https://data.vlaanderen.be/id/concept/BesluitDocumentType/ce569d3d-25ff-4ce9-a194-e77113597e29> # Budgetten(wijzigingen) - Indiening bij toezichthoudende gemeente of provincie
+            <https://data.vlaanderen.be/id/concept/BesluitType/d463b6d1-c207-4c1a-8c08-f2c7dd1fa53b> # Budget(wijziging) - Indiening bij centraal bestuur of representatief orgaan
+            <https://data.vlaanderen.be/id/concept/BesluitType/d85218e2-a75f-4a30-9182-512b5c9dd1b2> # Budget(wijziging) - Indiening bij toezichthoudende gemeente of provincie
+            <https://data.vlaanderen.be/id/concept/BesluitDocumentType/4f938e44-8bce-4d3a-b5a7-b84754fe981a> # Aanvraag desaffectatie presbyteria/kerken
+            <https://data.vlaanderen.be/id/concept/BesluitDocumentType/24743b26-e0fb-4c14-8c82-5cd271289b0e> # Opvragen bijkomende inlichtingen eredienstbesturen (met als gevolg stuiting termijn)
+            <https://data.vlaanderen.be/id/concept/BesluitDocumentType/3a3ea43f-6631-4a7d-94c6-3a77a445d450> # Reactie op opvragen bijkomende inlichtingen door de toezichthouder (gemeente/provincie) aan de eredienstbesturen
+            <https://data.vlaanderen.be/id/concept/BesluitDocumentType/cc831628-95a0-4874-bad5-cdf563896032> # Afwijking principes regiovorming
+            <https://data.vlaanderen.be/id/concept/BesluitType/df483116-be05-4a2b-a68a-baf355c9bd81> # Gezamenlijk voorstel tot fusie
+        }
+    ?decisions besluit:notificationRule ?rule .
+    
+    OPTIONAL { ?rule schema:validFrom ?invalidFromDateTime . }
+    OPTIONAL { ?rule schema:validThrough ?invalidDateTime . } 
+    }
+}
