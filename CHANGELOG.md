@@ -1,7 +1,11 @@
 # Changelog
+## 0.19.0 (2023-12-15)
+- update notification rules
+### Deploy notes
+- drc restart migrations resource cache
 ## 0.18.0 (2023-11-15)
 - adding new codelists for "Besluit over budget wijziging eredienstbestuur" BesluitType
-### Deploy notes 
+### Deploy notes
 - drc restart migrations resource cache
 ## 0.17.7 (2023-11-14)
 - fixed conflicting obligation to report
