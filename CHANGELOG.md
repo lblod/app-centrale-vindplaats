@@ -1,4 +1,11 @@
 # Changelog
+## 0.20.0 (2024-01-17)
+- fixing https by http in lblodlg prefix of `op-consumer/public/delta-context-config.js` [#48](https://github.com/lblod/app-centrale-vindplaats/pull/48)
+- adding new besluitTypes and besluitDocumentTypes with their rules [#49](https://github.com/lblod/app-centrale-vindplaats/pull/49)
+  - LEKP-rapport - Sloopbeleidsplan, LEKP-rapport - Collectieve energiebesparende renovatie and LEKP-rapport - Fietspaden
+  - Niet-bindend advies op oprichting and Niet-bindend advies op statuten
+### Deploy notes
+- drc restart migrations resource cache
 ## 0.19.0 (2023-12-15)
 - update notification rules
 ### Deploy notes
