@@ -1,6 +1,8 @@
 # Changelog
 ## Unreleased
-- Update the frontend to v0.3.0: https://github.com/lblod/frontend-centrale-vindplaats/blob/master/CHANGELOG.md#v030-2024-02-21
+- Update the frontend to v0.3.0 & v0.3.1: https://github.com/lblod/frontend-centrale-vindplaats/blob/master/CHANGELOG.md#v031-2024-02-21
+### Deploy notes
+- drc up -d frontend
 ## 0.20.0 (2024-01-17)
 - fixing https by http in lblodlg prefix of `op-consumer/public/delta-context-config.js` [#48](https://github.com/lblod/app-centrale-vindplaats/pull/48)
 - adding new besluitTypes and besluitDocumentTypes with their rules [#49](https://github.com/lblod/app-centrale-vindplaats/pull/49)
