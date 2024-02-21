@@ -166,7 +166,7 @@ services:
     restart: always
     labels:
       - "logging=true"
-  besluiten-consumer:
+  gn-publications-consumer:
     image: lblod/delta-consumer:0.0.24
     environment:
       DCR_SYNC_BASE_URL: "https://gn-harvester.s.redhost.be/"
