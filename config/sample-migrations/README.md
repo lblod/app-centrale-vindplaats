@@ -4,3 +4,4 @@ In addition, these files can function as templates or provide inspiration for fu
 **Warning**:
   - Please keep in mind, when adding these files to the migrations folder, it's important to rename them according to the conventions established by the migration service
   - As the data model or the data location may undergo changes over time, it's imporant to have a clear understanding of the implications when using these files.
+  - `flush-besluiten.sparql-template` flushes all besluiten from the database, and not just the ones from `Gelinkt-Notuleren`.
