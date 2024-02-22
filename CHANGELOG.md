@@ -1,8 +1,11 @@
 # Changelog
 ## Unreleased
 - Update the frontend to v0.3.0 & v0.3.1: https://github.com/lblod/frontend-centrale-vindplaats/blob/master/CHANGELOG.md#v031-2024-02-21
+- Add `gn-publications-consumer` to consume `Gelink-Notuleren` publications
+  - Gives users the ability to have dereferencable URIs for their decisions, which allows them to click on a decision URI and access additional information.
 ### Deploy notes
-- drc up -d frontend
+- `drc up -d frontend`
+- `drc up -d gn-publications-consumer`
 ## 0.20.0 (2024-01-17)
 - fixing https by http in lblodlg prefix of `op-consumer/public/delta-context-config.js` [#48](https://github.com/lblod/app-centrale-vindplaats/pull/48)
 - adding new besluitTypes and besluitDocumentTypes with their rules [#49](https://github.com/lblod/app-centrale-vindplaats/pull/49)
