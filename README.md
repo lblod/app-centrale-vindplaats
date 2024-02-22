@@ -85,6 +85,8 @@ The procedures should be the similar for `leidinggevenden-consumer` and `mandate
 
 The synchronization of external data sources is a structured process divided into three key stages. The first stage, known as 'initial sync', requires manual interventions primarily due to performance considerations. Following this, there's a post-processing stage, where depending on the delta-consumer stream, it may be necessary to initiate certain background processes to ensure system consistency. The final stage involves transitioning the system to the 'normal operation' mode, wherein all functions are designed to be executed automatically.
 
+#### `op-public-consumer`
+
 ##### 1. Initial sync
 ##### From scratch
 Setting up the sync should happen work with the following steps:
@@ -178,15 +180,119 @@ services:
 - step 8: Run `docker-compose up -d`
 - step 9: This might take a while if `docker-compose logs op-public-consumer |grep success Returns: Initial sync http://redpencil.data.gift/id/job/URI has been successfully run`; you should be good. (Your computer will also stop making noise)
 
+#### gn-publications-consumer
+
+##### 1. Initial sync
+
+##### From scratch
+
+Setting up the sync should happen work with the following steps:
+
+- Ensure `docker-compose.override.yml` has AT LEAST the following information:
+
+```yml
+version: '3.7'
+
+services:
+#(...) there might be other services
+
+  gn-publications-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://gn-harvester.s.redhost.be/" # You can choose the endpoint here.
+      DCR_DISABLE_DELTA_INGEST: "true"
+      DCR_DISABLE_INITIAL_SYNC: "true"
+# (...) there might be other information
+```
+
+- Start the stack: `drc up -d` and ensure the migrations have run and finished `drc logs -ft --tail=200 migrations`
+- The sync can now be started; update the following in `docker-compose.override.yml`:
+
+```yml
+version: '3.7'
+
+services:
+#(...) there might be other services
+
+  gn-publications-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://gn-harvester.s.redhost.be/" # You can choose the endpoint here.
+      DCR_DISABLE_DELTA_INGEST: "false" # <------ THIS CHANGED
+      DCR_DISABLE_INITIAL_SYNC: "false" # <------ THIS CHANGED
+# (...) there might be other information
+```
+
+- Start the sync `drc up -d gn-publications-consumer`.
+  Data should be ingesting.
+  Check the logs `drc logs -ft --tail=200 gn-publications-consumer`
+- This step might take a while. If `drc logs gn-publications-consumer | grep success` returns: `Initial sync http://redpencil.data.gift/id/job/URI has been successfully run`, things should be good to go.
+
+##### In case of a re-sync
+
+In some cases, you may need to reset the data due to unforeseen issues. The simplest method is to entirely flush the triplestore and start from a fresh slate. However, this can be time-consuming, and if the app possesses an internal state that cannot be recreated from external sources, a more granular approach would be necessary. We will outline this approach here.
+
+- Step 1: Ensure the app is running, and all migrations have run.
+- Step 2: Ensure `gn-publications-consumer` has stopped syncing; `docker-compose.override.yml` should AT LEAST contain the following information:
+```yml
+version: '3.7'
+
+services:
+#(...) there might be other services
+
+  gn-publications-consumer:
+    environment:
+      DCR_DISABLE_DELTA_INGEST: "true"
+      DCR_DISABLE_INITIAL_SYNC: "true"
+     # (...) there might be other information e.g. about the endpoint
+
+# (...) there might be other information
+```
+
+- Step 3: `drc up -d gn-publications-consumer` to re-create the container.
+- Step 4: We need to flush the ingested data. Sample migrations have been provided.
+
+```bash
+cp ./config/sample-migrations/flush-besluiten.sparql-template ./config/migrations/local/[TIMESTAMP]-flush-besluiten.sparql
+drc restart migrations
+```
+
+- Step 5: Once migrations are successful, more `gn-publications-consumer` data needs to be flushed.
+
+```
+drc exec gn-publications-consumer curl -X POST http://localhost/flush
+drc logs -f --tail=200 gn-publications-consumer
+```
+  - This should end with `Flush successful`.
+- Step 6: Proceed to consume data from scratch again and ensure `docker-compose.override.yml` contains the following information:
+```yml
+version: '3.7'
+
+services:
+#(...) there might be other services
+
+  gn-publications-consumer:
+    environment:
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+     # (...) there might be other information e.g. about the endpoint
+
+# (...) there might be other information
+```
+- Step 8: Run `drc up -d`
+- Step 9: This step might take a while. If `drc logs gn-publications-consumer | grep success` returns: `Initial sync http://redpencil.data.gift/id/job/URI has been successfully run`, things should be good to go.
+
 ###### op-public-consumer vs mandatendatabank-consumer
+
 As of the time of writing, there is some overlap between the two data producers due to practical reasons. This issue will be resolved eventually. For the time being, if re-synchronization is required, it's advisable to re-sync both consumers.
 The procedure is identical to the one for op-public-consumer, but with a bit of an extra synchronsation hassle.
-For both consumers you will need to first run steps 1 up to and including step 5. Once these steps completed for both consumers, you can proceed and start ingesting the data again.
+For both consumers, you will need to first run steps 1 up to and including step 5. Once these steps are completed for both consumers, you can proceed and start ingesting the data again.
 
 #### 2. post-processing
-For all delta-streams, you'll have to run `docker-compose restart resources cache`.
+
+For all delta-streams, you'll have to run `drc restart resources cache`.
+
 #### 3. switch to 'normal operation' mode
-Essentially, we want to force the data to go through mu-auth again, which is responsible for maintaining the cached data in sync. So ensure in `docker-compose.override.yml` the following.
+
+Essentially, we want to force the data to go through `mu-auth` again, which is responsible for maintaining the cached data in sync. Ensure in `docker-compose.override.yml` the following:
 ```yml
 version: '3.7'
 
@@ -202,9 +308,11 @@ services:
 
 # (...) there might be other information
 ```
-Again, a the time of writing, the same configuration is valid for the other consumers.
-After updating `docker-compose.override.yml`, don't forget `docker-compose up -d`
+Again, at the time of writing, the same configuration is valid for the other consumers.
+After updating `docker-compose.override.yml`, do not forget to run `drc up -d`
+
 #### What endpoints can be used?
+
 ##### mandatendatabank-consumer
 
 - Production data: https://loket.lokaalbestuur.vlaanderen.be/
