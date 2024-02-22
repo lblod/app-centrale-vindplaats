@@ -251,10 +251,12 @@ services:
 - Step 4: We need to flush the ingested data. Sample migrations have been provided.
 
 ```bash
-cp ./config/sample-migrations/flush-erediensten-op-[1-3].sparql-template ./config/migrations/local/[TIMESTAMP]-flush-erediensten-op-[1-3].sparql
+cp ./config/sample-migrations/flush-besluiten.sparql-template ./config/migrations/local/[TIMESTAMP]-flush-besluiten.sparql
 drc restart migrations
 ```
+
 - Step 5: Once migrations are successful, more `gn-publications-consumer` data needs to be flushed.
+
 ```
 drc exec gn-publications-consumer curl -X POST http://localhost/flush
 drc logs -f --tail=200 gn-publications-consumer
