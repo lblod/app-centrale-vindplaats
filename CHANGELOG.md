@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## 0.21.0 (2024-03-07)
 - Update the frontend to `v0.3.0` & `v0.3.1`: https://github.com/lblod/frontend-centrale-vindplaats/blob/master/CHANGELOG.md#v031-2024-02-21 (DL-5658)
 - Add `gn-publications-consumer` to consume `Gelink-Notuleren` publications (DL-5659)
   - Gives users the ability to have dereferencable URIs for their decisions, which allows them to click on a decision URI and access additional information.
