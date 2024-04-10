@@ -17,6 +17,7 @@ services:
       - virtuoso:database
     labels:
       - "logging=true"
+    logging: *default-logging
   identifier:
     image: semtech/mu-identifier:1.10.1
     environment:
@@ -63,6 +64,7 @@ services:
     restart: always
     labels:
       - "logging=true"
+    logging: *default-logging
   cache:
     image: semtech/mu-cache:2.0.1
     links:
@@ -125,6 +127,8 @@ services:
       OUTBOX: "http://data.lblod.info/id/mail-folders/2"
     volumes:
       - ./config/delta-consumer/report-generator:/config
+    restart: always
+    logging: *default-logging
   mandatendatabank-consumer:
       image: lblod/delta-consumer:0.0.24
       environment:
@@ -166,6 +170,7 @@ services:
     restart: always
     labels:
       - "logging=true"
+    logging: *default-logging
   gn-publications-consumer:
     image: lblod/delta-consumer:0.0.24
     environment:
