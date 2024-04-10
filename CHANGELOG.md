@@ -1,4 +1,12 @@
 # Changelog
+## Unreleased
+- Bundle new forms and their rules (DL-5671)
+- Add missing restart and logging configs to a couple of services (DL-5818)
+### Deploy Notes
+#### Docker Commands
+- `drc up -d resource-labels migrations delta-report-generator leidinggevenden-consumer`
+- `drc restart migrations`
+- `drc restart resource cache`
 ## 0.21.0 (2024-03-07)
 - Update the frontend to `v0.3.0` & `v0.3.1`: https://github.com/lblod/frontend-centrale-vindplaats/blob/master/CHANGELOG.md#v031-2024-02-21 (DL-5658)
 - Add `gn-publications-consumer` to consume `Gelink-Notuleren` publications (DL-5659)
