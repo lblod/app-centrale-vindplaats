@@ -1,4 +1,6 @@
 # Changelog
+## 0.22.1 (2024-05-07)
+ - Remove language tagged labels from the database (DL-5889)
 ## 0.22.0 (2024-04-10)
 - Bundle new forms and their rules (DL-5671)
 - Add missing restart and logging configs to a couple of services (DL-5818)
