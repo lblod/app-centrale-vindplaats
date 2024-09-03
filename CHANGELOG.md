@@ -1,4 +1,10 @@
 # Changelog
+## 0.22.2  (2024-09-03)
+ - Remove duplicate URI for IBEG. (DL-5770)
+### Deploy Notes
+#### Docker Commands
+ - `drc restart migrations && drc logs -ft --tail=200 migrations`
+ - `drc restart resource cache`
 ## 0.22.1 (2024-05-07)
  - Remove language tagged labels from the database (DL-5889)
 ## 0.22.0 (2024-04-10)
