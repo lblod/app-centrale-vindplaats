@@ -1247,6 +1247,17 @@ BesluitType:51982214-0d8b-4cd9-87cf-c46570cd1ed3
     skos:inScheme conceptscheme:BesluitType ;
     skos:topConceptOf conceptscheme:BesluitType .
 
+# UPDATE 2024-10
+
+BesluitType:b4c828e4-bcb8-46ff-8abf-5fde227d2459
+    a skos:Concept ;
+    core:uuid "b4c828e4-bcb8-46ff-8abf-5fde227d2459" ;
+    besluit:notificationRule lblodRule:50c2a350-5f2b-4d66-842d-76f0476eaf43;
+    skos:definition "Besluit van de gemeenteraad tot vaststelling van de leden van de bestuursorganen (installatievergadering en mandaatwissels)" ;
+    skos:prefLabel "Samenstelling bestuursorganen" ;
+    skos:inScheme conceptscheme:BesluitType ;
+    skos:topConceptOf conceptscheme:BesluitType .
+
 ###############################################################################
 # Notification Rules
 ###############################################################################
@@ -2493,3 +2504,15 @@ lblodRule:210ebee2-a6d1-44f9-aafe-b36e635a1f6e
                         BestuurseenheidClassificatieCode:66ec74fd-8cfc-4e16-99c6-350b35012e86 ,
                         BestuurseenheidClassificatieCode:36372fad-0358-499c-a4e3-f412d2eae213 ;
     besluit:obligationToReport "true"^^xsd:boolean .
+
+# UPDATE 09/10/2024
+
+ lblodRule:50c2a350-5f2b-4d66-842d-76f0476eaf43
+	a rule:NotificationRule ;
+	core:uuid "50c2a350-5f2b-4d66-842d-76f0476eaf43" ;
+    sch:validFrom "2024-10-01T01:00:00"^^xsd:dateTime ;
+    #sch:validThrough "2019-01-01T01:00:00"^^xsd:dateTime ;
+    besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000000 ,
+                        BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ,
+                        BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000003 ;
+    besluit:obligationToReport "false"^^xsd:boolean .
