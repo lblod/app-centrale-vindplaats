@@ -1,0 +1,11 @@
+PREFIX BesluitType: <https://data.vlaanderen.be/id/concept/BesluitType/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX besluit: <http://lblod.data.gift/vocabularies/besluit/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    BesluitType:ec8652a6-2c49-4955-8d59-fd08c8c0a6e1 skos:prefLabel ?prefLabel .
+    BesluitType:ec8652a6-2c49-4955-8d59-fd08c8c0a6e1 skos:definition ?definition .
+    BesluitType:ec8652a6-2c49-4955-8d59-fd08c8c0a6e1 besluit:notificationRule ?notificationRule .
+  }
+}
