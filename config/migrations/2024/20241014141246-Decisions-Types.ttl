@@ -869,10 +869,11 @@ BesluitType:fb92601a-d189-4482-9922-ab0efc6bc935
 BesluitType:ec8652a6-2c49-4955-8d59-fd08c8c0a6e1
     a skos:Concept ;
     core:uuid "ec8652a6-2c49-4955-8d59-fd08c8c0a6e1" ;
-    besluit:notificationRule lblodRule:e88a5f18-7c9d-456c-8bfa-e3323bbb29f3 ;
-    skos:definition "Besluit van de raad van bestuur van het autonoom provinciebedrijf betreffende retributies." ;
+    besluit:decidableBy BestuurseenheidClassificatieCode:36a82ba0-7ff1-4697-a9dd-2e94df73b721 ; # Autonoom gemeentebedrijf
+    besluit:decidableBy  BestuurseenheidClassificatieCode:80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d ; # Autonoom provinciebedrijf
+    skos:definition "Besluit van de raad van bestuur van het autonoom gemeentebedrijf of autonoom provinciebedrijf betreffende retributies." ;
     skos:inScheme conceptscheme:BesluitType ;
-    skos:prefLabel "Besluit APB over retributies" ;
+    skos:prefLabel "Besluit AGB/APB over retributies" ;
     skos:topConceptOf conceptscheme:BesluitType .
 
 BesluitType:c6b696c0-26f8-4e87-b7e8-071b81471ddc
@@ -2395,7 +2396,7 @@ lblodRule:210ebee2-a6d1-44f9-aafe-b36e635a1f6e
     #sch:validThrough "2019-01-01T01:00:00"^^xsd:dateTime ;
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ;
     besluit:obligationToReport "true"^^xsd:boolean .
-    
+
  lblodRule:26af6018-ba02-4fcd-95bf-5933cf53e70f
 	a rule:NotificationRule ;
 	core:uuid "26af6018-ba02-4fcd-95bf-5933cf53e70f" ;
@@ -2427,7 +2428,7 @@ lblodRule:210ebee2-a6d1-44f9-aafe-b36e635a1f6e
     sch:validFrom "2023-10-31T01:00:00"^^xsd:dateTime ;
     #sch:validThrough "2019-01-01T01:00:00"^^xsd:dateTime ;
     besluit:decidableBy BestuurseenheidClassificatieCode:66ec74fd-8cfc-4e16-99c6-350b35012e86 ;
-    besluit:obligationToReport "true"^^xsd:boolean . 
+    besluit:obligationToReport "true"^^xsd:boolean .
 
  lblodRule:17a96e58-4670-4fdc-9cc3-e4250919a3b5
 	a rule:NotificationRule ;
