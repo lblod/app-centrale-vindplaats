@@ -1931,14 +1931,6 @@ lblodRule:b3a161a0-3188-457d-8234-c29a01e33829
                         BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000000 ;
     besluit:obligationToReport "true"^^xsd:boolean .
 
-lblodRule:e88a5f18-7c9d-456c-8bfa-e3323bbb29f3
-    a rule:NotificationRule ;
-    core:uuid "e88a5f18-7c9d-456c-8bfa-e3323bbb29f3" ;
-    sch:validFrom "2022-05-01T01:00:00"^^xsd:dateTime ;
-    #sch:validThrough "2022-12-01T01:00:00"^^xsd:dateTime ;
-    besluit:decidableBy BestuurseenheidClassificatieCode:80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d ;
-    besluit:obligationToReport "true"^^xsd:boolean .
-
 lblodRule:0d6d6159-b06c-4498-a25c-a02f9802d38e
     a rule:NotificationRule ;
     core:uuid "0d6d6159-b06c-4498-a25c-a02f9802d38e" ;
