@@ -37,7 +37,5 @@ services:
     restart: "no"
   gn-publications-consumer:
     restart: "no"
-  reasoner:
-    restart: "no"
   op-public-consumer:
     restart: "no"
