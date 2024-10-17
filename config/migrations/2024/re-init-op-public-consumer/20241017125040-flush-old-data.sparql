@@ -1,3 +1,59 @@
+#######################################################################
+# START
+# First remove the extra mappings.
+# This based on the conversion from the export.json of the op-producer.
+#######################################################################
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s ?p ?o.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a ?type ;
+      ?p ?o.
+    VALUES ?type {
+      <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>
+      <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>
+      <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>
+      <http://www.w3.org/ns/regorg#RegisteredOrganization>
+      <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan>
+      <http://data.lblod.info/vocabularies/erediensten/BetrokkenLokaleBesturen>
+      <http://data.lblod.info/vocabularies/erediensten/PositieBedienaar>
+      <http://www.w3.org/ns/org#Site>
+      <http://www.w3.org/ns/locn#Address>
+      <http://schema.org/ContactPoint>
+      <http://www.w3.org/ns/adms#Identifier>
+      <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>
+      <http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode>
+      <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>
+      <http://lblod.data.gift/vocabularies/organisatie/TypeEredienst>
+      <http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode>
+      <http://www.w3.org/ns/org#ChangeEvent>
+      <http://lblod.data.gift/vocabularies/organisatie/Veranderingsgebeurtenis>
+      <http://lblod.data.gift/vocabularies/organisatie/OrganisatieStatusCode>
+      <http://lblod.data.gift/vocabularies/organisatie/TypeVestiging>
+      <http://data.vlaanderen.be/ns/mandaat#Mandaat>
+      <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>
+    }
+    VALUES ?p {
+       <http://data.vlaanderen.be/ns/besluit#classificatie>
+       <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan>
+    }
+  }
+};
+
+#######################################################################
+# END
+# First remove the extra mappings.
+# This based on the conversion from the export.json of the op-producer.
+#######################################################################
+
+#######################################################################
+# START
+# This is a conversion from the export.json of the op-producer.
+# If you need to re-init; check again export.json from the op-producer
+#######################################################################
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/public> { ?s ?p ?o. }
 }
@@ -476,3 +532,8 @@ WHERE {
     }
   }
 }
+#######################################################################
+# END
+# This is a conversion from the export.json of the op-producer.
+# If you need to re-init; check again export.json from the op-producer
+#######################################################################
