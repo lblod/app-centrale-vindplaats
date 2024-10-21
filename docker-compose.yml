@@ -218,6 +218,7 @@ services:
       DCR_BATCH_SIZE: 1000
       SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
       SUDO_QUERY_RETRY: "true"
+      DCR_CRON_PATTERN_DELTA_SYNC: "*/5 * * * *"
     volumes:
       - ./config/delta-consumer/op-public-consumer/mapping:/config/mapping
       - ./data/files/consumer-files/op-public:/consumer-files/
