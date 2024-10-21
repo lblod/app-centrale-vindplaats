@@ -1,4 +1,36 @@
 # Changelog
+## 0.23.0
+- Re-init op-public-consumer with new consumer (DL-6102 and also OP-3422)
+### Deploy instructions
+#### Re-init op-public-consumer
+- Note: the application will be down for a while.
+- Ensure backup
+- Ensure application goes down: `drc down`
+- Ensure in `docker-compose.override.yml` (on prod)
+  ```
+   op-public-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://organisaties.abb.vlaanderen.be"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_LANDING_ZONE_DATABASE: "virtuoso" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "virtuoso" # for the initial sync, we go directly to virtuoso
+  ```
+- `drc up -d migrations`
+  - That might take a while.
+- `drc up -d database op-public-consumer --remove-orphans `
+- Wait until the consumer is finished. (If you see failing on the last step, the mapping, boost the virtuoso config)
+- Ensure op-public-consumer in `docker-compose.override.yml` is syncing with database again
+- So the final `docker-compose.override.yml` will look like
+  ```
+   op-public-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://organisaties.abb.vlaanderen.be"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+  ```
+#### remaining bits of deploy
+  - ``drc up -d`
 ## 0.22.3 (2024-10-11)
  - Add decision type `Samenstelling bestuursorganen` (DL-6196)
 ### Deploy Notes
