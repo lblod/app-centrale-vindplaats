@@ -2,6 +2,8 @@ CONSTRUCT {
   ?s ?p ?o .
 }
 WHERE {
+  ?s a ?type .
+  ?s ?p ?o .
   VALUES ?type {
     <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>
     <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>
@@ -26,6 +28,4 @@ WHERE {
     <http://data.vlaanderen.be/ns/mandaat#Mandaat>
     <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>
   }
-  ?s a ?type .
-  ?s ?p ?o .
 }
