@@ -1,6 +1,7 @@
 # Changelog
 ## 0.23.0
 - Re-init op-public-consumer with new consumer (DL-6102 and also OP-3422)
+- bump other consumers
 ### Deploy instructions
 #### Re-init op-public-consumer
 - Note: the application will be down for a while.
