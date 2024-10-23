@@ -39,3 +39,5 @@ services:
     restart: "no"
   op-public-consumer:
     restart: "no"
+  dbcleanup:
+    restart: "no"
