@@ -1,0 +1,18 @@
+PREFIX BesluitType: <https://data.vlaanderen.be/id/concept/BesluitType/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX besluit: <http://lblod.data.gift/vocabularies/besluit/>
+PREFIX lblodRule: <http://data.lblod.info/id/notification-rule/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    BesluitType:ec8652a6-2c49-4955-8d59-fd08c8c0a6e1 skos:prefLabel "Besluit APB over retributies" .
+    BesluitType:ec8652a6-2c49-4955-8d59-fd08c8c0a6e1 skos:definition "Besluit van de raad van bestuur van het autonoom provinciebedrijf betreffende retributies." .
+    BesluitType:ec8652a6-2c49-4955-8d59-fd08c8c0a6e1 besluit:notificationRule lblodRule:e88a5f18-7c9d-456c-8bfa-e3323bbb29f3 .
+    lblodRule:e88a5f18-7c9d-456c-8bfa-e3323bbb29f3 ?p ?o .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    lblodRule:e88a5f18-7c9d-456c-8bfa-e3323bbb29f3 ?p ?o .
+  }
+}
