@@ -1,5 +1,5 @@
 # Changelog
-## 0.23.0
+## 0.23.0 (2024-10-23)
 - Re-init op-public-consumer with new consumer (DL-6102 and also OP-3422)
 - bump other consumers
 - Added cleanup job (DL-6216)
