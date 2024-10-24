@@ -1,6 +1,6 @@
 # Changelog
 ## 0.23.1 (2024-10-24)
-- forgot to add a mapping.
+- forgot to add a mapping. (DL-6102 and also OP-3422)
 ### Deploy instructions
 - If you didn't deploy yet, you should just follow the deploy instructions from `v0.23.0`.
 - else: `drc restart migrationns op-public-consumer`
