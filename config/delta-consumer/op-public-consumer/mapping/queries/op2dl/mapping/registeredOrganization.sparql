@@ -1,9 +1,0 @@
-PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX regorg: <http://www.w3.org/ns/regorg#>
-
-CONSTRUCT {
-  ?s a besluit:Bestuurseenheid.
-} WHERE {
-  ?s a regorg:RegisteredOrganization.
-}
