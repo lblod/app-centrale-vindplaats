@@ -878,12 +878,20 @@ BesluitType:fb92601a-d189-4482-9922-ab0efc6bc935
 BesluitType:ec8652a6-2c49-4955-8d59-fd08c8c0a6e1
     a skos:Concept ;
     core:uuid "ec8652a6-2c49-4955-8d59-fd08c8c0a6e1" ;
-    besluit:decidableBy BestuurseenheidClassificatieCode:36a82ba0-7ff1-4697-a9dd-2e94df73b721 ; # Autonoom gemeentebedrijf
-    besluit:decidableBy  BestuurseenheidClassificatieCode:80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d ; # Autonoom provinciebedrijf
     skos:definition "Besluit van de raad van bestuur van het autonoom gemeentebedrijf of autonoom provinciebedrijf betreffende retributies." ;
     skos:inScheme conceptscheme:BesluitType ;
     skos:prefLabel "Besluit AGB/APB over retributies" ;
+    besluit:notificationRule lblodRule:e88a5f18-7c9d-456c-8bfa-e3323bbb29f3 ;
     skos:topConceptOf conceptscheme:BesluitType .
+
+lblodRule:e88a5f18-7c9d-456c-8bfa-e3323bbb29f3
+    a rule:NotificationRule ;
+    core:uuid "e88a5f18-7c9d-456c-8bfa-e3323bbb29f3" ;
+    sch:validFrom "2022-05-01T01:00:00"^^xsd:dateTime ;
+    #sch:validThrough "2022-12-01T01:00:00"^^xsd:dateTime ;
+    besluit:decidableBy BestuurseenheidClassificatieCode:36a82ba0-7ff1-4697-a9dd-2e94df73b721 ; # Autonoom gemeentebedrijf
+    besluit:decidableBy  BestuurseenheidClassificatieCode:80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d ; # Autonoom provinciebedrijf
+    besluit:obligationToReport "true"^^xsd:boolean .
 
 BesluitType:c6b696c0-26f8-4e87-b7e8-071b81471ddc
     a skos:Concept ;
