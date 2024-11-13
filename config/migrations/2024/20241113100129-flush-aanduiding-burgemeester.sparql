@@ -1,0 +1,25 @@
+PREFIX conceptscheme:                    <https://data.vlaanderen.be/id/conceptscheme/>
+PREFIX BesluitType:                      <https://data.vlaanderen.be/id/concept/BesluitType/>
+PREFIX BesluitDocumentType:              <https://data.vlaanderen.be/id/concept/BesluitDocumentType/>
+PREFIX skos:                             <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd:                              <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf:                              <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX core:                             <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit:                          <http://lblod.data.gift/vocabularies/besluit/>
+PREFIX BestuurseenheidClassificatieCode: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
+PREFIX sch:                              <http://schema.org/>
+PREFIX rule:                             <http://lblod.data.gift/vocabularies/notification/>
+PREFIX lblodRule:                        <http://data.lblod.info/id/notification-rule/>
+
+DELETE DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    BesluitDocumentType:a48f2ded-78a5-45e5-a5d8-077814cec39f
+      a skos:Concept ;
+      core:uuid "a48f2ded-78a5-45e5-a5d8-077814cec39f" ;
+      besluit:notificationRule lblodRule:39ed1ed5-52c9-46fc-a10f-d2a77e71a271;
+      skos:definition "Aanduiding en eedaflegging van de aangewezen burgemeester." ;
+      skos:prefLabel "Aanduiding en eedaflegging van de aangewezen burgemeester" ;
+      skos:inScheme conceptscheme:BesluitDocumentType ;
+      skos:topConceptOf conceptscheme:BesluitDocumentType .
+  }
+}
