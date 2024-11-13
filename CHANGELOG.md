@@ -1,4 +1,6 @@
 # Changelog
+## 0.24.1 (2024-11-13)
+- update missing notficationrule
 ## 0.24.0 (2024-11-13)
 - update besluittype [DL-6298]
 ## 0.23.2 (2024-11-08)
