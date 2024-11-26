@@ -2,7 +2,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 
 DELETE {
-  GRAPH <http://mu.semte.ch/graphs/public> {
+  GRAPH ?graph {
     ?orgIntijdNew ?orgIntijdNewP  ?orgIntijdNewO.
   }
 }
@@ -17,19 +17,22 @@ WHERE {
     <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab19107-82d2-4273-a986-3da86fda050d> # Griffier
    }
 
-  GRAPH <http://mu.semte.ch/graphs/public> {
+  VALUES ?graph {
+    <http://mu.semte.ch/graphs/public>
+    <http://mu.semte.ch/application>
+  }
 
-    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
-      <http://www.w3.org/ns/org#classification> ?class.
+  ?s a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+    <http://www.w3.org/ns/org#classification> ?class.
 
-    ?orgIntijdOld generiek:isTijdspecialisatieVan ?s;
-      <http://data.vlaanderen.be/ns/mandaat#bindingStart> ?old.
+  ?orgIntijdOld generiek:isTijdspecialisatieVan ?s;
+    <http://data.vlaanderen.be/ns/mandaat#bindingStart> ?old.
 
-    ?orgIntijdNew generiek:isTijdspecialisatieVan ?s;
-      <http://data.vlaanderen.be/ns/mandaat#bindingStart> ?new.
+  ?orgIntijdNew generiek:isTijdspecialisatieVan ?s;
+    <http://data.vlaanderen.be/ns/mandaat#bindingStart> ?new.
 
   FILTER(?new > ?old)
 
-    ?orgIntijdNew ?orgIntijdNewP ?orgIntijdNewO.
-  }
+  ?orgIntijdNew ?orgIntijdNewP ?orgIntijdNewO.
+
 }
