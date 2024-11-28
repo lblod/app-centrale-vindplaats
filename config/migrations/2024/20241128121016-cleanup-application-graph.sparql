@@ -1,0 +1,15 @@
+# Things without type should not live here.
+DELETE {
+  GRAPH <http://mu.semte.ch/application> {
+    ?uri ?p ?o.
+  }
+}
+WHERE {
+
+   GRAPH <http://mu.semte.ch/application> {
+     ?uri ?p ?o
+     FILTER NOT EXISTS {
+        ?uri a ?foo
+     }
+  }
+}
