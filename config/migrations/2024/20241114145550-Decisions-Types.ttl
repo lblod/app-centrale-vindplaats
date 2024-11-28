@@ -2553,3 +2553,22 @@ BesluitType:7927f4f4-ad4c-4460-9207-2a4b5d21a9d7
 ###########################################################
 # END: UPDATE 13/11/2024
 ###########################################################
+
+# UPDATE 14/11/2024
+
+BesluitType:48c3290d-d9e3-4a38-b14e-e7c417e3a13a
+  a skos:Concept ;
+  core:uuid "48c3290d-d9e3-4a38-b14e-e7c417e3a13a" ;
+  skos:definition "Een kerkenbeleidsplan is een schriftelijk document dat de langetermijnvisie voor alle parochiekerken op het grondgebied van een gemeente bevat. Het moet ondertekend zijn door het gemeentebestuur en de bisschop. Vanaf 2025 moet elke gemeente over een kerkenbeleidsplan beschikken, zo bepaalt artikel 33/2 van het eredienstendecreet van 7 mei 2004" ;
+  skos:inScheme conceptscheme:BesluitType ;
+  skos:prefLabel "Kerkenbeleidsplan eredienstbesturen" ;
+  besluit:notificationRule lblodRule:f5fcec25-3f4c-4b0e-94c1-f4473f37c666 ;
+  skos:topConceptOf conceptscheme:BesluitType .
+
+lblodRule:f5fcec25-3f4c-4b0e-94c1-f4473f37c666
+    a rule:NotificationRule ;
+    core:uuid "f5fcec25-3f4c-4b0e-94c1-f4473f37c666" ;
+    sch:validFrom "2024-11-13T01:00:00"^^xsd:dateTime ;
+    #sch:validThrough "2024-11-13T01:00:00"^^xsd:dateTime ;
+    besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ; # Gemeente
+    besluit:obligationToReport "true"^^xsd:boolean .
