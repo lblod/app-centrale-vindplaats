@@ -1,4 +1,6 @@
 # Changelog
+## 0.24.2 (2024-11-28)
+ - general data clean up https://github.com/lblod/app-centrale-vindplaats/pull/63 [DL-6320]
 ## 0.24.1 (2024-11-13)
 - update missing notficationrule
 ## 0.24.0 (2024-11-13)
