@@ -1,4 +1,6 @@
 # Changelog
+## 0.24.3 (2024-12-11)
+ - Add OCMW to notification rule of samenstelling bestuursorganen [DL-6344]
 ## 0.24.2 (2024-11-28)
  - general data clean up https://github.com/lblod/app-centrale-vindplaats/pull/63 [DL-6320]
 ## 0.24.1 (2024-11-13)

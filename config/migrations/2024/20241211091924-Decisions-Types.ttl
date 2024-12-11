@@ -2526,6 +2526,7 @@ lblodRule:210ebee2-a6d1-44f9-aafe-b36e635a1f6e
     #sch:validThrough "2019-01-01T01:00:00"^^xsd:dateTime ;
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000000 ,
                         BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ,
+                        BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000002 ,
                         BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000003 ;
     besluit:obligationToReport "false"^^xsd:boolean .
 
