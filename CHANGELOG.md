@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## 0.24.5 (2025-01-10)
  - Import classification codes `ext:GeregistreerdeOrganisatieClassificatieCode` from OP [OP-3470]
 ### Deploy instructions
 #### Re-init op-public-consumer
