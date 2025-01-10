@@ -28,6 +28,8 @@
       DCR_DISABLE_INITIAL_SYNC: "false"
       DCR_DISABLE_DELTA_INGEST: "false"
   ```
+## 0.24.4 (2025-01-09)
+- Bump consumers [DL-6347]
 ## 0.24.3 (2024-12-11)
  - Add OCMW to notification rule of samenstelling bestuursorganen [DL-6344]
 ## 0.24.2 (2024-11-28)
