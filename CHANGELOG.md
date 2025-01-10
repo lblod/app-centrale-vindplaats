@@ -1,4 +1,33 @@
 # Changelog
+## Unreleased
+ - Import classification codes `ext:GeregistreerdeOrganisatieClassificatieCode` from OP [OP-3470]
+### Deploy instructions
+#### Re-init op-public-consumer
+- Ensure backup (check crontab to get the command the create one)
+- Ensure in `docker-compose.override.yml` (on prod)
+  ```
+   op-public-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://organisaties.abb.vlaanderen.be"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_LANDING_ZONE_DATABASE: "virtuoso" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "virtuoso" # for the initial sync, we go directly to virtuoso
+  ```
+- Remove previous initial sync job and re-trigger initial sync
+  ```
+  drc exec op-public-consumer curl -X DELETE http://localhost/initial-sync-jobs
+  drc exec op-public-consumer curl -X POST http://localhost/initial-sync-jobs
+  ```
+- Wait until the consumer is finished. (If you see failing on the last step, the mapping, boost the virtuoso config)
+- Ensure op-public-consumer in `docker-compose.override.yml` is syncing with database again. The final `docker-compose.override.yml` will look like
+  ```
+   op-public-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://organisaties.abb.vlaanderen.be"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+  ```
 ## 0.24.4 (2025-01-09)
 - Bump consumers [DL-6347]
 ## 0.24.3 (2024-12-11)

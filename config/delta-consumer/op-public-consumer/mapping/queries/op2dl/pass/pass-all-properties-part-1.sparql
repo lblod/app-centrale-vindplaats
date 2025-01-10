@@ -27,5 +27,6 @@ WHERE {
     <http://lblod.data.gift/vocabularies/organisatie/TypeVestiging>
     <http://data.vlaanderen.be/ns/mandaat#Mandaat>
     <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>
+    <http://mu.semte.ch/vocabularies/ext/GeregistreerdeOrganisatieClassificatieCode>
   }
 }
