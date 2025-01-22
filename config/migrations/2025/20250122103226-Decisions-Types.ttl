@@ -2573,3 +2573,22 @@ lblodRule:f5fcec25-3f4c-4b0e-94c1-f4473f37c666
     #sch:validThrough "2024-11-13T01:00:00"^^xsd:dateTime ;
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ; # Gemeente
     besluit:obligationToReport "true"^^xsd:boolean .
+
+# UPDATE 15/01/2025
+
+BesluitType:0a8141bc-cf35-43dd-855d-365fa32ad89b
+  a skos:Concept ;
+  core:uuid "0a8141bc-cf35-43dd-855d-365fa32ad89b" ;
+  skos:definition "Besluit van gemeente- of provincieraad over de jaarrekening van een extern verzelfstandigd agentschap in privaatrechtelijke vorm." ;
+  skos:inScheme conceptscheme:BesluitType ;
+  skos:prefLabel "Jaarrekening PEVA" ;
+  besluit:notificationRule lblodRule:90af9f02-6196-4c85-a5ab-07e3d25a60ed ;
+  skos:topConceptOf conceptscheme:BesluitType .
+
+lblodRule:90af9f02-6196-4c85-a5ab-07e3d25a60ed
+    a rule:NotificationRule ;
+    core:uuid "90af9f02-6196-4c85-a5ab-07e3d25a60ed" ;
+    sch:validFrom "2025-01-15T01:00:00"^^xsd:dateTime ;
+    besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ; # Gemeente
+    besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000000 ; # Provincie
+    besluit:obligationToReport "true"^^xsd:boolean .
