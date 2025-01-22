@@ -1,4 +1,6 @@
 # Changelog
+## 0.24.6 (2025-01-22)
+- Add Jaarrekening PEVA form [DL-6284]
 ## 0.24.5 (2025-01-10)
  - Import classification codes `ext:GeregistreerdeOrganisatieClassificatieCode` from OP [OP-3470]
 ### Deploy instructions
