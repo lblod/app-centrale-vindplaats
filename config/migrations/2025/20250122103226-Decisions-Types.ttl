@@ -2592,3 +2592,10 @@ lblodRule:90af9f02-6196-4c85-a5ab-07e3d25a60ed
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ; # Gemeente
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000000 ; # Provincie
     besluit:obligationToReport "true"^^xsd:boolean .
+
+# Update 05/02/2025
+
+lblodRule:d53c39aa-4dbd-4cdf-8b9e-359f0fce79ba
+    besluit:decidableBy BestuurseenheidClassificatieCode:d01bb1f6-2439-4e33-9c25-1fc295de2e71 ; # Dienstverlenende vereniging
+    besluit:decidableBy BestuurseenheidClassificatieCode:cd93f147-3ece-4308-acab-5c5ada3ec63d ; # Opdrachthoudende vereniging
+    besluit:decidableBy BestuurseenheidClassificatieCode:d46b2acb-4763-4532-9aff-fdede39e9520 . # Opdrachthoudende vereniging met private deelname
