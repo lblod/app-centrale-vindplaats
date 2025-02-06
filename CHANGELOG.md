@@ -1,6 +1,9 @@
 # Changelog
 ## unreleased
 - Update form 'Reglementen en verordeningen' lblodRule [DL-6357]
+### Deploy instructions
+- `drc restart migrations && drc logs -ft --tail=200 migrations`
+
 ## 0.24.6 (2025-01-22)
 - Add Jaarrekening PEVA form [DL-6284]
 ## 0.24.5 (2025-01-10)
