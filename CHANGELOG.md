@@ -1,5 +1,5 @@
 # Changelog
-## unreleased
+## 0.24.7 (2025-02-07)
 - Update form 'Reglementen en verordeningen' lblodRule [DL-6357]
 ### Deploy instructions
 - `drc restart migrations && drc logs -ft --tail=200 migrations`
