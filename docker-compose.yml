@@ -56,7 +56,7 @@ services:
     restart: always
     logging: *default-logging
   migrations:
-    image: semtech/mu-migrations-service:0.7.0
+    image: semtech/mu-migrations-service:0.9.0
     links:
       - virtuoso:database
     volumes:
@@ -133,6 +133,8 @@ services:
       OUTBOX: "http://data.lblod.info/id/mail-folders/2"
     volumes:
       - ./config/delta-consumer/report-generator:/config
+    labels:
+      - "logging=true"
     restart: always
     logging: *default-logging
   mandatendatabank-consumer:
