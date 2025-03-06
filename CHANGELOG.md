@@ -1,4 +1,11 @@
 # Changelog
+## Unreleased
+- Add missing docker compose key. [DL-6490]
+- Bump `migrations` to `v0.9.0`.
+### Deploy Notes
+```
+drc up -d migrations delta-report-generator
+```
 ## 0.24.7 (2025-02-07)
 - Update form 'Reglementen en verordeningen' lblodRule [DL-6357]
 ### Deploy instructions
