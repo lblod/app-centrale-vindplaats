@@ -31,5 +31,6 @@ WHERE {
     <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode>
     <http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode>
     <http://lblod.data.gift/vocabularies/organisatie/MandatarisStatusCode>
+    <http://www.w3.org/ns/prov#Location>
   }
 }

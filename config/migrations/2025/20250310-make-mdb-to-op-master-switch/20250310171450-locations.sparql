@@ -1,0 +1,45 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s <http://data.vlaanderen.be/ns/besluit#werkingsgebied> ?old
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s <http://data.vlaanderen.be/ns/besluit#werkingsgebied> ?new
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s <http://data.vlaanderen.be/ns/besluit#werkingsgebied> ?old
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/landing-zone/op-public> {
+    ?s <http://data.vlaanderen.be/ns/besluit#werkingsgebied> ?new
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a <http://www.w3.org/ns/prov#Location>; ?p ?o
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a <http://www.w3.org/ns/prov#Location>; ?p ?o
+  }
+}
+
+;
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a <http://www.w3.org/ns/prov#Location>; ?p ?o
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/landing-zone/op-public> {
+    ?s a <http://www.w3.org/ns/prov#Location>; ?p ?o
+  }
+}
