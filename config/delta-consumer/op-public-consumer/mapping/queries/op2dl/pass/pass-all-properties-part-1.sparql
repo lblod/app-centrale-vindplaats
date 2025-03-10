@@ -30,5 +30,6 @@ WHERE {
     <http://mu.semte.ch/vocabularies/ext/GeregistreerdeOrganisatieClassificatieCode>
     <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode>
     <http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode>
+    <http://lblod.data.gift/vocabularies/organisatie/MandatarisStatusCode>
   }
 }
