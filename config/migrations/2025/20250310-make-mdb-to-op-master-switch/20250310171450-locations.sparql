@@ -31,7 +31,7 @@ WHERE {
     <http://mu.semte.ch/vocabularies/core/uuid>
     <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau>
     <http://www.opengis.net/ont/geosparql#sfWithin>
-    <http://www.w3.org/2004/02/skos/core#exactMatc>
+    <http://www.w3.org/2004/02/skos/core#exactMatch>
   }
 
   GRAPH <http://mu.semte.ch/graphs/public> {
@@ -52,7 +52,7 @@ WHERE {
     <http://mu.semte.ch/vocabularies/core/uuid>
     <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau>
     <http://www.opengis.net/ont/geosparql#sfWithin>
-    <http://www.w3.org/2004/02/skos/core#exactMatc>
+    <http://www.w3.org/2004/02/skos/core#exactMatch>
   }
   GRAPH <http://mu.semte.ch/graphs/landing-zone/op-public> {
     ?s a <http://www.w3.org/ns/prov#Location>; ?p ?o
