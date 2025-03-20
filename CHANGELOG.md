@@ -1,4 +1,11 @@
 # Changelog
+## Unreleased
+- Prepare application to accept data from OP as master (and not leidinggevenden or mandatarissen from loket)
+### deploy notes
+```
+drc up -d op-public-consumer
+drc restart migrations
+```
 ## 0.24.7 (2025-02-07)
 - Update form 'Reglementen en verordeningen' lblodRule [DL-6357]
 ### Deploy instructions

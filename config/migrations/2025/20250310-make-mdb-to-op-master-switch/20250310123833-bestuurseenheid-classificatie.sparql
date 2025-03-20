@@ -1,0 +1,14 @@
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a <http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode>,
+      <http://mu.semte.ch/vocabularies/ext/OrganizationClassificationCode>,
+      <http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode>,
+      <http://www.w3.org/2004/02/skos/core#Concept>;
+      ?p ?o.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/landing-zone/op-public> {
+    ?s a <http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode>;
+      ?p ?o.
+  }
+}

@@ -1,0 +1,11 @@
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a <http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode>;
+      ?p ?o.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/landing-zone/op-public> {
+    ?s a <http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode>;
+      ?p ?o.
+  }
+}
