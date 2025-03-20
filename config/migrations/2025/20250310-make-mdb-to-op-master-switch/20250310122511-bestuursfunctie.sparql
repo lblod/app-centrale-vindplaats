@@ -1,6 +1,7 @@
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/public> {
-     ?s a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode>;
+     ?s a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode>,
+       <http://mu.semte.ch/vocabularies/ext/BestuursfunctieCode>;
        ?p ?o.
   }
 
