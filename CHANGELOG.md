@@ -2,9 +2,11 @@
 ## Unreleased
 - Add missing docker compose key. [DL-6490]
 - Bump `migrations` to `v0.9.0`.
+- Prepare application to accept data from OP as master (and not leidinggevenden or mandatarissen from loket)
 ### Deploy Notes
 ```
 drc up -d migrations delta-report-generator
+drc up -d op-public-consumer
 ```
 ## 0.24.7 (2025-02-07)
 - Update form 'Reglementen en verordeningen' lblodRule [DL-6357]
