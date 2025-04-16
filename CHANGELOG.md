@@ -1,4 +1,11 @@
 # Changelog
+## Unreleased
+- Update multiple forms. [DL-6486] [DL-6487] [DL-6488]
+### Deploy Notes
+#### For updating the forms
+```
+drc restart migrations && drc logs -ft --tail=200 migrations
+```
 ## 0.25.0 (2025-03-20)
 - Add missing docker compose key. [DL-6490]
 - Bump `migrations` to `v0.9.0`.
