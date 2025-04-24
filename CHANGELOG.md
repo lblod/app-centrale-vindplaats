@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## 0.26.0 (2025-04-24)
 - Update multiple forms. [DL-6486] [DL-6487] [DL-6488]
 ### Deploy Notes
 #### For updating the forms
