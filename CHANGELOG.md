@@ -1,4 +1,15 @@
 # Changelog
+
+## Unreleased
+
+- Added next rapportperiode for Meerjarenplan(aanpassing) [DL-6597]
+
+### Deploy instructions
+
+```
+drc restart migrations && drc logs -ft --tail=200 migrations
+```
+
 ## 0.27.0 (2025-04-28)
 - Add new form [DL-6361]
 ### Deploy Notes
