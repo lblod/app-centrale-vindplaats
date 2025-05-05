@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.28.0 (2025-05-05)
 
 - Added next rapportperiode for Meerjarenplan(aanpassing) [DL-6597]
 
