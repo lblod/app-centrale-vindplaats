@@ -132,7 +132,7 @@ services:
     environment:
       OUTBOX: "http://data.lblod.info/id/mail-folders/2"
     volumes:
-      - ./config/delta-consumer/report-generator:/config
+      - ./config/delta-consumers/report-generator:/config
     labels:
       - "logging=true"
     restart: always
