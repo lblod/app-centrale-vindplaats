@@ -1,4 +1,12 @@
 # Changelog
+## 0.28.1 (2025-05-08)
+- Bugfix: path to report-generation-config wasn't correct
+
+### Deploy instructions
+```
+rm -rf delta-consumer
+drc up -d report-generation
+```
 
 ## 0.28.0 (2025-05-05)
 
