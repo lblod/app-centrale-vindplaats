@@ -1,4 +1,13 @@
 # Changelog
+## Unreleased
+- update besluittype: afwijking principes regiovorming [DL-6775]
+
+### Deploy instructions
+
+```
+drc restart migrations && drc logs -ft --tail=200 migrations
+```
+
 ## 0.28.1 (2025-05-08)
 - Bugfix: path to report-generation-config wasn't correct
 
