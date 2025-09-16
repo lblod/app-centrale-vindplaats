@@ -1,4 +1,6 @@
 # Changelog
+## 0.28.3 (2025-09-16)
+- Bug-Bugfix: ensure memberships are consumed (https://binnenland.atlassian.net/browse/OP-3658) correcting issue in `0.28.2`
 ## 0.28.2 (2025-09-16)
 - Bugfix: ensure memberships are consumed (https://binnenland.atlassian.net/browse/OP-3658)
 ## 0.28.1 (2025-05-08)
