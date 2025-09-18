@@ -1443,7 +1443,7 @@ lblodRule:472168b6-1f0b-4716-a1ab-4596761325e4
   a rule:NotificationRule ;
   core:uuid "472168b6-1f0b-4716-a1ab-4596761325e4" ;
     sch:validFrom "2023-10-31T01:00:00"^^xsd:dateTime ;
-    sch:validThrough "2025-09-018T01:00:00"^^xsd:dateTime ; # Update 2025-09-18
+    sch:validThrough "2025-09-18T01:00:00"^^xsd:dateTime ; # Update 2025-09-18
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 , BestuurseenheidClassificatieCode:b156b67f-c5f4-4584-9b30-4c090be02fdc ,
     BestuurseenheidClassificatieCode:cd93f147-3ece-4308-acab-5c5ada3ec63d ,
     BestuurseenheidClassificatieCode:d01bb1f6-2439-4e33-9c25-1fc295de2e71 ;
@@ -2633,7 +2633,7 @@ lblodRule:7dfd9578-2f73-4e6a-b2d4-0bf3b84e6e06
   a rule:NotificationRule ;
   core:uuid "7dfd9578-2f73-4e6a-b2d4-0bf3b84e6e06" ;
     sch:validFrom "2025-09-018T01:00:00"^^xsd:dateTime ;
-    #sch:validThrough "2025-09-018T01:00:00"^^xsd:dateTime ;
+    #sch:validThrough "2025-09-18T01:00:00"^^xsd:dateTime ;
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 , BestuurseenheidClassificatieCode:b156b67f-c5f4-4584-9b30-4c090be02fdc ,
     BestuurseenheidClassificatieCode:cd93f147-3ece-4308-acab-5c5ada3ec63d ,
     BestuurseenheidClassificatieCode:d01bb1f6-2439-4e33-9c25-1fc295de2e71 ;
