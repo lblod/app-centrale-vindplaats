@@ -338,14 +338,14 @@ BesluitDocumentType:6d1a3aea-6773-4e10-924d-38be596c5e2e
     skos:prefLabel "Opheffing van annexe kerken en kapelanijen" ;
     skos:topConceptOf conceptscheme:BesluitDocumentType .
 
-BesluitType:cc831628-95a0-4874-bad5-cdf563896032
+BesluitDocumentType:cc831628-95a0-4874-bad5-cdf563896032
   a skos:Concept ;
   core:uuid "cc831628-95a0-4874-bad5-cdf563896032" ;
   besluit:notificationRule lblodRule:472168b6-1f0b-4716-a1ab-4596761325e4 ;
   skos:definition "Afwijking principes regiovorming." ;
-    skos:inScheme conceptscheme:BesluitType ;
+    skos:inScheme conceptscheme:BesluitDocumentType ;
     skos:prefLabel "Afwijking principes regiovorming" ;
-    skos:topConceptOf conceptscheme:BesluitType .
+    skos:topConceptOf conceptscheme:BesluitDocumentType .
 
 # Update 10/10/2023
 
