@@ -1443,7 +1443,7 @@ lblodRule:472168b6-1f0b-4716-a1ab-4596761325e4
   a rule:NotificationRule ;
   core:uuid "472168b6-1f0b-4716-a1ab-4596761325e4" ;
     sch:validFrom "2023-10-31T01:00:00"^^xsd:dateTime ;
-    #sch:validThrough "2019-01-01T01:00:00"^^xsd:dateTime ;
+    sch:validThrough "2025-09-018T01:00:00"^^xsd:dateTime ; # Update 2025-09-18
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 , BestuurseenheidClassificatieCode:b156b67f-c5f4-4584-9b30-4c090be02fdc ,
     BestuurseenheidClassificatieCode:cd93f147-3ece-4308-acab-5c5ada3ec63d ,
     BestuurseenheidClassificatieCode:d01bb1f6-2439-4e33-9c25-1fc295de2e71 ;
@@ -2616,4 +2616,25 @@ lblodRule:8a65e6ce-4706-4852-8b31-627f4506a4f3
     core:uuid "8a65e6ce-4706-4852-8b31-627f4506a4f3" ;
     sch:validFrom "2025-05-21T01:00:00"^^xsd:dateTime ;
     besluit:decidableBy BestuurseenheidClassificatieCode:36372fad-0358-499c-a4e3-f412d2eae213 ; # Representatief Orgaan
+    besluit:obligationToReport "true"^^xsd:boolean .
+
+# UPDATE 2025-09-18
+
+BesluitType:cc831628-95a0-4874-bad5-cdf563896032
+  a skos:Concept ;
+  core:uuid "76de6b92-6f03-44d9-a98f-48c82d23b2eb2" ;
+  besluit:notificationRule lblodRule:7dfd9578-2f73-4e6a-b2d4-0bf3b84e6e06 ;
+  skos:definition "Afwijking principes regiovorming." ;
+    skos:inScheme conceptscheme:BesluitType ;
+    skos:prefLabel "Afwijking principes regiovorming" ;
+    skos:topConceptOf conceptscheme:BesluitType .
+
+lblodRule:7dfd9578-2f73-4e6a-b2d4-0bf3b84e6e06
+  a rule:NotificationRule ;
+  core:uuid "7dfd9578-2f73-4e6a-b2d4-0bf3b84e6e06" ;
+    sch:validFrom "2025-09-018T01:00:00"^^xsd:dateTime ;
+    #sch:validThrough "2025-09-018T01:00:00"^^xsd:dateTime ;
+    besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 , BestuurseenheidClassificatieCode:b156b67f-c5f4-4584-9b30-4c090be02fdc ,
+    BestuurseenheidClassificatieCode:cd93f147-3ece-4308-acab-5c5ada3ec63d ,
+    BestuurseenheidClassificatieCode:d01bb1f6-2439-4e33-9c25-1fc295de2e71 ;
     besluit:obligationToReport "true"^^xsd:boolean .
