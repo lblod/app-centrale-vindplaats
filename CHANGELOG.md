@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## 0.29.0 (2025-09-19)
 - update besluittype: afwijking principes regiovorming [DL-6775]
 
 ### Deploy instructions
