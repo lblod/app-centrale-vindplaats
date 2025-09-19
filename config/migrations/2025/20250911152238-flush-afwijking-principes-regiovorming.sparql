@@ -1,0 +1,25 @@
+PREFIX conceptscheme:                    <https://data.vlaanderen.be/id/conceptscheme/>
+PREFIX BesluitType:                      <https://data.vlaanderen.be/id/concept/BesluitType/>
+PREFIX BesluitDocumentType:              <https://data.vlaanderen.be/id/concept/BesluitDocumentType/>
+PREFIX skos:                             <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd:                              <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf:                              <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX core:                             <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit:                          <http://lblod.data.gift/vocabularies/besluit/>
+PREFIX BestuurseenheidClassificatieCode: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
+PREFIX sch:                              <http://schema.org/>
+PREFIX rule:                             <http://lblod.data.gift/vocabularies/notification/>
+PREFIX lblodRule:                        <http://data.lblod.info/id/notification-rule/>
+
+DELETE DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    BesluitDocumentType:cc831628-95a0-4874-bad5-cdf563896032
+      a skos:Concept ;
+      core:uuid "cc831628-95a0-4874-bad5-cdf563896032" ;
+      besluit:notificationRule lblodRule:472168b6-1f0b-4716-a1ab-4596761325e4 ;
+      skos:definition "Afwijking principes regiovorming." ;
+      skos:prefLabel "Afwijking principes regiovorming" ;
+      skos:inScheme conceptscheme:BesluitDocumentType ;
+      skos:topConceptOf conceptscheme:BesluitDocumentType .
+  }
+}
