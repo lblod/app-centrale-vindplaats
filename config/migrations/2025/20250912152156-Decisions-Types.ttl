@@ -2632,7 +2632,7 @@ BesluitType:cc831628-95a0-4874-bad5-cdf563896032
 lblodRule:7dfd9578-2f73-4e6a-b2d4-0bf3b84e6e06
   a rule:NotificationRule ;
   core:uuid "7dfd9578-2f73-4e6a-b2d4-0bf3b84e6e06" ;
-    sch:validFrom "2025-09-018T01:00:00"^^xsd:dateTime ;
+    sch:validFrom "2025-09-18T01:00:00"^^xsd:dateTime ;
     #sch:validThrough "2025-09-18T01:00:00"^^xsd:dateTime ;
     besluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 , BestuurseenheidClassificatieCode:b156b67f-c5f4-4584-9b30-4c090be02fdc ,
     BestuurseenheidClassificatieCode:cd93f147-3ece-4308-acab-5c5ada3ec63d ,
