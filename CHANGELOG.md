@@ -1,4 +1,7 @@
 # Changelog
+## 0.29.1 (2025-10-09)
+- update besluittype: afwijking principes regiovorming [DL-6775]: Fix issue with migration
+
 ## 0.29.0 (2025-09-19)
 - update besluittype: afwijking principes regiovorming [DL-6775]
 
