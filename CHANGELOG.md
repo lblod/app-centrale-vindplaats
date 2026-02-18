@@ -1,6 +1,7 @@
 # Changelog
 ## Unreleased
 - Move to sparql-parser
+- Add end date to BesluitType "Verlenging duurtijd van projectvereniging" [DL-7158]
 
 ## 0.29.1 (2025-10-09)
 - update besluittype: afwijking principes regiovorming [DL-6775]: Fix issue with migration
