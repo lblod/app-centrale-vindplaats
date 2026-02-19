@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## 0.30.0 (2026-02-19)
 - Move to sparql-parser
 
 ## 0.29.1 (2025-10-09)
