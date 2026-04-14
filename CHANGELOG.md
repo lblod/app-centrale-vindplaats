@@ -1,12 +1,14 @@
 # Changelog
-## 0.31.0 (2026-03-02)
-- Add end date to BesluitType "Verlenging duurtijd van projectvereniging" [DL-7158]
+## Unreleased
+- Update besluittypes: LEKP-forms no obligation to report from 01/05/2026 [DL-7222]
 
 ### Deploy instructions
 
 ```
 drc restart migrations && drc logs -ft --tail=200 migrations
 ```
+## 0.31.0 (2026-03-02)
+- Add end date to BesluitType "Verlenging duurtijd van projectvereniging" [DL-7158]
 
 ## 0.30.0 (2026-02-19)
 - Move to sparql-parser
