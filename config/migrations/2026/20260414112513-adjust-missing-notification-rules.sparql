@@ -1,0 +1,49 @@
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?rule <http://lblod.data.gift/vocabularies/besluit/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/4b8450cf-a326-4c66-9e63-b4ec10acc7f6> .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        VALUES ?rule {
+            <http://data.lblod.info/id/notification-rule/147a1e97-028a-4ea2-a1d3-960e219bc253>
+            <http://data.lblod.info/id/notification-rule/e3ff3407-fd50-4bf0-883e-ce8a53304738>
+            <http://data.lblod.info/id/notification-rule/eff68c1a-1cd9-42f9-901d-e3567927c781>
+            <http://data.lblod.info/id/notification-rule/2540a331-67f6-47d2-9a12-ea191b315be5>
+            <http://data.lblod.info/id/notification-rule/fae69732-4d22-40db-a2a7-550235190337>
+            <http://data.lblod.info/id/notification-rule/937ff493-2e7d-45d9-a23f-aa84454cd2a1>
+            <http://data.lblod.info/id/notification-rule/7ccba4dd-64d3-4aba-b612-b09634ac6adc>
+            <http://data.lblod.info/id/notification-rule/69df4c4d-edf1-4fcb-afea-2800038edbe0>
+            <http://data.lblod.info/id/notification-rule/7dfd9578-2f73-4e6a-b2d4-0bf3b84e6e06>
+            <http://data.lblod.info/id/notification-rule/eb90d063-5c16-4783-843c-e45e8258d6bb>
+        }
+
+        ?rule a <http://lblod.data.gift/vocabularies/notification/NotificationRule> .
+    }
+}
+
+;
+
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?rule <http://lblod.data.gift/vocabularies/besluit/obligationToReport> ?oldValue .
+    }
+}
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?rule <http://lblod.data.gift/vocabularies/besluit/obligationToReport> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        VALUES ?rule {
+            <http://data.lblod.info/id/notification-rule/b7fc7d2d-be1c-463c-b357-c3042062b4ca>
+            <http://data.lblod.info/id/notification-rule/36ccf065-decd-40c4-b382-1862fa535bda>
+            <http://data.lblod.info/id/notification-rule/cb5e825f-440a-468d-a1ea-3aa9d6b8efd9>
+        }
+
+        OPTIONAL {
+        ?rule <http://lblod.data.gift/vocabularies/besluit/obligationToReport> ?oldValue .
+        }
+    }
+}
