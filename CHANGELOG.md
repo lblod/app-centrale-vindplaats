@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## 0.32.0 (2026-04-16)
 - Update besluittypes: LEKP-forms no obligation to report from 01/05/2026 [DL-7222]
 
 ### Deploy instructions
