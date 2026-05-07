@@ -3,10 +3,12 @@
 - Move to sparql-parser
 - Add end date to BesluitType "Verlenging duurtijd van projectvereniging" [DL-7158]
 - Update besluittypes: LEKP-forms no obligation to report from 01/05/2026 [DL-7222]
+- Bump virtuoso [DL-7347]
 
 ### Deploy instructions
 
 ```
+drc up -d virtuoso
 drc restart migrations && drc logs -ft --tail=200 migrations
 ```
 ## 0.29.1 (2025-10-09)
