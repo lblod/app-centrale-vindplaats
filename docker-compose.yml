@@ -83,7 +83,7 @@ services:
       - "logging=true"
     logging: *default-logging
   virtuoso:
-    image: redpencil/virtuoso:1.2.0-rc.1
+    image: redpencil/virtuoso:1.2.2
     environment:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/graphs/public"
