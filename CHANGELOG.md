@@ -1,12 +1,17 @@
 # Changelog
+# Unreleased
+- Bump virtuoso [DL-7347]
+### Deploy instructions
+```
+drc up -d virtuoso
+```
+
 ## 0.32.0 (2026-04-16)
 - Update besluittypes: LEKP-forms no obligation to report from 01/05/2026 [DL-7222]
-- Bump virtuoso [DL-7347]
 
 ### Deploy instructions
 
 ```
-drc up -d virtuoso
 drc restart migrations && drc logs -ft --tail=200 migrations
 ```
 ## 0.31.0 (2026-03-02)
