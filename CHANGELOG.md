@@ -1,5 +1,5 @@
 # Changelog
-# Unreleased
+# 0.32.1 (2026-05-13)
 - Bump virtuoso [DL-7347]
 ### Deploy instructions
 ```
