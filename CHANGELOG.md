@@ -1,5 +1,16 @@
 # Changelog
-# 0.32.1 (2026-05-13)
+
+## 0.32.2 (2026-06-12)
+
+- Added cross referencing rules as a migration [DL-7202]
+
+### Deploy instructions
+
+```
+drc restart migrations
+```
+
+## 0.32.1 (2026-05-13)
 - Bump virtuoso [DL-7347]
 ### Deploy instructions
 ```
