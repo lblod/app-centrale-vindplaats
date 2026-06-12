@@ -11,13 +11,17 @@ drc restart migrations
 ```
 
 ## 0.32.1 (2026-05-13)
+
 - Bump virtuoso [DL-7347]
+
 ### Deploy instructions
+
 ```
 drc up -d virtuoso
 ```
 
 ## 0.32.0 (2026-04-16)
+
 - Update besluittypes: LEKP-forms no obligation to report from 01/05/2026 [DL-7222]
 
 ### Deploy instructions
@@ -26,15 +30,19 @@ drc up -d virtuoso
 drc restart migrations && drc logs -ft --tail=200 migrations
 ```
 ## 0.31.0 (2026-03-02)
+
 - Add end date to BesluitType "Verlenging duurtijd van projectvereniging" [DL-7158]
 
 ## 0.30.0 (2026-02-19)
+
 - Move to sparql-parser
 
 ## 0.29.1 (2025-10-09)
+
 - update besluittype: afwijking principes regiovorming [DL-6775]: Fix issue with migration
 
 ## 0.29.0 (2025-09-19)
+
 - update besluittype: afwijking principes regiovorming [DL-6775]
 
 ### Deploy instructions
